@@ -1,14 +1,15 @@
 /* Betterward - Clean Civic Design */
 
 :root {
-    --civic-blue: #002868;           /* Old Glory blue */
-    --text-dark: #24292f;            /* GitHub text */
-    --text-medium: #4a4a4a;
-    --text-light: #6a6a6a;
-    --background: #F5F0E8;           /* Anthropic warm beige */
-    --white: #F0EEE9;                /* Cloud Dancer (Pantone 2026 Color of the Year) */
-    --border: #e0e0e0;
-    --accent-hover: #E95420;
+    --civic-blue: #002868;           /* Old Glory blue - primary brand */
+    --text-dark: #24292f;            /* GitHub text - main body text */
+    --text-medium: #4a4a4a;          /* [needs assignment] */
+    --text-light: #6a6a6a;           /* [needs assignment] */
+    --background: #F5F0E8;           /* Anthropic warm beige - page background */
+    --white: #ffffff;                /* [needs assignment - header/footer] */
+    --border: #e0e0e0;               /* [needs assignment] */
+    --accent-hover: #E95420;         /* Ubuntu orange - link hover state */
+    --wiki-blue: #3366CC;            /* Wikipedia blue - [available for use] */
 }
 
 * {
