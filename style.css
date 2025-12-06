@@ -1,15 +1,23 @@
 /* Betterward - Clean Civic Design */
 
 :root {
-    --civic-blue: #002868;           /* Old Glory blue - primary brand */
-    --text-dark: #24292f;            /* GitHub text - main body text */
-    --text-medium: #4a4a4a;          /* [needs assignment] */
-    --text-light: #6a6a6a;           /* [needs assignment] */
-    --background: #F5F0E8;           /* Anthropic warm beige - page background */
-    --white: #ffffff;                /* [needs assignment - header/footer] */
-    --border: #e0e0e0;               /* [needs assignment] */
-    --accent-hover: #E95420;         /* Ubuntu orange - link hover state */
-    --wiki-blue: #3366CC;            /* Wikipedia blue - [available for use] */
+    /* Reference colors - literal hex values with searchable sources */
+    --old-glory-blue: #002868;
+    --wikipedia-blue: #3366CC;
+    --anthropic-beige: #F5F0E8;
+    --ubuntu-orange: #E95420;
+    --github-text: #24292f;
+    
+    /* Functional assignments - semantic usage */
+    --primary-accent: var(--old-glory-blue);
+    --hover-accent: var(--ubuntu-orange);
+    --active-accent: var(--wikipedia-blue);
+    --background: var(--anthropic-beige);
+    --text-dark: var(--github-text);
+    --text-medium: #4a4a4a;
+    --text-light: #6a6a6a;
+    --border: #e0e0e0;
+    --header-bg: #ffffff;
 }
 
 * {
@@ -20,7 +28,7 @@
 
 body {
     font-family: Georgia, 'Times New Roman', serif;
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--text-dark);
     background-color: var(--background);
     font-size: 18px;
@@ -44,14 +52,19 @@ h2 {
 }
 
 a {
-    color: var(--civic-blue);
+    color: var(--primary-accent);
     text-decoration: none;
     border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 a:hover {
-    border-bottom-color: var(--civic-blue);
+    color: var(--hover-accent);
+    border-bottom-color: var(--hover-accent);
+}
+
+a:active {
+    color: var(--active-accent);
 }
 
 .container {
@@ -61,20 +74,20 @@ a:hover {
 }
 
 header {
-    background-color: var(--white);
-    border-bottom: 3px solid var(--civic-blue);
+    background-color: var(--header-bg);
+    border-bottom: 3px solid var(--primary-accent);
     padding: 2.5em 0 2em;
     margin-bottom: 3em;
 }
 
 header h1 a {
-    color: var(--civic-blue);
+    color: var(--primary-accent);
     border: none;
     font-weight: 700;
 }
 
 header h1 a:hover {
-    color: var(--accent-hover);
+    color: var(--hover-accent);
     border: none;
 }
 
@@ -120,7 +133,7 @@ main {
 }
 
 .post-preview h2 a:hover {
-    color: var(--civic-blue);
+    color: var(--primary-accent);
 }
 
 .post-meta {
@@ -139,7 +152,7 @@ footer {
     border-top: 1px solid var(--border);
     padding: 2em 0;
     margin-top: 4em;
-    background-color: var(--white);
+    background-color: var(--header-bg);
 }
 
 footer p {
@@ -165,6 +178,7 @@ footer p {
         font-size: 1.7em;
     }
 }
+
 /* Blog Post Styles */
 
 .post-header {
@@ -194,21 +208,21 @@ footer p {
 }
 
 .post-content p {
-    margin-bottom: 1.3em;
+    margin-bottom: 1.8em;
 }
 
 .calculation-block {
     background-color: #f5f5f5;
     padding: 1em 1.5em;
     margin: 1.5em 0;
-    border-left: 3px solid var(--civic-blue);
+    border-left: 3px solid var(--primary-accent);
     font-family: 'Courier New', monospace;
     line-height: 1.8;
     white-space: pre-line;
 }
 
 blockquote {
-    border-left: 4px solid var(--civic-blue);
+    border-left: 4px solid var(--primary-accent);
     padding: 1.5em;
     padding-left: 2em;
     margin: 2em 0;
