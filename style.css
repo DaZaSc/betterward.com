@@ -1,0 +1,166 @@
+/* Betterward - Clean Civic Design */
+
+:root {
+    --civic-blue: #002868;
+    --text-dark: #1a1a1a;
+    --text-medium: #4a4a4a;
+    --text-light: #6a6a6a;
+    --background: #fafafa;
+    --white: #ffffff;
+    --border: #e0e0e0;
+    --accent-hover: #003d99;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.7;
+    color: var(--text-dark);
+    background-color: var(--background);
+    font-size: 18px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text-dark);
+}
+
+h1 {
+    font-size: 2em;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 1.6em;
+    margin-bottom: 0.5em;
+}
+
+a {
+    color: var(--civic-blue);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+a:hover {
+    border-bottom-color: var(--civic-blue);
+}
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+header {
+    background-color: var(--white);
+    border-bottom: 3px solid var(--civic-blue);
+    padding: 2.5em 0 2em;
+    margin-bottom: 3em;
+}
+
+header h1 a {
+    color: var(--civic-blue);
+    border: none;
+    font-weight: 700;
+}
+
+header h1 a:hover {
+    color: var(--accent-hover);
+    border: none;
+}
+
+.tagline {
+    margin-top: 0.5em;
+    font-size: 0.95em;
+    color: var(--text-medium);
+    font-style: italic;
+}
+
+main {
+    min-height: 60vh;
+    margin-bottom: 4em;
+}
+
+.intro {
+    margin-bottom: 3em;
+    font-size: 1.05em;
+    color: var(--text-medium);
+}
+
+.blog-posts {
+    margin-top: 2em;
+}
+
+.post-preview {
+    margin-bottom: 3em;
+    padding-bottom: 2.5em;
+    border-bottom: 1px solid var(--border);
+}
+
+.post-preview:last-child {
+    border-bottom: none;
+}
+
+.post-preview h2 {
+    margin-bottom: 0.3em;
+}
+
+.post-preview h2 a {
+    color: var(--text-dark);
+    border: none;
+}
+
+.post-preview h2 a:hover {
+    color: var(--civic-blue);
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin-bottom: 0.8em;
+    font-style: italic;
+}
+
+.post-excerpt {
+    color: var(--text-medium);
+    margin-top: 0.8em;
+}
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 2em 0;
+    margin-top: 4em;
+    background-color: var(--white);
+}
+
+footer p {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 17px;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+    
+    header {
+        padding: 2em 0 1.5em;
+    }
+    
+    h1 {
+        font-size: 1.7em;
+    }
+}
