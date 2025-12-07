@@ -109,6 +109,25 @@ header h1 a:active {
     color: var(--active-accent);
 }
 
+header h1 {
+    font-size: 2.5em;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+}
+
+.header-text {
+    flex: 1;
+}
+
 .tagline {
     margin-top: 0.5em;
     font-size: 0.95em;
