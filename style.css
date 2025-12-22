@@ -60,6 +60,10 @@ h3 {
     margin-bottom: 0.5em;
 }
 
+.section-preview {
+    margin-bottom: 2em;
+}
+
 /* Default link styles */
 a {
     color: var(--primary-accent);
