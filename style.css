@@ -37,6 +37,10 @@ body {
     font-size: 18px;
 }
 
+p {
+    margin-bottom: 1.5em;
+}
+
 h1, h2, h3, h4 {
     font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif;
     font-weight: 600;
