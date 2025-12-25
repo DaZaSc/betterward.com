@@ -309,7 +309,7 @@ blockquote p:last-child {
 .gates {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 1.5em;
     margin: 3em 0;
 }
