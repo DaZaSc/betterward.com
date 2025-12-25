@@ -322,11 +322,16 @@ blockquote p:last-child {
     color: var(--text-dark);
     padding: 0.3em 0;
     border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .gates a:hover {
-    border-bottom-color: var(--text-dark);
+    color: var(--hover-accent);
+    border-bottom-color: var(--hover-accent);
+}
+
+.gates a:active {
+    color: var(--active-accent);
 }
 
 @media (max-width: 600px) {
