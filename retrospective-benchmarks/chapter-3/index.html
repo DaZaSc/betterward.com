@@ -4,202 +4,202 @@ title: "Chapter 3: The Formalization Benchmark (2007) - Retrospective Benchmarks
 ---
 
 <style>
-.chapter-header {
-    margin-bottom: 2rem;
-}
+    /* Chapter-specific styles */
+    .chapter-header {
+        margin-bottom: 2em;
+        text-align: center;
+    }
+    .chapter-header .series-title {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 1em;
+        color: var(--text-medium);
+        margin-bottom: 0.5em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .chapter-header h1 {
+        font-size: 2em;
+        margin-bottom: 0.3em;
+    }
+    .chapter-header .subtitle {
+        font-size: 1.1em;
+        color: var(--text-medium);
+        font-style: italic;
+    }
+    .chapter-header .author {
+        margin-top: 1.5em;
+        font-size: 1em;
+    }
+    .chapter-header .date {
+        font-size: 0.9em;
+        color: var(--text-light);
+        margin-top: 0.3em;
+    }
+    .chapter-header .working-paper {
+        font-size: 0.85em;
+        color: var(--text-light);
+        font-style: italic;
+    }
 
-.series-title {
-    font-size: 0.95rem;
-    margin-bottom: 0.25rem;
-}
+    /* PDF download link */
+    .download-link {
+        display: inline-block;
+        margin: 1.5em 0;
+        padding: 0.75em 1.5em;
+        background-color: var(--primary-accent);
+        color: white;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.95em;
+        border: none;
+        transition: background-color 0.2s ease;
+    }
+    .download-link:hover {
+        background-color: var(--hover-accent);
+        color: white;
+        border: none;
+    }
 
-.series-title a {
-    color: #3366cc;
-    text-decoration: none;
-}
+    /* Blockquotes */
+    blockquote {
+        border-left: 3px solid var(--primary-accent);
+        padding-left: 1em;
+        margin: 1.5em 0;
+        color: var(--text-medium);
+        font-style: italic;
+    }
 
-.series-title a:hover {
-    text-decoration: underline;
-}
+    /* Score boxes */
+    .score-box {
+        background-color: #f9f9f9;
+        border-left: 3px solid var(--primary-accent);
+        padding: 1em 1.5em;
+        margin: 1.5em 0;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.95em;
+    }
+    .score-box .label {
+        font-weight: 600;
+        margin-bottom: 0.5em;
+    }
+    .score-box .option {
+        margin: 0.3em 0;
+    }
+    .score-box .selected {
+        font-weight: 600;
+    }
 
-.chapter-subtitle {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 0.5rem;
-}
+    /* Equations (MathJax) */
+    .equation {
+        text-align: center;
+        margin: 1.5em 0;
+        font-size: 1.1em;
+    }
 
-.chapter-header h1 {
-    margin-bottom: 0.5rem;
-}
+    /* Variable lists for equations */
+    .variable-list {
+        margin: 1em 0 1em 1.5em;
+    }
+    .variable-list li {
+        margin: 0.3em 0;
+    }
 
-.chapter-meta {
-    color: #555;
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-}
+    /* Reference value lists */
+    .reference-values {
+        margin: 0.5em 0 0.5em 1.5em;
+    }
+    .reference-values li {
+        margin: 0.25em 0;
+    }
 
-.working-paper {
-    font-size: 0.85rem;
-    color: #666;
-    font-style: italic;
-}
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2em 0;
+        font-size: 0.95em;
+    }
+    th, td {
+        text-align: left;
+        padding: 0.75em 1em;
+        border-bottom: 1px solid var(--border);
+    }
+    th {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 600;
+        background-color: #f9f9f9;
+        border-bottom: 2px solid var(--primary-accent);
+    }
+    td:last-child, th:last-child {
+        text-align: center;
+    }
+    tr.criterion-average td {
+        font-weight: 600;
+        background-color: #f9f9f9;
+    }
+    tr.overall-score td {
+        font-weight: 700;
+        font-size: 1.05em;
+        border-top: 2px solid var(--primary-accent);
+    }
 
-.download-link {
-    display: inline-block;
-    margin: 1rem 0;
-    padding: 0.5rem 1rem;
-    background: #f5f5f5;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    color: #333;
-    text-decoration: none;
-}
+    .comparison-table {
+        width: auto;
+        margin: 2em auto;
+    }
+    .comparison-table th,
+    .comparison-table td {
+        text-align: center;
+        padding: 0.75em 1.5em;
+    }
 
-.download-link:hover {
-    background: #e9e9e9;
-}
+    /* Superscript references */
+    sup.ref a {
+        font-size: 0.75em;
+        color: var(--wikipedia-blue);
+        text-decoration: none;
+        border: none;
+    }
+    sup.ref a:hover {
+        text-decoration: underline;
+    }
 
-.abstract {
-    background: #f9f9f9;
-    border-left: 3px solid #ccc;
-    padding: 1rem;
-    margin: 1.5rem 0;
-    font-style: italic;
-}
+    /* Endnotes */
+    .endnotes {
+        margin-top: 3em;
+        padding-top: 2em;
+        border-top: 2px solid var(--primary-accent);
+    }
+    .endnotes h2 {
+        font-size: 1.3em;
+        margin-bottom: 1em;
+        border-top: none;
+        padding-top: 0;
+    }
+    .endnotes ol {
+        font-size: 0.9em;
+        color: var(--text-medium);
+        margin-left: 1.5em;
+    }
+    .endnotes li {
+        margin-bottom: 0.8em;
+        line-height: 1.6;
+    }
+    .endnotes a {
+        word-break: break-all;
+    }
+    .backlink {
+        font-size: 0.85em;
+        margin-left: 0.3em;
+    }
 
-blockquote {
-    border-left: 3px solid #ccc;
-    padding-left: 1rem;
-    margin: 1.5rem 0;
-    color: #444;
-    font-style: italic;
-}
-
-.score-box {
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 1rem;
-    margin: 1rem 0;
-    font-size: 0.95rem;
-}
-
-.score-box p {
-    margin: 0.25rem 0;
-}
-
-.score-box .selected {
-    font-weight: bold;
-}
-
-.definition-box {
-    background: #f5f8ff;
-    border: 1px solid #cce;
-    padding: 1rem;
-    margin: 1.5rem 0;
-}
-
-.equation {
-    text-align: center;
-    margin: 1.5rem 0;
-    font-size: 1.1rem;
-}
-
-.variable-list {
-    margin: 1rem 0 1rem 1.5rem;
-}
-
-.variable-list li {
-    margin: 0.3rem 0;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1.5rem 0;
-    font-size: 0.95rem;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 0.5rem;
-    text-align: left;
-}
-
-th {
-    background: #f5f5f5;
-}
-
-.summary-table td:last-child,
-.summary-table th:last-child {
-    text-align: center;
-    width: 80px;
-}
-
-.comparison-table {
-    width: auto;
-    margin: 1.5rem auto;
-}
-
-.comparison-table th,
-.comparison-table td {
-    padding: 0.5rem 1rem;
-    text-align: center;
-}
-
-.reference-values {
-    margin: 0.5rem 0 0.5rem 1.5rem;
-}
-
-.reference-values li {
-    margin: 0.25rem 0;
-}
-
-sup.ref a {
-    color: #3366cc;
-    text-decoration: none;
-}
-
-sup.ref a:hover {
-    text-decoration: underline;
-}
-
-.endnotes {
-    margin-top: 3rem;
-    padding-top: 1rem;
-    border-top: 1px solid #ddd;
-    font-size: 0.9rem;
-}
-
-.endnotes h2 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
-
-.endnotes ol {
-    padding-left: 1.5rem;
-}
-
-.endnotes li {
-    margin: 0.75rem 0;
-}
-
-.backlink {
-    color: #3366cc;
-    text-decoration: none;
-    margin-left: 0.25rem;
-}
-
-.backlink:hover {
-    text-decoration: underline;
-}
-
-.version-footer {
-    margin-top: 3rem;
-    padding-top: 1rem;
-    border-top: 1px solid #ddd;
-    font-size: 0.85rem;
-    color: #666;
-}
+    /* Version footer */
+    .version-footer {
+        margin-top: 3em;
+        padding-top: 2em;
+        border-top: 1px solid var(--border);
+        font-size: 0.85em;
+        color: var(--text-light);
+    }
 </style>
 
 <script>
@@ -212,17 +212,17 @@ MathJax = {
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
-<article>
-    <header class="chapter-header">
+<article class="post-content">
+    <div class="chapter-header">
         <p class="series-title"><a href="/retrospective-benchmarks/">Retrospective Benchmarks for Machine Intelligence</a></p>
-        <p class="chapter-subtitle">Evaluating Current AI Against Historical Specifications</p>
+        <p class="subtitle">Evaluating Current AI Against Historical Specifications</p>
         <h1>Chapter 3: The Formalization Benchmark (2007)</h1>
-        <p class="chapter-meta">Dakota Schuck</p>
-        <p class="chapter-meta">December 2025</p>
+        <p class="author">Dakota Schuck</p>
+        <p class="date">December 2025</p>
         <p class="working-paper">Working paper. Comments welcome.</p>
-    </header>
+    </div>
 
-    <a href="chapter3-formalization-benchmark_schuck.pdf" class="download-link">Download PDF</a>
+    <p><a href="chapter3-formalization-benchmark_schuck.pdf" class="download-link">Download PDF</a></p>
 
     <section>
         <h2>Preface: Methodology</h2>
