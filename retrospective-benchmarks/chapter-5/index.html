@@ -1,0 +1,959 @@
+---
+layout: default
+title: "Chapter 5: The Critique Benchmark (2019) - Retrospective Benchmarks - Betterward"
+---
+
+<style>
+    /* Chapter-specific styles */
+    .chapter-header {
+        margin-bottom: 2em;
+        text-align: center;
+    }
+    .chapter-header .series-title {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 1em;
+        color: var(--text-medium);
+        margin-bottom: 0.5em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .chapter-header h1 {
+        font-size: 2em;
+        margin-bottom: 0.3em;
+    }
+    .chapter-header .subtitle {
+        font-size: 1.1em;
+        color: var(--text-medium);
+        font-style: italic;
+    }
+    .chapter-header .author {
+        margin-top: 1.5em;
+        font-size: 1em;
+    }
+    .chapter-header .date {
+        font-size: 0.9em;
+        color: var(--text-light);
+        margin-top: 0.3em;
+    }
+    .chapter-header .working-paper {
+        font-size: 0.85em;
+        color: var(--text-light);
+        font-style: italic;
+    }
+
+    /* PDF download link */
+    .download-link {
+        display: inline-block;
+        margin: 1.5em 0;
+        padding: 0.75em 1.5em;
+        background-color: var(--primary-accent);
+        color: white;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.95em;
+        border: none;
+        transition: background-color 0.2s ease;
+    }
+    .download-link:hover {
+        background-color: var(--hover-accent);
+        color: white;
+        border: none;
+    }
+
+    /* Blockquotes */
+    blockquote {
+        border-left: 3px solid var(--primary-accent);
+        padding-left: 1em;
+        margin: 1.5em 0;
+        color: var(--text-medium);
+        font-style: italic;
+    }
+
+    /* Score boxes */
+    .score-box {
+        background-color: #f9f9f9;
+        border-left: 3px solid var(--primary-accent);
+        padding: 1em 1.5em;
+        margin: 1.5em 0;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.95em;
+    }
+    .score-box .label {
+        font-weight: 600;
+        margin-bottom: 0.5em;
+    }
+    .score-box .option {
+        margin: 0.3em 0;
+    }
+    .score-box .selected {
+        font-weight: 600;
+    }
+
+    /* Reference value lists */
+    .reference-values {
+        margin: 0.5em 0 0.5em 1.5em;
+    }
+    .reference-values li {
+        margin: 0.25em 0;
+    }
+
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2em 0;
+        font-size: 0.95em;
+    }
+    th, td {
+        text-align: left;
+        padding: 0.75em 1em;
+        border-bottom: 1px solid var(--border);
+    }
+    th {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 600;
+        background-color: #f9f9f9;
+        border-bottom: 2px solid var(--primary-accent);
+    }
+    td:last-child, th:last-child {
+        text-align: center;
+    }
+    tr.criterion-average td {
+        font-weight: 600;
+        background-color: #f9f9f9;
+    }
+    tr.overall-score td {
+        font-weight: 700;
+        font-size: 1.05em;
+        border-top: 2px solid var(--primary-accent);
+    }
+
+    .comparison-table {
+        width: auto;
+        margin: 2em auto;
+    }
+    .comparison-table th,
+    .comparison-table td {
+        text-align: center;
+        padding: 0.75em 1.5em;
+    }
+
+    /* Superscript references */
+    sup.ref a {
+        font-size: 0.75em;
+        color: var(--wikipedia-blue);
+        text-decoration: none;
+        border: none;
+    }
+    sup.ref a:hover {
+        text-decoration: underline;
+    }
+
+    /* Endnotes */
+    .endnotes {
+        margin-top: 3em;
+        padding-top: 2em;
+        border-top: 2px solid var(--primary-accent);
+    }
+    .endnotes h2 {
+        font-size: 1.3em;
+        margin-bottom: 1em;
+        border-top: none;
+        padding-top: 0;
+    }
+    .endnotes ol {
+        font-size: 0.9em;
+        color: var(--text-medium);
+        margin-left: 1.5em;
+    }
+    .endnotes li {
+        margin-bottom: 0.8em;
+        line-height: 1.6;
+    }
+    .endnotes a {
+        word-break: break-all;
+    }
+    .backlink {
+        font-size: 0.85em;
+        margin-left: 0.3em;
+    }
+
+    /* Version footer */
+    .version-footer {
+        margin-top: 3em;
+        padding-top: 2em;
+        border-top: 1px solid var(--border);
+        font-size: 0.85em;
+        color: var(--text-light);
+    }
+
+    /* Equations (MathJax) */
+    .equation {
+        text-align: center;
+        margin: 1.5em 0;
+        font-size: 1.1em;
+    }
+
+    /* Variable lists for equations */
+    .variable-list {
+        margin: 1em 0 1em 1.5em;
+    }
+    .variable-list li {
+        margin: 0.3em 0;
+    }
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<article class="post-content">
+    <div class="chapter-header">
+        <p class="series-title"><a href="/retrospective-benchmarks/">Retrospective Benchmarks for Machine Intelligence</a></p>
+        <p class="subtitle">Evaluating Current AI Against Historical Specifications</p>
+        <h1>Chapter 5: The Critique Benchmark (2019)</h1>
+        <p class="author">Dakota Schuck</p>
+        <p class="date">December 2025</p>
+        <p class="working-paper">Working paper. Comments welcome.</p>
+    </div>
+
+    <p><a href="chapter5-critique-benchmark_schuck.pdf" class="download-link">Download PDF</a></p>
+
+    <section>
+        <h2>Preface: Methodology</h2>
+
+        <p>This chapter continues the methodology established in Chapter 1. We treat historical definitions of machine intelligence as testable specifications, then evaluate current AI systems against them. For full methodological discussion, see Chapter 1 (The Gubrud Benchmark).</p>
+
+        <p>The 2019 case presents a unique challenge: François Chollet's definition was explicitly designed as a <em>critique</em> of task-performance benchmarking—the very methodology this series employs. His framework argues that measuring skill at any task, however impressive, falls short of measuring intelligence. Intelligence, he claims, is about how efficiently you acquire skills, not what skills you have.</p>
+
+        <p>This creates a productive tension. We are using a task-performance-based methodology to evaluate a definition that rejects task-performance as the measure. Where possible, we operationalize Chollet's framework on its own terms. Where we cannot avoid task-performance metrics, we acknowledge the circularity.</p>
+
+        <p>Every factual claim should be cited. Where citations are missing, we have marked them. Where we have made interpretive choices, we have flagged them. This is a first attempt, meant to be improved by others.<sup class="ref"><a href="#fn1" id="ref1">[1]</a></sup></p>
+    </section>
+
+    <section>
+        <h2>Introduction: The Keras Creator's Counterargument</h2>
+
+        <p>In November 2019, François Chollet published a 62-page paper that would become one of the most influential critiques of the AI benchmarking paradigm.<sup class="ref"><a href="#fn2" id="ref2">[2]</a></sup> The timing was significant. GPT-2 had been released earlier that year, demonstrating that language models could generate coherent text at unprecedented scales. The AI community was beginning to coalesce around a hypothesis: scale up the models, scale up the data, and intelligence would emerge.</p>
+
+        <p>Chollet disagreed. Profoundly.</p>
+
+        <p>He was not a newcomer to deep learning. In 2015, he had created Keras, an open-source neural network library that would become one of the most widely used frameworks in the field, with over 2.5 million developers.<sup class="ref"><a href="#fn3" id="ref3">[3]</a></sup> He worked at Google, surrounded by researchers pushing the boundaries of what deep learning could do. He understood the technology from the inside. And he thought the field was confusing skill with intelligence.</p>
+
+        <p>"Skill is heavily modulated by prior knowledge and experience," Chollet wrote. "Unlimited priors or unlimited training data allow experimenters to 'buy' arbitrary levels of skills for a system, in a way that masks the system's own generalization power."<sup class="ref"><a href="#fn4" id="ref4">[4]</a></sup> A chess engine trained on millions of games might beat any human, but it cannot write a poem. A language model trained on the entire internet might generate fluent text, but show it a novel puzzle unlike anything in its training data, and it flounders.</p>
+
+        <p>The distinction Chollet drew was between <em>crystallized intelligence</em>—accumulated skills and knowledge—and <em>fluid intelligence</em>—the ability to adapt to genuinely new situations. Modern AI systems, he argued, were achieving impressive levels of crystallized intelligence while lacking fluid intelligence almost entirely.</p>
+
+        <p>To demonstrate this, he created a benchmark: the Abstraction and Reasoning Corpus (ARC). Each task in ARC is a visual puzzle: a grid of colored squares showing a few input-output examples, and a test input for which the system must produce the correct output. The puzzles are designed to be trivially easy for humans—most can be solved in seconds—but require genuine abstraction and reasoning rather than pattern matching against memorized solutions.</p>
+
+        <p>When Chollet released ARC, GPT-3 scored 0%. GPT-4 scored near 0%. GPT-4o, in 2024, reached 5%. Despite a roughly 50,000× scale-up in model parameters, performance on this test of fluid intelligence barely budged from zero.<sup class="ref"><a href="#fn5" id="ref5">[5]</a></sup></p>
+
+        <p>Then, in December 2024, something changed. OpenAI's o3 model—using extended reasoning and test-time computation—scored 87.5% on ARC-AGI-1 at high compute levels.<sup class="ref"><a href="#fn6" id="ref6">[6]</a></sup> The benchmark that had seemed impervious to scaling suddenly fell.</p>
+
+        <p>Chollet's response was measured. He acknowledged the breakthrough but noted that o3 used massive computational resources—roughly $1,000 per task at the high-compute setting.<sup class="ref"><a href="#fn7" id="ref7">[7]</a></sup> Humans solve the same tasks in seconds, for pennies worth of metabolic energy. He released ARC-AGI-2, a harder version where pure LLMs score 0% and even reasoning systems achieve only single-digit percentages, while humans still solve every task.<sup class="ref"><a href="#fn8" id="ref8">[8]</a></sup></p>
+
+        <p>The question remains: by Chollet's own definition, does current AI exhibit intelligence?</p>
+    </section>
+
+    <section>
+        <h2>The Original Definition</h2>
+
+        <p>From "On the Measure of Intelligence," published November 2019:<sup class="ref"><a href="#fn9" id="ref9">[9]</a></sup></p>
+
+        <blockquote>
+            <p>The intelligence of a system is a measure of its skill-acquisition efficiency over a scope of tasks, with respect to priors, experience, and generalization difficulty.</p>
+        </blockquote>
+
+        <p>The informal version: "Intelligence is the rate at which a learner turns its experience and priors into new skills at valuable tasks that involve uncertainty and adaptation."<sup class="ref"><a href="#fn10" id="ref10">[10]</a></sup></p>
+
+        <p>The formal measure, expressed in terms of algorithmic information theory:<sup class="ref"><a href="#fn11" id="ref11">[11]</a></sup></p>
+
+        <div class="equation">
+            $$I_{IS,\text{scope}}^\Theta = \mathbb{E}_{T \sim \text{scope}} \left[ \omega_T \cdot \frac{GD_{T,C}^\Theta \cdot \text{Skill}_{IS,T,C}^\Theta}{P_{IS}^\Theta + E_{IS,T,C}^\Theta} \right]$$
+        </div>
+
+        <p>Where:</p>
+        <ul class="variable-list">
+            <li><em>I</em> is the intelligence measure</li>
+            <li><em>IS</em> is the intelligent system being evaluated</li>
+            <li><em>scope</em> is the set of tasks considered</li>
+            <li><em>T</em> is a specific task</li>
+            <li><em>ω<sub>T</sub></em> is the value weight of task <em>T</em></li>
+            <li><em>GD</em> is the generalization difficulty of <em>T</em> under curriculum <em>C</em></li>
+            <li><em>Skill</em> is the skill level achieved</li>
+            <li><em>P</em> measures the priors the system brings</li>
+            <li><em>E</em> measures the experience (training data) used</li>
+        </ul>
+
+        <h3>Context</h3>
+
+        <p>Chollet's paper synthesized two traditions: psychometrics (the measurement of human intelligence) and algorithmic information theory (the mathematical study of complexity and compression). From psychometrics, he borrowed the distinction between abilities and skills, and the emphasis on measuring broad cognitive capacities rather than narrow task performance. From algorithmic information theory, he borrowed tools for formalizing concepts like "simplicity" and "generalization difficulty."</p>
+
+        <p>The key insight is in the denominator: intelligence is <em>inversely proportional</em> to priors and experience. A system that achieves high skill using vast amounts of training data and elaborate built-in knowledge is <em>less</em> intelligent, by this measure, than a system that achieves the same skill with fewer resources. The numerator includes generalization difficulty: solving a genuinely novel problem demonstrates more intelligence than solving a problem similar to training examples.</p>
+
+        <p>This inverts the usual AI benchmarking logic. Most benchmarks ask: "How well does the system perform?" Chollet asks: "How efficiently did the system acquire that performance?"</p>
+
+        <h3>Core Knowledge Priors</h3>
+
+        <p>Chollet grounds his definition in developmental psychology's concept of "core knowledge"—the innate cognitive capacities that human infants bring to learning.<sup class="ref"><a href="#fn12" id="ref12">[12]</a></sup> These include:</p>
+
+        <ul>
+            <li><strong>Object permanence and cohesion</strong> — Objects persist and move as wholes</li>
+            <li><strong>Numerosity</strong> — Basic counting and quantity comparison</li>
+            <li><strong>Elementary geometry</strong> — Spatial relationships and transformations</li>
+            <li><strong>Agenthood</strong> — Some objects act with goals and intentions</li>
+        </ul>
+
+        <p>ARC tasks are designed to require only these core knowledge priors, making them fair tests for comparing human and machine intelligence. A system with vastly more prior knowledge than a human—such as an LLM trained on the entire internet—should, by Chollet's framework, have its performance discounted accordingly.</p>
+
+        <h3>Operationalization</h3>
+
+        <p>From Chollet's definition and its operationalization in ARC, we extract five criteria:</p>
+
+        <ol>
+            <li><strong>Skill-acquisition efficiency</strong> — High skill achieved with minimal experience</li>
+            <li><strong>Generalization to novel tasks</strong> — Performance on tasks unlike training data</li>
+            <li><strong>Prior-efficiency</strong> — Achieving results with minimal built-in knowledge</li>
+            <li><strong>Sample efficiency</strong> — Learning from few examples</li>
+            <li><strong>Resource efficiency</strong> — Achieving results with reasonable computational cost</li>
+        </ol>
+
+        <p>The last criterion—resource efficiency—was added to ARC-AGI-2, reflecting Chollet's view that intelligence must be measured relative to the resources consumed. Brute-force search can eventually solve any computable problem; intelligence is about finding solutions efficiently.</p>
+
+        <p>Scoring:</p>
+        <ul>
+            <li>☐ 0% — Clearly does not meet criterion</li>
+            <li>☐ 50% — Contested; reasonable arguments exist on both sides</li>
+            <li>☐ 100% — Clearly meets criterion</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Criterion 1: Skill-Acquisition Efficiency</h2>
+
+        <h3>What Chollet Meant</h3>
+
+        <p>The core of Chollet's definition: intelligence is not about what skills you have, but how efficiently you acquire them. "If intelligence lies in the process of acquiring skills, then there is no task X such that skill at X demonstrates intelligence, unless X is actually a meta-task involving skill-acquisition across a broad range of tasks."<sup class="ref"><a href="#fn13" id="ref13">[13]</a></sup></p>
+
+        <p>A system that achieves 90% accuracy on a benchmark after training on millions of examples is less intelligent than one that achieves 80% accuracy after training on hundreds—if both start from comparable priors.</p>
+
+        <h3>Performance vs. Examples Required</h3>
+
+        <p><strong>Measure:</strong> Skill level achieved per unit of task-specific experience.</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Humans on ARC-AGI-1: 73–85% accuracy with typically 3 training examples per task<sup class="ref"><a href="#fn14" id="ref14">[14]</a></sup></li>
+            <li>Humans on ARC-AGI-2: 60% average accuracy; 100% of tasks solved by at least 2 humans in under 2 attempts<sup class="ref"><a href="#fn15" id="ref15">[15]</a></sup></li>
+            <li>LLMs (zero-shot): Near 0% on ARC-AGI-1; 0% on ARC-AGI-2</li>
+            <li>LLMs (few-shot): Marginal improvement; GPT-4.5 reaches ~10% on ARC-AGI-1<sup class="ref"><a href="#fn16" id="ref16">[16]</a></sup></li>
+            <li>Reasoning systems (o3 high-compute): 87.5% on ARC-AGI-1<sup class="ref"><a href="#fn17" id="ref17">[17]</a></sup></li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Human-comparable skill from human-comparable experience (3–5 examples per task).</p>
+
+        <p><strong>Assessment:</strong> Pure LLMs achieve near-zero skill despite seeing 3–5 examples—far below human skill-acquisition efficiency. Reasoning systems achieve high skill but require extensive computation (see Criterion 5). The skill/experience ratio for current AI is orders of magnitude below human levels on tasks designed to test this specifically.</p>
+
+        <div class="score-box">
+            <p class="label">Score:</p>
+            <p class="option selected">☒ 0% — Clearly does not meet criterion</p>
+            <p class="option">☐ 50% — Contested</p>
+            <p class="option">☐ 100% — Clearly meets criterion</p>
+        </div>
+
+        <p><strong>Caveats:</strong> This assessment applies to ARC-type tasks specifically. On tasks within training distribution, LLMs show impressive few-shot learning. Chollet would argue this reflects memorization of similar patterns rather than genuine skill acquisition.</p>
+
+        <h3>In-Context Learning Efficiency</h3>
+
+        <p><strong>Measure:</strong> Performance improvement from in-context examples on novel task types.</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>GPT-3 (2020): Demonstrated significant few-shot learning on tasks similar to training<sup class="ref"><a href="#fn18" id="ref18">[18]</a></sup></li>
+            <li>Frontier LLMs (2025): Strong few-shot performance on in-distribution tasks</li>
+            <li>Novel task types (ARC): Minimal improvement from examples</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Measurable improvement from examples on tasks outside training distribution.</p>
+
+        <p><strong>Assessment:</strong> In-context learning works well for tasks similar to training data. For genuinely novel tasks, examples provide minimal benefit. This is exactly what Chollet's framework predicts: LLMs retrieve and apply memorized programs rather than synthesizing new ones.</p>
+
+        <div class="score-box">
+            <p class="label">Score:</p>
+            <p class="option">☐ 0% — Clearly does not meet criterion</p>
+            <p class="option selected">☒ 50% — Contested</p>
+            <p class="option">☐ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>Transfer Learning Efficiency</h3>
+
+        <p><strong>Measure:</strong> Ability to apply knowledge from one domain to novel problems in another.</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Webb et al. (2023): LLMs show some analogical reasoning comparable to humans<sup class="ref"><a href="#fn19" id="ref19">[19]</a></sup></li>
+            <li>Chollet's critique: Such transfer often reflects surface similarity to training data, not genuine abstraction<sup class="ref"><a href="#fn20" id="ref20">[20]</a></sup></li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Consistent transfer to tasks with high generalization difficulty (developer-aware novelty).</p>
+
+        <p><strong>Assessment:</strong> Transfer exists but is inconsistent and difficult to disentangle from training data coverage. Chollet argues that apparent transfer often reflects pattern matching to similar training examples rather than genuine abstraction.</p>
+
+        <div class="score-box">
+            <p class="label">Score:</p>
+            <p class="option">☐ 0% — Clearly does not meet criterion</p>
+            <p class="option selected">☒ 50% — Contested</p>
+            <p class="option">☐ 100% — Clearly meets criterion</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Criterion 2: Generalization to Novel Tasks</h2>
+
+        <h3>What Chollet Meant</h3>
+
+        <p>Chollet distinguishes between "system-centric" and "developer-aware" generalization difficulty. System-centric novelty asks whether the task differs from what the system has seen. Developer-aware novelty asks whether the task differs from what the system <em>or its developers</em> anticipated during design and training.<sup class="ref"><a href="#fn21" id="ref21">[21]</a></sup></p>
+
+        <p>The latter is crucial. If developers can anticipate a class of tasks and include similar examples in training, then success on those tasks demonstrates skill, not intelligence. True generalization requires handling tasks that neither the system nor its creators prepared for.</p>
+
+        <h3>ARC-AGI-1 Performance</h3>
+
+        <p><strong>Measure:</strong> Performance on the benchmark explicitly designed to test developer-aware generalization.</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Humans: 73–85% (varying by study and time limits)</li>
+            <li>GPT-3 (2020): 0%</li>
+            <li>GPT-4 (2023): ~0%</li>
+            <li>GPT-4o (2024): ~5%</li>
+            <li>Best AI, late 2024 (Kaggle competition): ~55% on private set</li>
+            <li>o3 (high compute): 87.5% on semi-private set</li>
+            <li>o3 (low compute): 75.7% on semi-private set</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> ≥75% (human average level).</p>
+
+        <p><strong>Assessment:</strong> o3 has crossed the human-average threshold on ARC-AGI-1, though at significant computational cost. The 75.7% low-compute score meets the threshold. However, ARC-AGI-1 is now considered saturating.</p>
+
+        <div class="score-box">
+            <p class="label">Score:</p>
+            <p class="option">☐ 0% — Clearly does not meet criterion</p>
+            <p class="option">☐ 50% — Contested</p>
+            <p class="option selected">☒ 100% — Clearly meets criterion</p>
+        </div>
+
+        <p><strong>Caveats:</strong> o3 was trained on 75% of the ARC-AGI-1 public training set. The degree to which its performance reflects genuine generalization versus sophisticated pattern matching remains debated. Chollet has described o3 as achieving "task adaptation ability never seen before" but has not declared the problem solved.<sup class="ref"><a href="#fn22" id="ref22">[22]</a></sup></p>
+
+        <h3>ARC-AGI-2 Performance</h3>
+
+        <p><strong>Measure:</strong> Performance on the harder benchmark designed to remain challenging for reasoning systems.</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Humans: 60% average; 100% of tasks solved by at least 2 humans in under 2 attempts</li>
+            <li>Pure LLMs: 0%</li>
+            <li>AI reasoning systems (early 2025): Single-digit percentages</li>
+            <li>Claude Opus 4.5 (Thinking, 64k): 37.6% at $2.20/task<sup class="ref"><a href="#fn23" id="ref23">[23]</a></sup></li>
+            <li>Best commercial system (Gemini 3 Deep Think): 45% at $77/task</li>
+            <li>Best refinement solution (Poetiq + Gemini 3 Pro): 54% at $30/task<sup class="ref"><a href="#fn24" id="ref24">[24]</a></sup></li>
+            <li>NVARC (Kaggle 1st place): 24% on private set at $0.20/task<sup class="ref"><a href="#fn25" id="ref25">[25]</a></sup></li>
+        </ul>
+
+        <p><strong>Threshold:</strong> ≥60% (human average level).</p>
+
+        <p><strong>Assessment:</strong> No system has reached human-average performance on ARC-AGI-2. The best result (54%) approaches but does not meet the threshold, and requires $30 per task versus human costs of $2–17 per task.</p>
+
+        <div class="score-box">
+            <p class="label">Score:</p>
+            <p class="option">☐ 0% — Clearly does not meet criterion</p>
+            <p class="option selected">☒ 50% — Contested</p>
+            <p class="option">☐ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>Robustness to Problem Reformulation</h3>
+
+        <p><strong>Measure:</strong> Does performance degrade when problems are rephrased or presented differently?</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Documented brittleness to surface changes in LLMs<sup class="ref"><a href="#fn26" id="ref26">[26]</a></sup></li>
+            <li>ARC-AGI-2 specifically designed to resist "gaming" through surface-level heuristics</li>
+            <li>Pure LLMs scoring 0% suggests complete brittleness to this task format</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Less than 20% performance degradation under surface reformulation.</p>
+
+        <p><strong>Assessment:</strong> The gap between LLM performance on standard benchmarks (>85% MMLU) and ARC (near 0%) suggests extreme brittleness when tasks differ from training patterns.</p>
+
+        <div class="score-box">
+            <p class="label">Score:</p>
+            <p class="option selected">☒ 0% — Clearly does not meet criterion</p>
+            <p class="option">☐ 50% — Contested</p>
+            <p class="option">☐ 100% — Clearly meets criterion</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Criterion 3: Prior-Efficiency</h2>
+
+        <h3>What Chollet Meant</h3>
+
+        <p>Intelligence is inversely proportional to priors. A system with extensive built-in knowledge that solves a problem is less intelligent than one with minimal priors that solves the same problem. This is why Chollet grounds ARC in "core knowledge" priors that humans and AI can share—basic concepts of objects, space, numbers, and agency.</p>
+
+        <p>"If an AI system has access to extensive, task-specific prior knowledge that is not available to a human, its performance on that task becomes a measure of the developer's cleverness in encoding that knowledge, not the AI's inherent intelligence."<sup class="ref"><a href="#fn27" id="ref27">[27]</a></sup></p>
+
+        <h3>Training Data Scale</h3>
+
+        <p><strong>Measure:</strong> Size of training corpus relative to task-relevant human experience.</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Human lifetime language exposure: ~1 billion words<sup class="ref"><a href="#fn28" id="ref28">[28]</a></sup></li>
+            <li>GPT-4 training data: Estimated trillions of tokens</li>
+            <li>LLM training includes: Vast amounts of reasoning examples, math problems, code, academic papers</li>
+            <li>ARC training set: 400 tasks with 3–5 examples each</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Performance achieved with human-comparable prior exposure.</p>
+
+        <p><strong>Assessment:</strong> LLMs have ingested orders of magnitude more task-relevant experience than any human. By Chollet's framework, their performance must be heavily discounted. The denominator of his intelligence equation (P + E) is enormous for LLMs.</p>
+
+        <div class="score-box">
+            <p class="label">Score:</p>
+            <p class="option selected">☒ 0% — Clearly does not meet criterion</p>
+            <p class="option">☐ 50% — Contested</p>
+            <p class="option">☐ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>Architectural Priors</h3>
+
+        <p><strong>Measure:</strong> Built-in structure that encodes task-relevant knowledge.</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Human brain: Innate core knowledge (object permanence, numerosity, etc.)</li>
+            <li>LLM architecture: Attention, positional encoding—general-purpose, not task-specific</li>
+            <li>Reasoning systems: Chain-of-thought, search algorithms—encode meta-level reasoning strategies</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Architectural priors comparable to human core knowledge (no task-specific encoding).</p>
+
+        <p><strong>Assessment:</strong> LLM base architectures are relatively prior-free. However, training on vast data effectively encodes extensive priors in the weights. Reasoning systems add meta-level priors for search and deliberation. The overall prior load far exceeds human core knowledge.</p>
+
+        <div class="score-box">
+            <p class="label">Score:</p>
+            <p class="option">☐ 0% — Clearly does not meet criterion</p>
+            <p class="option selected">☒ 50% — Contested</p>
+            <p class="option">☐ 100% — Clearly meets criterion</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Criterion 4: Sample Efficiency</h2>
+
+        <h3>What Chollet Meant</h3>
+
+        <p>Sample efficiency is closely related to skill-acquisition efficiency but focuses specifically on the number of examples required. A truly intelligent system should learn from minimal examples—ideally one or two demonstrations, as humans often do.</p>
+
+        <p>"Humans can often learn genuinely new skills from 1–3 examples plus explanation."<sup class="ref"><a href="#fn29" id="ref29">[29]</a></sup></p>
+
+        <h3>Examples Required for Novel Tasks</h3>
+
+        <p><strong>Measure:</strong> Number of examples needed to learn a genuinely new task type.</p>
+
+        <p><strong>Reference values (ARC):</strong></p>
+        <ul class="reference-values">
+            <li>Humans: Typically 3–5 examples per task (provided in the task itself)</li>
+            <li>LLMs: Fail to learn from provided examples (0% on ARC-AGI-2)</li>
+            <li>Reasoning systems: Some success but require extensive computation</li>
+        </ul>
+
+        <p><strong>Reference values (other domains):</strong></p>
+        <ul class="reference-values">
+            <li>LLMs on in-distribution tasks: Effective few-shot learning</li>
+            <li>LLMs on novel formats: May require dozens of examples or fine-tuning</li>
+            <li>Humans on novel concepts: Often 1–3 examples with explanation</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Learn novel task types from ≤5 examples.</p>
+
+        <p><strong>Assessment:</strong> On tasks designed to test this specifically (ARC), LLMs fail entirely. On in-distribution tasks, few-shot learning works. The distinction is precisely what Chollet's framework predicts: efficiency on novel tasks, not familiar ones, measures intelligence.</p>
+
+        <div class="score-box">
+            <p class="label">Score:</p>
+            <p class="option selected">☒ 0% — Clearly does not meet criterion</p>
+            <p class="option">☐ 50% — Contested</p>
+            <p class="option">☐ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>One-Shot vs. Many-Shot Improvement</h3>
+
+        <p><strong>Measure:</strong> Performance gain from each additional example.</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>LLMs on familiar tasks: Substantial zero-to-few-shot gains</li>
+            <li>LLMs on novel tasks (ARC): Minimal gain from examples</li>
+            <li>Humans on ARC: Can typically solve from given examples</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Measurable improvement from each example on novel tasks.</p>
+
+        <p><strong>Assessment:</strong> On ARC-type tasks, LLMs show no measurable improvement from the provided examples. This is the crux of Chollet's critique: the examples are useless because the system cannot synthesize new programs from them.</p>
+
+        <div class="score-box">
+            <p class="label">Score:</p>
+            <p class="option selected">☒ 0% — Clearly does not meet criterion</p>
+            <p class="option">☐ 50% — Contested</p>
+            <p class="option">☐ 100% — Clearly meets criterion</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Criterion 5: Resource Efficiency</h2>
+
+        <h3>What Chollet Meant</h3>
+
+        <p>ARC-AGI-2 introduced efficiency as an explicit metric. "Intelligence is not solely defined by the ability to solve problems or achieve high scores. The efficiency with which those capabilities are acquired and deployed is a crucial, defining component."<sup class="ref"><a href="#fn30" id="ref30">[30]</a></sup></p>
+
+        <p>Brute-force search can eventually solve any computable problem. That is not intelligence. Intelligence is finding solutions efficiently—with minimal compute, time, and energy.</p>
+
+        <h3>Computational Cost per Task</h3>
+
+        <p><strong>Measure:</strong> Cost (compute, time, money) to solve tasks.</p>
+
+        <p><strong>Reference values (ARC-AGI-2):</strong></p>
+        <ul class="reference-values">
+            <li>Humans: $2–17 per task (study conditions; theoretical limit perhaps $2–5)<sup class="ref"><a href="#fn31" id="ref31">[31]</a></sup></li>
+            <li>Claude Opus 4.5 (Thinking): 37.6% at $2.20/task</li>
+            <li>Gemini 3 Deep Think: 45% at $77/task</li>
+            <li>Poetiq + Gemini 3 Pro: 54% at $30/task</li>
+            <li>NVARC (Kaggle winner): 24% at $0.20/task</li>
+        </ul>
+
+        <p><strong>Reference values (ARC-AGI-1):</strong></p>
+        <ul class="reference-values">
+            <li>o3 (high compute): 87.5% at estimated $1,000+ per task</li>
+            <li>o3 (low compute): 75.7% at &lt;$10,000 total</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Human-comparable cost ($2–20 per task) at human-comparable accuracy.</p>
+
+        <p><strong>Assessment:</strong> On ARC-AGI-1, o3 meets the accuracy threshold but at costs orders of magnitude above human levels. On ARC-AGI-2, Claude Opus 4.5 achieves reasonable cost ($2.20/task) but at 37.6% accuracy, well below human average (60%). The Pareto frontier has not reached human-level cost-performance.</p>
+
+        <div class="score-box">
+            <p class="label">Score:</p>
+            <p class="option">☐ 0% — Clearly does not meet criterion</p>
+            <p class="option selected">☒ 50% — Contested</p>
+            <p class="option">☐ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>Scaling Behavior</h3>
+
+        <p><strong>Measure:</strong> Does performance improve efficiently with additional resources?</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>o3 on ARC-AGI-1: 75.7% → 87.5% with 172× more compute<sup class="ref"><a href="#fn32" id="ref32">[32]</a></sup></li>
+            <li>AI systems on ARC-AGI-2: Log-linear scaling insufficient to beat benchmark<sup class="ref"><a href="#fn33" id="ref33">[33]</a></sup></li>
+            <li>Human scaling: Minimal—humans solve tasks quickly or not at all</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Sublinear compute scaling (diminishing returns at human-level performance).</p>
+
+        <p><strong>Assessment:</strong> Current systems show that performance can be "bought" with compute, but at steep marginal costs. This is exactly what Chollet predicted: compute can substitute for intelligence, but inefficiently.</p>
+
+        <div class="score-box">
+            <p class="label">Score:</p>
+            <p class="option">☐ 0% — Clearly does not meet criterion</p>
+            <p class="option selected">☒ 50% — Contested</p>
+            <p class="option">☐ 100% — Clearly meets criterion</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Summary: The Critique Benchmark</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Criterion</th>
+                    <th>Subcriterion</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="4">1. Skill-Acquisition Efficiency</td>
+                    <td>1.1 Performance vs. examples required</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td>1.2 In-context learning efficiency</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>1.3 Transfer learning efficiency</td>
+                    <td>50%</td>
+                </tr>
+                <tr class="criterion-average">
+                    <td><strong>Criterion average</strong></td>
+                    <td><strong>33%</strong></td>
+                </tr>
+                <tr>
+                    <td rowspan="4">2. Generalization to Novel Tasks</td>
+                    <td>2.1 ARC-AGI-1 performance</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>2.2 ARC-AGI-2 performance</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>2.3 Robustness to reformulation</td>
+                    <td>0%</td>
+                </tr>
+                <tr class="criterion-average">
+                    <td><strong>Criterion average</strong></td>
+                    <td><strong>50%</strong></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">3. Prior-Efficiency</td>
+                    <td>3.1 Training data scale</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td>3.2 Architectural priors</td>
+                    <td>50%</td>
+                </tr>
+                <tr class="criterion-average">
+                    <td><strong>Criterion average</strong></td>
+                    <td><strong>25%</strong></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">4. Sample Efficiency</td>
+                    <td>4.1 Examples for novel tasks</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td>4.2 One-shot vs. many-shot improvement</td>
+                    <td>0%</td>
+                </tr>
+                <tr class="criterion-average">
+                    <td><strong>Criterion average</strong></td>
+                    <td><strong>0%</strong></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">5. Resource Efficiency</td>
+                    <td>5.1 Computational cost per task</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>5.2 Scaling behavior</td>
+                    <td>50%</td>
+                </tr>
+                <tr class="criterion-average">
+                    <td><strong>Criterion average</strong></td>
+                    <td><strong>50%</strong></td>
+                </tr>
+                <tr class="overall-score">
+                    <td colspan="2"><strong>Overall Critique Benchmark Score</strong></td>
+                    <td><strong>32%</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Interpretation</h2>
+
+        <h3>What Frontier AI Clearly Achieves (100%)</h3>
+
+        <ul>
+            <li>Human-level performance on ARC-AGI-1 (the original benchmark)</li>
+        </ul>
+
+        <p>Only one subcriterion scores 100%. This is by far the lowest proportion of any benchmark in this series. Chollet's definition was explicitly designed to capture what current AI lacks.</p>
+
+        <h3>What Remains Contested (50%)</h3>
+
+        <ul>
+            <li>In-context learning on tasks with some training distribution similarity</li>
+            <li>Transfer learning (present but inconsistent)</li>
+            <li>Architectural prior-efficiency (base architectures are general-purpose)</li>
+            <li>ARC-AGI-2 performance (approaching but not reaching human average)</li>
+            <li>Computational cost (some efficient solutions, but accuracy tradeoffs)</li>
+            <li>Scaling behavior (compute can buy performance, but inefficiently)</li>
+        </ul>
+
+        <h3>What Is Clearly Not Achieved (0%)</h3>
+
+        <ul>
+            <li>Skill-acquisition efficiency on genuinely novel tasks (ARC)</li>
+            <li>Training data efficiency (LLMs require orders of magnitude more data than humans)</li>
+            <li>Sample efficiency on novel task types</li>
+            <li>Improvement from examples on novel tasks</li>
+            <li>Robustness to problem reformulation</li>
+        </ul>
+
+        <p>The concentration of 0% scores is striking. This is not an artifact of harsh grading—it reflects Chollet's framework accurately. He designed a definition that would expose the limitations of skill-based AI systems, and current systems exhibit exactly those limitations.</p>
+    </section>
+
+    <section>
+        <h2>The Verdict (Provisional)</h2>
+
+        <p>Chollet's definition describes intelligence as skill-acquisition efficiency: the rate at which a system converts priors and experience into new skills on genuinely novel tasks. At 32%, current frontier AI falls far short of this definition.</p>
+
+        <h3>The Fundamental Gap</h3>
+
+        <p>Chollet's critique has proven remarkably prescient. The gap between LLM performance on standard benchmarks (>85% MMLU, >80% SWE-Bench) and performance on tasks designed to test genuine skill acquisition (~0% ARC-AGI-2 for pure LLMs) is exactly what his framework predicts. Standard benchmarks measure crystallized intelligence—accumulated skills and knowledge. ARC measures fluid intelligence—the ability to acquire new skills on the fly. LLMs have the former in abundance; the latter remains elusive.</p>
+
+        <h3>The Reasoning Revolution</h3>
+
+        <p>Something has changed since 2019. The emergence of "AI reasoning systems"—models that perform extended computation at test time, searching through solution spaces and refining their answers—has shifted the landscape. o3's performance on ARC-AGI-1 would have seemed impossible to Chollet (and most observers) in 2019.</p>
+
+        <p>Chollet's interpretation: these systems achieve "test-time adaptation"—the ability to modify behavior dynamically based on specific data encountered during inference. This is different from static pattern matching and represents genuine progress. But it still requires massive compute, and ARC-AGI-2 remains largely unsolved.<sup class="ref"><a href="#fn34" id="ref34">[34]</a></sup></p>
+
+        <h3>What Chollet Would Say</h3>
+
+        <p>Unlike the other figures in this series, Chollet is not merely alive but vocally active in commenting on exactly these questions. His position is clear:</p>
+
+        <p>"Automation is not the same as intelligence... You can automate more and more things. Yes, this is economically valuable. Yes, potentially there are many jobs you could automate away like this. That would be economically valuable. You're still not going to have intelligence."<sup class="ref"><a href="#fn35" id="ref35">[35]</a></sup></p>
+
+        <p>"LLMs are a dead end to AGI."<sup class="ref"><a href="#fn36" id="ref36">[36]</a></sup></p>
+
+        <p>"OpenAI basically set back progress to AGI by five to 10 years."<sup class="ref"><a href="#fn37" id="ref37">[37]</a></sup></p>
+
+        <p>By his own definition, current AI is not intelligent. It can exhibit high skill on tasks similar to its training data. It can even, with extended reasoning, solve some tasks requiring abstraction. But it cannot efficiently acquire new skills on genuinely novel tasks—the core of what Chollet means by intelligence.</p>
+
+        <p>We do not claim Chollet is correct. His definition is one among many, and others in this series yield different verdicts. But on his own terms, applied fairly, current AI falls clearly short.</p>
+
+        <h3>Comparison with Earlier Benchmarks</h3>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Benchmark</th>
+                    <th>Year</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gubrud</td>
+                    <td>1997</td>
+                    <td>66%</td>
+                </tr>
+                <tr>
+                    <td>Reinvention (Legg/Goertzel/Voss)</td>
+                    <td>2002</td>
+                    <td>80%</td>
+                </tr>
+                <tr>
+                    <td>Formalization (Legg &amp; Hutter)</td>
+                    <td>2007</td>
+                    <td>67%</td>
+                </tr>
+                <tr>
+                    <td>Corporatization (OpenAI Charter)</td>
+                    <td>2018</td>
+                    <td>52%</td>
+                </tr>
+                <tr>
+                    <td>Critique (Chollet)</td>
+                    <td>2019</td>
+                    <td>32%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The Critique benchmark yields the lowest score of the five evaluated so far—by a substantial margin. This is not surprising: Chollet explicitly designed his framework to expose the limitations of current approaches. Earlier definitions asked whether AI could match human capabilities; Chollet asks whether AI can match human <em>efficiency</em> at acquiring capabilities. The answer, so far, is no.</p>
+    </section>
+
+    <section>
+        <h2>Methodological Notes</h2>
+
+        <p>This evaluation uses an intentionally coarse scoring system (0%/50%/100%) and unweighted criteria. This is a deliberate choice.</p>
+
+        <p><strong>Why only three scores?</strong> Finer gradations would imply precision we do not have. A score of 65% versus 70% would suggest a confidence in measurement that no current benchmark supports. The three-point scale forces honesty: either the evidence clearly supports a claim (100%), clearly refutes it (0%), or the matter is genuinely contested (50%).</p>
+
+        <p><strong>Why no weighting?</strong> Differential weighting would require judgments about Chollet's priorities that we cannot make with confidence. His formula treats priors and experience symmetrically in the denominator; we could argue skill-acquisition efficiency is the "core" criterion. But imposing weights would mean substituting our judgment for his.</p>
+
+        <p><strong>The circularity problem.</strong> Chollet's definition rejects task-performance benchmarking. Yet we are using task-performance data (ARC scores) to evaluate systems against his definition. This is defensible because Chollet himself created ARC as an operationalization of his framework. But readers should note the tension: we are using the methodology Chollet critiques to evaluate his critique of that methodology.</p>
+
+        <p><strong>The adversarial design.</strong> Unlike earlier definitions in this series, Chollet's was explicitly designed to show that current AI approaches are not intelligent. This is not a neutral specification that happens to be unmet; it is a critique that was constructed to demonstrate specific limitations. Our evaluation confirms those limitations—but this is less surprising given the adversarial framing.</p>
+
+        <p><strong>The goal is accuracy at the expense of precision.</strong> This is a roughly hewn outline of a model. Readers who disagree with specific operationalizations, who believe certain criteria should be weighted more heavily, or who have better data for any assessment are invited to propose alternatives. The PDF version includes a blank scorecard for exactly this purpose.</p>
+    </section>
+
+    <section>
+        <h2>Citation Gaps and Requests for Collaboration</h2>
+
+        <p>The following claims would benefit from stronger sourcing:</p>
+
+        <ul>
+            <li>Systematic comparison of LLM training data scale to human language exposure</li>
+            <li>Rigorous quantification of "generalization difficulty" for various benchmarks</li>
+            <li>Independent verification of ARC-AGI human baselines with larger samples</li>
+            <li>Compute cost breakdowns for reasoning systems on ARC-AGI tasks</li>
+            <li>Systematic study of few-shot learning on out-of-distribution task types</li>
+            <li>Formal analysis of whether o3's ARC performance reflects program synthesis or sophisticated pattern matching</li>
+            <li>Chollet's own scoring of current systems against his definition (if he has published one)</li>
+        </ul>
+
+        <p>If you can fill any of these gaps, please contribute.</p>
+    </section>
+
+    <section class="endnotes">
+        <h2>Notes</h2>
+        <ol>
+            <li id="fn1">AI Assistance Disclosure: Research, drafting, and analysis were conducted with the assistance of Claude (Anthropic, 2025). The author provided editorial direction and final approval. <a href="#ref1" class="backlink">↩</a></li>
+            <li id="fn2">Chollet, François. "On the Measure of Intelligence." arXiv:1911.01547, November 2019. <a href="https://arxiv.org/abs/1911.01547">https://arxiv.org/abs/1911.01547</a> <a href="#ref2" class="backlink">↩</a></li>
+            <li id="fn3">Wikipedia, "Keras." <a href="https://en.wikipedia.org/wiki/Keras">https://en.wikipedia.org/wiki/Keras</a> <a href="#ref3" class="backlink">↩</a></li>
+            <li id="fn4">Chollet 2019, p. 2. <a href="#ref4" class="backlink">↩</a></li>
+            <li id="fn5">Chollet, François. Talk at AI Startup School, San Francisco, June 2025. Transcript at <a href="https://singjupost.com/francois-chollet-how-we-get-to-agi-transcript/">https://singjupost.com/francois-chollet-how-we-get-to-agi-transcript/</a> <a href="#ref5" class="backlink">↩</a></li>
+            <li id="fn6">ARC Prize Foundation. "OpenAI o3 Breakthrough High Score on ARC-AGI-Pub." December 2024. <a href="https://arcprize.org/blog/oai-o3-pub-breakthrough">https://arcprize.org/blog/oai-o3-pub-breakthrough</a> <a href="#ref6" class="backlink">↩</a></li>
+            <li id="fn7">Ibid. <a href="#ref7" class="backlink">↩</a></li>
+            <li id="fn8">ARC Prize Foundation. "Announcing ARC-AGI-2 and ARC Prize 2025." March 2025. <a href="https://arcprize.org/blog/announcing-arc-agi-2-and-arc-prize-2025">https://arcprize.org/blog/announcing-arc-agi-2-and-arc-prize-2025</a> <a href="#ref8" class="backlink">↩</a></li>
+            <li id="fn9">Chollet 2019, pp. 27–28. <a href="#ref9" class="backlink">↩</a></li>
+            <li id="fn10">ARC Prize Foundation. "What is ARC-AGI?" <a href="https://arcprize.org/arc-agi">https://arcprize.org/arc-agi</a> <a href="#ref10" class="backlink">↩</a></li>
+            <li id="fn11">Chollet 2019, p. 28. <a href="#ref11" class="backlink">↩</a></li>
+            <li id="fn12">Spelke, Elizabeth S., and Katherine D. Kinzler. "Core knowledge." <em>Developmental Science</em> 10, no. 1 (2007): 89–96. Cited in Chollet 2019, pp. 37–39. <a href="#ref12" class="backlink">↩</a></li>
+            <li id="fn13">Chollet 2019, p. 22. <a href="#ref13" class="backlink">↩</a></li>
+            <li id="fn14">Johnson, Aaditya, et al. "Testing ARC on Humans: A Large-Scale Assessment." NYU, 2024. <a href="https://lab42.global/arc-agi-benchmark-human-study/">https://lab42.global/arc-agi-benchmark-human-study/</a> <a href="#ref14" class="backlink">↩</a></li>
+            <li id="fn15">ARC Prize Foundation. "ARC-AGI-2." <a href="https://arcprize.org/arc-agi/2/">https://arcprize.org/arc-agi/2/</a> <a href="#ref15" class="backlink">↩</a></li>
+            <li id="fn16">Chollet 2025 talk, op. cit. <a href="#ref16" class="backlink">↩</a></li>
+            <li id="fn17">ARC Prize o3 announcement, op. cit. <a href="#ref17" class="backlink">↩</a></li>
+            <li id="fn18">Brown, Tom, et al. "Language Models are Few-Shot Learners." NeurIPS 2020. <a href="https://arxiv.org/abs/2005.14165">https://arxiv.org/abs/2005.14165</a> <a href="#ref18" class="backlink">↩</a></li>
+            <li id="fn19">Webb, Taylor, et al. "Emergent analogical reasoning in large language models." <em>Nature Human Behaviour</em> 7 (2023): 1526–1541. <a href="https://doi.org/10.1038/s41562-023-01659-w">https://doi.org/10.1038/s41562-023-01659-w</a> <a href="#ref19" class="backlink">↩</a></li>
+            <li id="fn20">Chollet, Dwarkesh Podcast interview, June 2024. <a href="https://www.dwarkesh.com/p/francois-chollet">https://www.dwarkesh.com/p/francois-chollet</a> <a href="#ref20" class="backlink">↩</a></li>
+            <li id="fn21">Chollet 2019, pp. 24–26. <a href="#ref21" class="backlink">↩</a></li>
+            <li id="fn22">ARC Prize o3 announcement, op. cit. <a href="#ref22" class="backlink">↩</a></li>
+            <li id="fn23">ARC Prize Foundation. "ARC Prize 2025 Results and Analysis." December 2025. <a href="https://arcprize.org/blog/arc-prize-2025-results-analysis">https://arcprize.org/blog/arc-prize-2025-results-analysis</a> <a href="#ref23" class="backlink">↩</a></li>
+            <li id="fn24">Poetiq. "Poetiq Shatters ARC-AGI-2 State of the Art." December 2025. <a href="https://poetiq.ai/posts/arcagi_verified/">https://poetiq.ai/posts/arcagi_verified/</a> <a href="#ref24" class="backlink">↩</a></li>
+            <li id="fn25">NVIDIA. "NVIDIA Kaggle Grandmasters Win Artificial General Intelligence Competition." December 2025. <a href="https://developer.nvidia.com/blog/nvidia-kaggle-grandmasters-win-artificial-general-intelligence-competition/">https://developer.nvidia.com/blog/nvidia-kaggle-grandmasters-win-artificial-general-intelligence-competition/</a> <a href="#ref25" class="backlink">↩</a></li>
+            <li id="fn26">McCoy, Tom, et al. "Right for the Wrong Reasons." ACL 2019. <a href="https://aclanthology.org/P19-1334/">https://aclanthology.org/P19-1334/</a> <a href="#ref26" class="backlink">↩</a></li>
+            <li id="fn27">ARC Prize Foundation. "What is ARC-AGI?" op. cit. <a href="#ref27" class="backlink">↩</a></li>
+            <li id="fn28">Hart, Betty, and Todd R. Risley. "The Early Catastrophe: The 30 Million Word Gap by Age 3." <em>American Educator</em> 27, no. 1 (2003): 4–9. <a href="#ref28" class="backlink">↩</a></li>
+            <li id="fn29">Chollet, Dwarkesh interview, op. cit. <a href="#ref29" class="backlink">↩</a></li>
+            <li id="fn30">ARC Prize Foundation. "ARC-AGI-2," op. cit. <a href="#ref30" class="backlink">↩</a></li>
+            <li id="fn31">ARC Prize announcement, op. cit. <a href="#ref31" class="backlink">↩</a></li>
+            <li id="fn32">ARC Prize o3 announcement, op. cit. <a href="#ref32" class="backlink">↩</a></li>
+            <li id="fn33">ARC Prize announcement, op. cit. <a href="#ref33" class="backlink">↩</a></li>
+            <li id="fn34">Chollet 2025 talk, op. cit. <a href="#ref34" class="backlink">↩</a></li>
+            <li id="fn35">Chollet, Dwarkesh interview, op. cit. <a href="#ref35" class="backlink">↩</a></li>
+            <li id="fn36">Chollet, quoted in Big Think, August 2024. <a href="https://bigthink.com/the-future/arc-prize-agi/">https://bigthink.com/the-future/arc-prize-agi/</a> <a href="#ref36" class="backlink">↩</a></li>
+            <li id="fn37">Ibid. <a href="#ref37" class="backlink">↩</a></li>
+        </ol>
+    </section>
+
+    <footer class="version-footer">
+        <p>Document version 0.1 — December 2025</p>
+        <p>© 2025 Dakota Schuck. Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+    </footer>
+</article>
