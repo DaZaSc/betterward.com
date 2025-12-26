@@ -1,0 +1,991 @@
+---
+layout: default
+title: "Chapter 3: The Formalization Benchmark (2007) - Retrospective Benchmarks - Betterward"
+---
+
+<style>
+.chapter-header {
+    margin-bottom: 2rem;
+}
+
+.series-title {
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.series-title a {
+    color: #3366cc;
+    text-decoration: none;
+}
+
+.series-title a:hover {
+    text-decoration: underline;
+}
+
+.chapter-subtitle {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.chapter-header h1 {
+    margin-bottom: 0.5rem;
+}
+
+.chapter-meta {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.working-paper {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+}
+
+.download-link {
+    display: inline-block;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    text-decoration: none;
+}
+
+.download-link:hover {
+    background: #e9e9e9;
+}
+
+.abstract {
+    background: #f9f9f9;
+    border-left: 3px solid #ccc;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+}
+
+blockquote {
+    border-left: 3px solid #ccc;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #444;
+    font-style: italic;
+}
+
+.score-box {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+}
+
+.score-box p {
+    margin: 0.25rem 0;
+}
+
+.score-box .selected {
+    font-weight: bold;
+}
+
+.definition-box {
+    background: #f5f8ff;
+    border: 1px solid #cce;
+    padding: 1rem;
+    margin: 1.5rem 0;
+}
+
+.equation {
+    text-align: center;
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+}
+
+.variable-list {
+    margin: 1rem 0 1rem 1.5rem;
+}
+
+.variable-list li {
+    margin: 0.3rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+th {
+    background: #f5f5f5;
+}
+
+.summary-table td:last-child,
+.summary-table th:last-child {
+    text-align: center;
+    width: 80px;
+}
+
+.comparison-table {
+    width: auto;
+    margin: 1.5rem auto;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 0.5rem 1rem;
+    text-align: center;
+}
+
+.reference-values {
+    margin: 0.5rem 0 0.5rem 1.5rem;
+}
+
+.reference-values li {
+    margin: 0.25rem 0;
+}
+
+sup.ref a {
+    color: #3366cc;
+    text-decoration: none;
+}
+
+sup.ref a:hover {
+    text-decoration: underline;
+}
+
+.endnotes {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    font-size: 0.9rem;
+}
+
+.endnotes h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.endnotes ol {
+    padding-left: 1.5rem;
+}
+
+.endnotes li {
+    margin: 0.75rem 0;
+}
+
+.backlink {
+    color: #3366cc;
+    text-decoration: none;
+    margin-left: 0.25rem;
+}
+
+.backlink:hover {
+    text-decoration: underline;
+}
+
+.version-footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    font-size: 0.85rem;
+    color: #666;
+}
+</style>
+
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+<article>
+    <header class="chapter-header">
+        <p class="series-title"><a href="/retrospective-benchmarks/">Retrospective Benchmarks for Machine Intelligence</a></p>
+        <p class="chapter-subtitle">Evaluating Current AI Against Historical Specifications</p>
+        <h1>Chapter 3: The Formalization Benchmark (2007)</h1>
+        <p class="chapter-meta">Dakota Schuck</p>
+        <p class="chapter-meta">December 2025</p>
+        <p class="working-paper">Working paper. Comments welcome.</p>
+    </header>
+
+    <a href="chapter3-formalization-benchmark_schuck.pdf" class="download-link">Download PDF</a>
+
+    <section>
+        <h2>Preface: Methodology</h2>
+
+        <p>This chapter continues the methodology established in Chapter 1. We treat historical definitions of machine intelligence as testable specifications, then evaluate current AI systems against them. For full methodological discussion, see Chapter 1 (The Gubrud Benchmark).</p>
+
+        <p>The 2007 case presents a unique challenge: Legg and Hutter produced the most rigorous formalization of machine intelligence to date, but their measure is technically incomputable. It relies on Kolmogorov complexity, which cannot be calculated for arbitrary strings. This chapter therefore assesses whether current systems exhibit the <em>properties</em> the definition points to, rather than computing the measure itself.</p>
+
+        <p>Every factual claim should be cited. Where citations are missing, we have marked them. Where we have made interpretive choices, we have flagged them. This is a first attempt, meant to be improved by others.<sup class="ref"><a href="#fn1" id="ref1">[1]</a></sup></p>
+    </section>
+
+    <section>
+        <h2>Introduction: The Mathematician's Answer</h2>
+
+        <p>By 2007, Shane Legg had been thinking about intelligence for a decade. His master's thesis at the University of Auckland had been on Solomonoff induction—the mathematical theory of optimal prediction.<sup class="ref"><a href="#fn2" id="ref2">[2]</a></sup> He had worked at Webmind, watched it collapse, coined the term "AGI" with Ben Goertzel, and landed at IDSIA in Switzerland to work with Marcus Hutter, one of the world's leading theorists of algorithmic information.<sup class="ref"><a href="#fn3" id="ref3">[3]</a></sup></p>
+
+        <p>The two men shared a frustration. "A fundamental problem in artificial intelligence," they wrote, "is that nobody really knows what intelligence is."<sup class="ref"><a href="#fn4" id="ref4">[4]</a></sup> Psychologists had their IQ tests, but those were designed for humans and normalized to human populations. Computer scientists had benchmark after benchmark, but each measured something narrow. What was lacking was a formal definition—one grounded in mathematics rather than intuition, applicable to any system rather than just humans, and precise enough to admit no ambiguity.</p>
+
+        <p>So they built one.</p>
+
+        <p>Their approach was systematic. First, they surveyed the literature, collecting over 70 informal definitions of intelligence from psychologists, AI researchers, and philosophers.<sup class="ref"><a href="#fn5" id="ref5">[5]</a></sup> From this survey, they extracted common themes: learning, adaptation, goal-achievement, dealing with novel situations, performing well across diverse environments. They distilled these into a single informal definition:</p>
+
+        <blockquote>
+            <em>Intelligence measures an agent's ability to achieve goals in a wide range of environments.</em>
+        </blockquote>
+
+        <p>Then they did what most researchers had not: they formalized it. Using tools from algorithmic information theory—Kolmogorov complexity, Solomonoff induction, the reinforcement learning framework—they converted the informal definition into a precise mathematical equation. The result was what they called <em>universal intelligence</em>: a single number, in principle, that could be computed for any agent, biological or artificial, measuring its intelligence in the broadest reasonable sense.</p>
+
+        <p>The equation is elegant:</p>
+
+        <div class="equation">
+            $$\Upsilon(\pi) = \sum_{\mu \in E} 2^{-K(\mu)} V_\mu^\pi$$
+        </div>
+
+        <p>Where $\pi$ is the agent being evaluated, $E$ is the set of all computable environments, $K(\mu)$ is the Kolmogorov complexity of environment $\mu$, and $V_\mu^\pi$ is the expected reward the agent achieves in that environment. The agent's intelligence is the weighted sum of its performance across all possible environments, with simpler environments counting more (via the $2^{-K(\mu)}$ term, which embodies Occam's razor).</p>
+
+        <p>There was just one problem. Kolmogorov complexity is not computable. No algorithm can calculate $K(\mu)$ for arbitrary $\mu$. The definition was mathematically precise but practically unmeasurable—a Platonic ideal of intelligence that could never be directly tested.</p>
+
+        <p>Legg knew this. In his 2008 PhD thesis, <em>Machine Super Intelligence</em>, he acknowledged: "The main drawback, however, is that the Kolmogorov complexity function $K$ is not computable and can only be approximated."<sup class="ref"><a href="#fn6" id="ref6">[6]</a></sup> The definition was meant to capture the concept perfectly, even if measurement required approximation.</p>
+
+        <p>Today, Legg is Chief AGI Scientist at Google DeepMind. In 2023, he co-authored a new paper attempting to operationalize AGI progress with practical "Levels of AGI"—a more empirical approach that sidesteps the incomputability problem.<sup class="ref"><a href="#fn7" id="ref7">[7]</a></sup> But the 2007 formalization remains influential as the most rigorous attempt to define machine intelligence from first principles.</p>
+
+        <p>The question we must ask: even if we cannot compute universal intelligence directly, can we assess whether current AI systems exhibit the properties the definition specifies?</p>
+    </section>
+
+    <section>
+        <h2>The Original Definition</h2>
+
+        <p>From "Universal Intelligence: A Definition of Machine Intelligence," published in <em>Minds and Machines</em>, December 2007:<sup class="ref"><a href="#fn8" id="ref8">[8]</a></sup></p>
+
+        <blockquote>
+            <em>Intelligence measures an agent's ability to achieve goals in a wide range of environments.</em>
+        </blockquote>
+
+        <p>The formal measure:</p>
+
+        <div class="equation">
+            $$\Upsilon(\pi) = \sum_{\mu \in E} 2^{-K(\mu)} V_\mu^\pi$$
+        </div>
+
+        <p>Where:</p>
+        <ul class="variable-list">
+            <li>$\pi$ is the agent</li>
+            <li>$E$ is the space of all computable reward-summable environments</li>
+            <li>$K(\mu)$ is the Kolmogorov complexity of environment $\mu$</li>
+            <li>$V_\mu^\pi$ is the expected value (sum of discounted rewards) the agent achieves in $\mu$</li>
+        </ul>
+
+        <h3>Context</h3>
+
+        <p>Legg and Hutter were working within the tradition of algorithmic information theory, building on Solomonoff's theory of universal prediction and Hutter's AIXI agent—a theoretical model of the optimally intelligent agent.<sup class="ref"><a href="#fn9" id="ref9">[9]</a></sup> AIXI was provably optimal in a specific sense: no computable agent could outperform it across all environments. But AIXI itself was incomputable.</p>
+
+        <p>Universal intelligence was derived from AIXI's "intelligence order relation"—a way of ranking agents by their expected performance across environments.<sup class="ref"><a href="#fn10" id="ref10">[10]</a></sup> The formalization converted this ranking into a scalar measure.</p>
+
+        <p>The definition has several notable properties:</p>
+
+        <p><strong>Non-anthropocentric.</strong> Unlike IQ tests, which are normalized to human populations, universal intelligence applies equally to humans, animals, and machines. A bee could have its universal intelligence measured (in principle) on the same scale as a human or a supercomputer.</p>
+
+        <p><strong>Performance-focused.</strong> The definition measures what an agent <em>does</em>, not how it does it. Internal mechanisms are irrelevant; only goal-achievement counts.</p>
+
+        <p><strong>Occam-weighted.</strong> Simple environments count more than complex ones. An agent that excels only at complex, contrived tasks but fails at simple ones will score lower than one that handles simple tasks well. This embodies the intuition that intelligence involves recognizing patterns, and simpler patterns are more fundamental.</p>
+
+        <p><strong>Dynamic.</strong> The agent-environment framework is interactive. The agent takes actions, receives observations and rewards, and must learn and adapt over time. This is not a static test of knowledge but a dynamic measure of learning ability.</p>
+
+        <h3>Operationalization</h3>
+
+        <p>The formal definition cannot be computed, but we can extract five testable properties that an intelligent agent, according to this definition, should exhibit:</p>
+
+        <ol>
+            <li><strong>Goal-achievement.</strong> The agent should be able to achieve goals (maximize rewards) in its environment.</li>
+            <li><strong>Wide environmental range.</strong> The agent should succeed across many different types of environments, not just one.</li>
+            <li><strong>Learning and adaptation.</strong> The agent should improve its performance as it gains experience in an environment.</li>
+            <li><strong>Simplicity handling.</strong> The agent should perform well on simple, structured problems (which count most in the measure).</li>
+            <li><strong>Generality over specialization.</strong> A generalist that performs adequately across many environments should score higher than a specialist that excels at one but fails at others.</li>
+        </ol>
+
+        <p>Scoring:</p>
+        <p>☐ 0% — Clearly does not meet criterion</p>
+        <p>☐ 50% — Contested; reasonable arguments exist on both sides</p>
+        <p>☐ 100% — Clearly meets criterion</p>
+    </section>
+
+    <section>
+        <h2>Criterion 1: Goal-Achievement</h2>
+
+        <h3>What Legg and Hutter Meant</h3>
+
+        <p>The agent-environment framework places goal-achievement at the center. The agent receives reward signals from the environment, and its objective is to maximize cumulative reward. "The agent's goal is then simply to maximise the amount of reward it receives."<sup class="ref"><a href="#fn11" id="ref11">[11]</a></sup></p>
+
+        <p>This is not about having preferences or desires in any philosophical sense. It is purely operational: given a reward signal, can the agent act to increase it?</p>
+
+        <h3>1.1 Reward Maximization in Training</h3>
+
+        <p><strong>Measure:</strong> Do frontier AI systems learn to maximize objective functions during training?</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Reinforcement learning agents (AlphaGo, AlphaZero): Explicitly trained to maximize game-winning reward</li>
+            <li>LLMs (GPT-4, Claude, Gemini): Trained via next-token prediction and RLHF to maximize reward models</li>
+            <li>All modern deep learning: Gradient descent on loss functions (equivalent to reward maximization)</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> System is trained via objective maximization.</p>
+
+        <p><strong>Assessment:</strong> All frontier AI systems are trained to maximize some objective function. This is definitionally true of modern machine learning.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p>☐ 50% — Contested</p>
+            <p class="selected">☒ 100% — Clearly meets criterion</p>
+        </div>
+
+        <p><strong>Caveats:</strong> Training-time optimization differs from deployment-time goal pursuit. The question of whether trained models "have goals" at inference time is philosophically contested.</p>
+
+        <h3>1.2 Instruction-Following as Goal-Achievement</h3>
+
+        <p><strong>Measure:</strong> Can the system achieve user-specified goals via natural language instruction?</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>IFEval (instruction-following evaluation): Frontier models achieve 80–90%+ on strict instruction compliance<sup class="ref"><a href="#fn12" id="ref12">[12]</a></sup></li>
+            <li>SWE-Bench Verified: 70–81% on real software engineering tasks<sup class="ref"><a href="#fn13" id="ref13">[13]</a></sup></li>
+            <li>GAIA benchmark: Variable performance on real-world assistant tasks<sup class="ref"><a href="#fn14" id="ref14">[14]</a></sup></li>
+        </ul>
+
+        <p><strong>Threshold:</strong> ≥75% on instruction-following benchmarks.</p>
+
+        <p><strong>Assessment:</strong> Frontier models reliably follow instructions and achieve stated goals across many task types.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p>☐ 50% — Contested</p>
+            <p class="selected">☒ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>1.3 Autonomous Goal Pursuit</h3>
+
+        <p><strong>Measure:</strong> Can the system pursue goals over extended interactions without step-by-step human guidance?</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Agentic coding tools (Claude Code, Cursor, Devin): Can complete multi-step software tasks<sup class="ref"><a href="#fn15" id="ref15">[15]</a></sup></li>
+            <li>Research agents: Can conduct extended investigations with web search and tool use</li>
+            <li>Current limitations: Require human oversight; struggle with very long-horizon tasks</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Can autonomously complete multi-step tasks over 10+ actions without human intervention.</p>
+
+        <p><strong>Assessment:</strong> Frontier systems demonstrate meaningful autonomous goal pursuit in constrained domains. Extended autonomy remains limited.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p class="selected">☒ 50% — Contested</p>
+            <p>☐ 100% — Clearly meets criterion</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Criterion 2: Wide Environmental Range</h2>
+
+        <h3>What Legg and Hutter Meant</h3>
+
+        <p>The summation over "all computable environments" is central to the definition. An agent that performs well in one environment but poorly in others is not intelligent by this measure. "Intelligence is not simply the ability to perform well at a narrowly defined task; it is much broader. An intelligent agent is able to adapt and learn to deal with many different situations, kinds of problems and types of environments."<sup class="ref"><a href="#fn16" id="ref16">[16]</a></sup></p>
+
+        <p>The contrast case they cite is IBM's Deep Blue: "While Gary Kasparov would still be a formidable player if we were to change the rules of chess, IBM's Deep Blue chess super computer would be rendered useless without significant human intervention."<sup class="ref"><a href="#fn17" id="ref17">[17]</a></sup></p>
+
+        <h3>2.1 Task-Type Diversity</h3>
+
+        <p><strong>Measure:</strong> Number of cognitively distinct task types handled competently.</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Deep Blue (1997): 1 task type (chess)</li>
+            <li>GPT-2 (2019): Dozens of language tasks</li>
+            <li>Frontier LLMs (2025): Hundreds of task categories across language, math, coding, reasoning, creative writing, translation, summarization, extraction, etc.</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Competent performance across ≥100 cognitively distinct task categories.</p>
+
+        <p><strong>Assessment:</strong> Frontier models demonstrably handle hundreds of distinct task types. This is the defining feature of "foundation models" and stands in stark contrast to narrow AI of the Deep Blue era.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p>☐ 50% — Contested</p>
+            <p class="selected">☒ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>2.2 Environmental Diversity</h3>
+
+        <p><strong>Measure:</strong> Can the system adapt to genuinely different types of environments (not just different tasks within one paradigm)?</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Text-only environments: Strong performance</li>
+            <li>Multimodal environments (text + image): Good performance</li>
+            <li>Interactive environments (tool use, web browsing): Reasonable performance</li>
+            <li>Embodied/robotic environments: Limited (requires specialized systems)</li>
+            <li>Real-time physical control: Minimal</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Competent performance in ≥3 fundamentally different environmental types.</p>
+
+        <p><strong>Assessment:</strong> Frontier multimodal models operate in text, image, and interactive tool-use environments. Physical embodiment remains a gap.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p class="selected">☒ 50% — Contested</p>
+            <p>☐ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>2.3 Robustness to Distribution Shift</h3>
+
+        <p><strong>Measure:</strong> Does performance degrade gracefully when environments differ from training distribution?</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>In-distribution performance: Strong</li>
+            <li>Moderate distribution shift: Generally robust</li>
+            <li>Significant distribution shift: Performance varies; some brittleness documented<sup class="ref"><a href="#fn18" id="ref18">[18]</a></sup></li>
+            <li>Adversarial environments: Vulnerable</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Less than 20% performance degradation under moderate distribution shift.</p>
+
+        <p><strong>Assessment:</strong> Robustness is improving but inconsistent. Some tasks show strong generalization; others reveal brittleness.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p class="selected">☒ 50% — Contested</p>
+            <p>☐ 100% — Clearly meets criterion</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Criterion 3: Learning and Adaptation</h2>
+
+        <h3>What Legg and Hutter Meant</h3>
+
+        <p>The emphasis on "dynamic tests" over "static tests" is explicit in their paper. Static tests measure current knowledge; dynamic tests measure the ability to learn. "In a dynamic test the test subject interacts over a period of time with the tester, who now becomes a kind of teacher. The tester's task is to present the individual with a series of problems. After each attempt at solving a problem, the tester provides feedback to the individual who then has to adapt their behaviour accordingly."<sup class="ref"><a href="#fn19" id="ref19">[19]</a></sup></p>
+
+        <p>The AIXI agent, which maximizes universal intelligence, is explicitly a <em>learning</em> agent—one that updates its beliefs based on experience.</p>
+
+        <h3>3.1 In-Context Learning</h3>
+
+        <p><strong>Measure:</strong> Can the system improve performance on a task from examples provided within a single interaction?</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Zero-shot: Reasonable performance on many tasks</li>
+            <li>Few-shot (3–5 examples): Consistent improvement across most task types<sup class="ref"><a href="#fn20" id="ref20">[20]</a></sup></li>
+            <li>Many-shot (50+ examples): Further improvement, especially on novel formats</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Measurable improvement from zero-shot to few-shot across diverse task types.</p>
+
+        <p><strong>Assessment:</strong> In-context learning is a defining capability of modern LLMs and represents genuine within-session adaptation.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p>☐ 50% — Contested</p>
+            <p class="selected">☒ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>3.2 Skill Acquisition Efficiency</h3>
+
+        <p><strong>Measure:</strong> Examples required to learn a genuinely new task type.</p>
+
+        <p><strong>Reference benchmark:</strong> ARC-AGI, explicitly designed to test skill acquisition on novel problems.<sup class="ref"><a href="#fn21" id="ref21">[21]</a></sup></p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Humans: 73–85% on ARC-AGI-1 with typically 3–5 training examples per task<sup class="ref"><a href="#fn22" id="ref22">[22]</a></sup></li>
+            <li>Best AI (late 2024): ~55% on ARC-AGI-1 private set</li>
+            <li>OpenAI o3 (high compute): ~87.5% on ARC-AGI-1<sup class="ref"><a href="#fn23" id="ref23">[23]</a></sup></li>
+            <li>AI on ARC-AGI-2 (2025): Single-digit percentages<sup class="ref"><a href="#fn24" id="ref24">[24]</a></sup></li>
+        </ul>
+
+        <p><strong>Threshold:</strong> ≥75% on ARC-AGI-1 with human-comparable example counts.</p>
+
+        <p><strong>Assessment:</strong> o3 crossed the ARC-AGI-1 threshold, but required massive compute. ARC-AGI-2 remains largely unsolved. Whether high-compute solutions represent genuine skill acquisition or brute-force search is contested.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p class="selected">☒ 50% — Contested</p>
+            <p>☐ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>3.3 Cross-Session Learning</h3>
+
+        <p><strong>Measure:</strong> Can the system improve across multiple sessions via persistent memory or weight updates?</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Humans: Continuous learning across lifetime</li>
+            <li>LLMs: No weight updates from interaction (frozen after training)</li>
+            <li>Retrieval-augmented memory: Can store and retrieve facts, but not true learning</li>
+            <li>Fine-tuning: Possible but typically done by developers, not users</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> True online learning—improving weights from user interactions.</p>
+
+        <p><strong>Assessment:</strong> Current LLMs do not learn in the sense of updating their weights from deployment-time interactions. Memory features provide continuity but not learning.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p class="selected">☒ 0% — Clearly does not meet criterion</p>
+            <p>☐ 50% — Contested</p>
+            <p>☐ 100% — Clearly meets criterion</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Criterion 4: Simplicity Handling (Occam's Razor)</h2>
+
+        <h3>What Legg and Hutter Meant</h3>
+
+        <p>The $2^{-K(\mu)}$ weighting is crucial. Simple environments—those with short algorithmic descriptions—count more than complex ones. "It is important then that the agent is able to quickly learn and adapt so as to perform as well as possible over a wide range of environments, situations, tasks and problems."<sup class="ref"><a href="#fn25" id="ref25">[25]</a></sup></p>
+
+        <p>They make this concrete with an example: In IQ tests, when asked to continue the sequence 2, 4, 6, 8, the "correct" answer is 10—the simplest pattern. A polynomial that also fits the data but predicts 58 is rejected. "Why then, even if we are aware of the larger polynomial, do we consider the first answer to be the most likely one? It is because we apply, perhaps unconsciously, the principle of Occam's razor."<sup class="ref"><a href="#fn26" id="ref26">[26]</a></sup></p>
+
+        <p>An intelligent agent should recognize simple patterns and prefer simple hypotheses.</p>
+
+        <h3>4.1 Simple Pattern Recognition</h3>
+
+        <p><strong>Measure:</strong> Performance on simple, well-structured reasoning tasks.</p>
+
+        <p><strong>Reference benchmarks:</strong> Elementary math, basic logic, simple analogies.</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>GSM8K (grade school math): Frontier models achieve 90%+<sup class="ref"><a href="#fn27" id="ref27">[27]</a></sup></li>
+            <li>Simple reasoning chains: Near-perfect performance</li>
+            <li>Basic pattern completion: Strong performance</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> ≥90% on elementary reasoning benchmarks.</p>
+
+        <p><strong>Assessment:</strong> Frontier models excel at simple, structured problems.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p>☐ 50% — Contested</p>
+            <p class="selected">☒ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>4.2 Preference for Simple Hypotheses</h3>
+
+        <p><strong>Measure:</strong> When multiple explanations fit the data, does the model prefer simpler ones?</p>
+
+        <p><strong>Assessment method:</strong> Qualitative evaluation of model outputs on ambiguous problems.</p>
+
+        <p><strong>Observations:</strong></p>
+        <ul class="reference-values">
+            <li>LLMs generally prefer simple explanations when prompted for reasoning</li>
+            <li>Chain-of-thought prompting encourages step-by-step simple reasoning</li>
+            <li>Occasional failures: models sometimes overcomplicate or miss simple patterns</li>
+            <li>No formal guarantee of Occam-like behavior</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Consistent preference for simpler hypotheses in ambiguous cases.</p>
+
+        <p><strong>Assessment:</strong> Generally exhibits simplicity preference but not reliably. Difficult to test systematically.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p class="selected">☒ 50% — Contested</p>
+            <p>☐ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>4.3 Resistance to Overfitting</h3>
+
+        <p><strong>Measure:</strong> Does the model generalize rather than memorize?</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Generalization on novel phrasings of trained tasks: Generally good</li>
+            <li>Generalization to novel task types: Mixed</li>
+            <li>Evidence of memorization: Some training data can be extracted<sup class="ref"><a href="#fn28" id="ref28">[28]</a></sup></li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Generalizes to novel formulations of trained concepts.</p>
+
+        <p><strong>Assessment:</strong> Models generalize well in many cases but evidence of memorization exists.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p class="selected">☒ 50% — Contested</p>
+            <p>☐ 100% — Clearly meets criterion</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Criterion 5: Generality Over Specialization</h2>
+
+        <h3>What Legg and Hutter Meant</h3>
+
+        <p>The contrast with Deep Blue is instructive. Deep Blue had extremely high performance in one environment (chess) but zero performance in virtually all others. By the universal intelligence measure, this yields a low score: the chess environment is complex (high $K(\mu)$, low $2^{-K(\mu)}$), and Deep Blue scores zero everywhere else.</p>
+
+        <p>A generalist agent that performs moderately well across many environments will score higher than a specialist. "We are interested in common themes and general perspectives on intelligence that could be applicable to many kinds of systems."<sup class="ref"><a href="#fn29" id="ref29">[29]</a></sup></p>
+
+        <h3>5.1 Generalist vs. Specialist Architecture</h3>
+
+        <p><strong>Measure:</strong> Is the system designed as a generalist or specialist?</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Deep Blue: Pure specialist (chess only)</li>
+            <li>AlphaGo/AlphaZero: Specialist with some generalization (board games)</li>
+            <li>Frontier LLMs: Generalist (single model handles diverse tasks)</li>
+            <li>Narrow ML models: Specialists (image classifiers, speech recognition)</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Single model architecture handles diverse task types without task-specific retraining.</p>
+
+        <p><strong>Assessment:</strong> Frontier LLMs are explicitly designed as generalists. This is the foundation model paradigm.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p>☐ 50% — Contested</p>
+            <p class="selected">☒ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>5.2 Performance Breadth vs. Depth</h3>
+
+        <p><strong>Measure:</strong> How does generalist performance compare to specialist performance in specific domains?</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Generalist LLMs vs. specialized chess engines: Specialists vastly superior</li>
+            <li>Generalist LLMs vs. specialized translation systems: Roughly competitive<sup class="ref"><a href="#fn30" id="ref30">[30]</a></sup></li>
+            <li>Generalist LLMs vs. specialized code models: Generalists competitive or superior on many coding tasks</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> Generalist within 20% of specialist performance across most tested domains.</p>
+
+        <p><strong>Assessment:</strong> Varies by domain. Generalists competitive in language tasks; specialists still dominate in narrow domains like chess.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p class="selected">☒ 50% — Contested</p>
+            <p>☐ 100% — Clearly meets criterion</p>
+        </div>
+
+        <h3>5.3 No Catastrophic Forgetting on New Tasks</h3>
+
+        <p><strong>Measure:</strong> Can new capabilities be added without degrading existing ones?</p>
+
+        <p><strong>Reference values:</strong></p>
+        <ul class="reference-values">
+            <li>Within training: Modern training techniques manage multi-task learning</li>
+            <li>Post-training fine-tuning: Risks catastrophic forgetting<sup class="ref"><a href="#fn31" id="ref31">[31]</a></sup></li>
+            <li>Tool use: Allows capability extension without weight changes</li>
+        </ul>
+
+        <p><strong>Threshold:</strong> New capabilities can be added without significant degradation.</p>
+
+        <p><strong>Assessment:</strong> Tool use provides graceful extension. Fine-tuning remains risky. True continual learning without forgetting is unsolved.</p>
+
+        <div class="score-box">
+            <p><strong>Score:</strong></p>
+            <p>☐ 0% — Clearly does not meet criterion</p>
+            <p class="selected">☒ 50% — Contested</p>
+            <p>☐ 100% — Clearly meets criterion</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Summary: The Formalization Benchmark</h2>
+
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th>Criterion</th>
+                    <th>Subcriterion</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="4">1. Goal-Achievement</td>
+                    <td>1.1 Reward maximization in training</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>1.2 Instruction-following</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>1.3 Autonomous goal pursuit</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td><strong>Criterion average</strong></td>
+                    <td><strong>83%</strong></td>
+                </tr>
+                <tr>
+                    <td rowspan="4">2. Wide Environmental Range</td>
+                    <td>2.1 Task-type diversity</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>2.2 Environmental diversity</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>2.3 Robustness to distribution shift</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td><strong>Criterion average</strong></td>
+                    <td><strong>67%</strong></td>
+                </tr>
+                <tr>
+                    <td rowspan="4">3. Learning and Adaptation</td>
+                    <td>3.1 In-context learning</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>3.2 Skill acquisition efficiency</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>3.3 Cross-session learning</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td><strong>Criterion average</strong></td>
+                    <td><strong>50%</strong></td>
+                </tr>
+                <tr>
+                    <td rowspan="4">4. Simplicity Handling</td>
+                    <td>4.1 Simple pattern recognition</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>4.2 Preference for simple hypotheses</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>4.3 Resistance to overfitting</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td><strong>Criterion average</strong></td>
+                    <td><strong>67%</strong></td>
+                </tr>
+                <tr>
+                    <td rowspan="4">5. Generality Over Specialization</td>
+                    <td>5.1 Generalist architecture</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>5.2 Performance breadth vs. depth</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td>5.3 No catastrophic forgetting</td>
+                    <td>50%</td>
+                </tr>
+                <tr>
+                    <td><strong>Criterion average</strong></td>
+                    <td><strong>67%</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><strong>Overall Formalization Benchmark Score</strong></td>
+                    <td><strong>67%</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Interpretation</h2>
+
+        <h3>What Frontier AI Clearly Achieves (100%)</h3>
+
+        <ul>
+            <li>Goal-achievement through training (reward/loss optimization)</li>
+            <li>Instruction-following and task completion</li>
+            <li>Broad task-type diversity (hundreds of cognitive task types)</li>
+            <li>In-context learning (few-shot adaptation)</li>
+            <li>Simple pattern recognition (elementary reasoning)</li>
+            <li>Generalist architecture (single model, many tasks)</li>
+        </ul>
+
+        <h3>What Remains Contested (50%)</h3>
+
+        <ul>
+            <li>Autonomous extended goal pursuit (multi-step agentic tasks)</li>
+            <li>Environmental diversity beyond text/image/tool-use</li>
+            <li>Robustness to significant distribution shift</li>
+            <li>Skill acquisition on genuinely novel task types (ARC-AGI-2)</li>
+            <li>Consistent Occam-like hypothesis preference</li>
+            <li>Resistance to overfitting/memorization</li>
+            <li>Breadth vs. depth trade-offs</li>
+            <li>Capability extension without forgetting</li>
+        </ul>
+
+        <h3>What Is Clearly Not Achieved (0%)</h3>
+
+        <ul>
+            <li>True cross-session learning (online weight updates from interaction)</li>
+        </ul>
+
+        <p>This single 0% score is notable. Legg and Hutter's framework emphasizes that intelligence is about <em>learning</em>—adapting from experience over time. Current LLMs are frozen after training; they cannot update their weights from deployment-time interactions. Memory features provide continuity but not learning in the sense the definition requires.</p>
+    </section>
+
+    <section>
+        <h2>The Verdict (Provisional)</h2>
+
+        <p>The Legg-Hutter definition describes intelligence as goal-achievement across environments, with learning, simplicity-preference, and generality as key properties. At 67%, current frontier AI exhibits many of these properties—but with significant gaps.</p>
+
+        <p>The strongest match is architectural: frontier LLMs are genuine generalists that handle diverse tasks via a single model. This stands in stark contrast to the narrow AI of the Deep Blue era that motivated the definition.</p>
+
+        <p>The weakest match is learning: the definition's emphasis on dynamic adaptation and learning from experience is only partially met. LLMs learn within context but not across sessions. They cannot update weights from user interaction. In the agent-environment framework Legg and Hutter specify, this is a fundamental limitation.</p>
+
+        <h3>Comparison with Earlier Benchmarks</h3>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Benchmark</th>
+                    <th>Year</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gubrud</td>
+                    <td>1997</td>
+                    <td>66%</td>
+                </tr>
+                <tr>
+                    <td>Reinvention (Legg/Goertzel/Voss)</td>
+                    <td>2002</td>
+                    <td>80%</td>
+                </tr>
+                <tr>
+                    <td>Formalization (Legg &amp; Hutter)</td>
+                    <td>2007</td>
+                    <td>67%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The Formalization benchmark yields a similar score to Gubrud (67% vs. 66%) despite being more rigorous. The lower score compared to the 2002 Reinvention benchmark (80%) reflects the Formalization's stricter requirements for learning and adaptation.</p>
+
+        <h3>The Incomputability Caveat</h3>
+
+        <p>We have assessed current AI against the <em>properties</em> the Legg-Hutter definition implies, not against the formal measure itself. The formal measure $\Upsilon(\pi)$ cannot be computed. Whether our operationalization captures the definition's intent is itself contestable.</p>
+
+        <p>Legg and Hutter acknowledged this limitation: "In order to use universal intelligence more generally we will need to construct a workable test that approximates an agent's $\Upsilon$ value."<sup class="ref"><a href="#fn32" id="ref32">[32]</a></sup> That test was never built. Our operationalization is one attempt; others might weight the criteria differently.</p>
+
+        <p>We do not speak for the authors. Shane Legg is alive and actively working on AGI at DeepMind. His 2023 "Levels of AGI" paper with colleagues represents his current thinking on operationalizing progress—and suggests he too has moved toward more pragmatic, less formally pure approaches to measurement.<sup class="ref"><a href="#fn33" id="ref33">[33]</a></sup></p>
+    </section>
+
+    <section>
+        <h2>Methodological Notes</h2>
+
+        <p>This evaluation uses an intentionally coarse scoring system (0%/50%/100%) and unweighted criteria. This is a deliberate choice.</p>
+
+        <p><strong>Why only three scores?</strong> Finer gradations would imply precision we do not have. A score of 65% versus 70% would suggest a confidence in measurement that no current benchmark supports. The three-point scale forces honesty: either the evidence clearly supports a claim (100%), clearly refutes it (0%), or the matter is genuinely contested (50%).</p>
+
+        <p><strong>Why no weighting?</strong> Differential weighting would require judgments about Legg and Hutter's priorities that we cannot make with confidence. Did they consider "goal-achievement" more important than "learning"? Did they prioritize "generality" over "simplicity handling"? Their text emphasizes all of these properties without ranking them. We could guess at weights, but we would rather be honestly approximate than precisely wrong.</p>
+
+        <p><strong>The operationalization problem.</strong> The Legg-Hutter definition is mathematically precise but incomputable. We have extracted five properties that the definition implies an intelligent agent should exhibit. This extraction involves interpretation. Different readers might identify different properties, or operationalize the same properties differently. Why five criteria rather than four or six? Why these subcriteria rather than others? These choices are defensible but not uniquely correct.</p>
+
+        <p><strong>The formalization gap.</strong> There is an irony in assessing a formal definition via informal operationalization. The whole point of Legg and Hutter's project was to move beyond informal definitions. Our assessment necessarily steps back from that rigor. We are asking whether current systems exhibit the <em>spirit</em> of the definition, knowing we cannot test the <em>letter</em>.</p>
+
+        <p>The goal is accuracy at the expense of precision. This is a roughly hewn outline of a model. Readers who disagree with specific operationalizations, who believe certain criteria should be weighted more heavily, or who have better data for any assessment are invited to propose alternatives. The PDF version includes a blank scorecard for exactly this purpose.</p>
+    </section>
+
+    <section>
+        <h2>Citation Gaps and Requests for Collaboration</h2>
+
+        <p>The following claims would benefit from stronger sourcing:</p>
+
+        <ul>
+            <li>Systematic benchmarks for Occam-like hypothesis preference in LLMs</li>
+            <li>Quantified distribution shift degradation across frontier models</li>
+            <li>Formal comparison of generalist vs. specialist performance across domains</li>
+            <li>Systematic study of catastrophic forgetting in LLM fine-tuning</li>
+            <li>Human baseline data on skill acquisition efficiency (examples needed for novel tasks)</li>
+            <li>Rigorous agentic task completion benchmarks with standardized scoring</li>
+        </ul>
+
+        <p>If you can fill any of these gaps, please contribute.</p>
+    </section>
+
+    <section class="endnotes">
+        <h2>Notes</h2>
+        <ol>
+            <li id="fn1">AI Assistance Disclosure: Research, drafting, and analysis were conducted with the assistance of Claude (Anthropic, 2025). The author provided editorial direction and final approval. <a href="#ref1" class="backlink">↩</a></li>
+            <li id="fn2">Legg, Shane. "Solomonoff Induction." MSc thesis, University of Auckland, 1996. <a href="https://researchspace.auckland.ac.nz/handle/2292/3087">https://researchspace.auckland.ac.nz/handle/2292/3087</a> <a href="#ref2" class="backlink">↩</a></li>
+            <li id="fn3">For biographical details, see 36kr.com, "He Invented Trillion-Worth AGI but Now Is Down and Out," 2025. <a href="https://eu.36kr.com/en/p/3539380848504965">https://eu.36kr.com/en/p/3539380848504965</a>; Wikipedia, "Shane Legg." <a href="https://en.wikipedia.org/wiki/Shane_Legg">https://en.wikipedia.org/wiki/Shane_Legg</a> <a href="#ref3" class="backlink">↩</a></li>
+            <li id="fn4">Legg, Shane, and Marcus Hutter. "Universal Intelligence: A Definition of Machine Intelligence." <em>Minds and Machines</em> 17, no. 4 (2007): 391–444. <a href="https://arxiv.org/abs/0712.3329">https://arxiv.org/abs/0712.3329</a> <a href="#ref4" class="backlink">↩</a></li>
+            <li id="fn5">Legg, Shane, and Marcus Hutter. "A Collection of Definitions of Intelligence." In <em>Advances in Artificial General Intelligence</em>, edited by Ben Goertzel and Pei Wang, 17–24. IOS Press, 2007. <a href="https://arxiv.org/abs/0706.3639">https://arxiv.org/abs/0706.3639</a> <a href="#ref5" class="backlink">↩</a></li>
+            <li id="fn6">Legg, Shane. <em>Machine Super Intelligence</em>. PhD thesis, University of Lugano, 2008. p. 24. <a href="http://www.vetta.org/documents/Machine_Super_Intelligence.pdf">http://www.vetta.org/documents/Machine_Super_Intelligence.pdf</a> <a href="#ref6" class="backlink">↩</a></li>
+            <li id="fn7">Morris, Meredith Ringel, et al. "Levels of AGI: Operationalizing Progress on the Path to AGI." arXiv:2311.02462, 2023. Legg is a co-author. <a href="https://arxiv.org/abs/2311.02462">https://arxiv.org/abs/2311.02462</a> <a href="#ref7" class="backlink">↩</a></li>
+            <li id="fn8">Legg and Hutter 2007, op. cit. <a href="#ref8" class="backlink">↩</a></li>
+            <li id="fn9">Hutter, Marcus. <em>Universal Artificial Intelligence: Sequential Decisions Based on Algorithmic Probability</em>. Springer, 2005. <a href="https://doi.org/10.1007/b138233">https://doi.org/10.1007/b138233</a> <a href="#ref9" class="backlink">↩</a></li>
+            <li id="fn10">See Definition 5.14 in Hutter 2005. <a href="#ref10" class="backlink">↩</a></li>
+            <li id="fn11">Legg and Hutter 2007, p. 13. <a href="#ref11" class="backlink">↩</a></li>
+            <li id="fn12">Zhou et al. "Instruction-Following Evaluation for Large Language Models." arXiv:2311.07911, 2023. <a href="https://arxiv.org/abs/2311.07911">https://arxiv.org/abs/2311.07911</a> <a href="#ref12" class="backlink">↩</a></li>
+            <li id="fn13">As cited in Chapters 1–2. <a href="#ref13" class="backlink">↩</a></li>
+            <li id="fn14">Mialon et al. "GAIA: A Benchmark for General AI Assistants." arXiv:2311.12983, 2023. <a href="https://arxiv.org/abs/2311.12983">https://arxiv.org/abs/2311.12983</a> <a href="#ref14" class="backlink">↩</a></li>
+            <li id="fn15">Various product announcements and benchmarks, 2024–2025. See Anthropic, "Introducing Claude Code," 2025. <a href="https://www.anthropic.com/claude-code">https://www.anthropic.com/claude-code</a> <a href="#ref15" class="backlink">↩</a></li>
+            <li id="fn16">Legg and Hutter 2007, p. 17. <a href="#ref16" class="backlink">↩</a></li>
+            <li id="fn17">Ibid. <a href="#ref17" class="backlink">↩</a></li>
+            <li id="fn18">McCoy et al. "Right for the Wrong Reasons: Diagnosing Syntactic Heuristics in Natural Language Inference." ACL 2019. <a href="https://aclanthology.org/P19-1334/">https://aclanthology.org/P19-1334/</a> <a href="#ref18" class="backlink">↩</a></li>
+            <li id="fn19">Legg and Hutter 2007, p. 7. <a href="#ref19" class="backlink">↩</a></li>
+            <li id="fn20">Brown et al. "Language Models are Few-Shot Learners." NeurIPS 2020. <a href="https://arxiv.org/abs/2005.14165">https://arxiv.org/abs/2005.14165</a> <a href="#ref20" class="backlink">↩</a></li>
+            <li id="fn21">Chollet, François. "On the Measure of Intelligence." arXiv:1911.01547, 2019. <a href="https://arxiv.org/abs/1911.01547">https://arxiv.org/abs/1911.01547</a> <a href="#ref21" class="backlink">↩</a></li>
+            <li id="fn22">Johnson et al. "Testing ARC on Humans." NYU, 2024. <a href="https://lab42.global/arc-agi-benchmark-human-study/">https://lab42.global/arc-agi-benchmark-human-study/</a> <a href="#ref22" class="backlink">↩</a></li>
+            <li id="fn23">OpenAI. "Introducing o3." December 2024. <a href="https://openai.com/index/deliberative-alignment/">https://openai.com/index/deliberative-alignment/</a> <a href="#ref23" class="backlink">↩</a></li>
+            <li id="fn24"><a href="https://arcprize.org">https://arcprize.org</a>, 2025. <a href="#ref24" class="backlink">↩</a></li>
+            <li id="fn25">Legg and Hutter 2007, p. 9. <a href="#ref25" class="backlink">↩</a></li>
+            <li id="fn26">Ibid., p. 18. <a href="#ref26" class="backlink">↩</a></li>
+            <li id="fn27">Various benchmark reports, 2024–2025. <a href="#ref27" class="backlink">↩</a></li>
+            <li id="fn28">Carlini et al. "Extracting Training Data from Large Language Models." USENIX Security, 2021. <a href="https://arxiv.org/abs/2012.07805">https://arxiv.org/abs/2012.07805</a> <a href="#ref28" class="backlink">↩</a></li>
+            <li id="fn29">Legg and Hutter 2007, p. 3. <a href="#ref29" class="backlink">↩</a></li>
+            <li id="fn30">Various comparisons show frontier LLMs competitive with specialized NMT in many language pairs. <a href="#ref30" class="backlink">↩</a></li>
+            <li id="fn31">McCloskey, Michael, and Neal J. Cohen. "Catastrophic Interference in Connectionist Networks: The Sequential Learning Problem." <em>Psychology of Learning and Motivation</em> 24 (1989): 109–165. <a href="https://doi.org/10.1016/S0079-7421(08)60536-8">https://doi.org/10.1016/S0079-7421(08)60536-8</a> <a href="#ref31" class="backlink">↩</a></li>
+            <li id="fn32">Legg and Hutter 2007, p. 27. <a href="#ref32" class="backlink">↩</a></li>
+            <li id="fn33">Morris et al. 2023, op. cit. <a href="https://arxiv.org/abs/2311.02462">https://arxiv.org/abs/2311.02462</a> <a href="#ref33" class="backlink">↩</a></li>
+        </ol>
+    </section>
+
+    <footer class="version-footer">
+        <p>Document version 0.1 — December 2025</p>
+        <p>© 2025 Dakota Schuck. Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+    </footer>
+</article>
