@@ -1,0 +1,808 @@
+---
+layout: default
+title: Chapter 2: The Reinvention Benchmark (2002) - Retrospective Benchmarks - Betterward
+---
+<style>
+    /* Chapter-specific styles */
+    .chapter-header {
+        margin-bottom: 2em;
+        text-align: center;
+    }
+    .chapter-header .series-title {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 1em;
+        color: var(--text-medium);
+        margin-bottom: 0.5em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .chapter-header h1 {
+        font-size: 2em;
+        margin-bottom: 0.3em;
+    }
+    .chapter-header .subtitle {
+        font-size: 1.1em;
+        color: var(--text-medium);
+        font-style: italic;
+    }
+    .chapter-header .author {
+        margin-top: 1.5em;
+        font-size: 1em;
+    }
+    .chapter-header .date {
+        font-size: 0.9em;
+        color: var(--text-light);
+        margin-top: 0.3em;
+    }
+    .chapter-header .working-paper {
+        font-size: 0.85em;
+        color: var(--text-light);
+        font-style: italic;
+    }
+
+    /* Score boxes */
+    .score-box {
+        background-color: #f9f9f9;
+        border-left: 3px solid var(--primary-accent);
+        padding: 1em 1.5em;
+        margin: 1.5em 0;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.95em;
+    }
+    .score-box .label {
+        font-weight: 600;
+        margin-bottom: 0.5em;
+    }
+    .score-box .option {
+        margin: 0.3em 0;
+    }
+    .score-box .selected {
+        font-weight: 600;
+    }
+
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2em 0;
+        font-size: 0.95em;
+    }
+    th, td {
+        text-align: left;
+        padding: 0.75em 1em;
+        border-bottom: 1px solid var(--border);
+    }
+    th {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 600;
+        background-color: #f9f9f9;
+        border-bottom: 2px solid var(--primary-accent);
+    }
+    td:last-child, th:last-child {
+        text-align: center;
+    }
+    tr.criterion-average td {
+        font-weight: 600;
+        background-color: #f9f9f9;
+    }
+    tr.overall-score td {
+        font-weight: 700;
+        font-size: 1.05em;
+        border-top: 2px solid var(--primary-accent);
+    }
+
+    /* Endnotes */
+    .endnotes {
+        margin-top: 3em;
+        padding-top: 2em;
+        border-top: 2px solid var(--primary-accent);
+    }
+    .endnotes h2 {
+        font-size: 1.3em;
+        margin-bottom: 1em;
+        border-top: none;
+        padding-top: 0;
+    }
+    .endnotes ol {
+        font-size: 0.9em;
+        color: var(--text-medium);
+        margin-left: 1.5em;
+    }
+    .endnotes li {
+        margin-bottom: 0.8em;
+        line-height: 1.6;
+    }
+    .endnotes a {
+        word-break: break-all;
+    }
+    .backlink {
+        font-size: 0.85em;
+        margin-left: 0.3em;
+    }
+
+    /* Superscript references */
+    sup.ref a {
+        font-size: 0.75em;
+        color: var(--wikipedia-blue);
+        text-decoration: none;
+        border: none;
+    }
+    sup.ref a:hover {
+        text-decoration: underline;
+    }
+
+    /* PDF download link */
+    .download-link {
+        display: inline-block;
+        margin: 1.5em 0;
+        padding: 0.75em 1.5em;
+        background-color: var(--primary-accent);
+        color: white;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.95em;
+        border: none;
+        transition: background-color 0.2s ease;
+    }
+    .download-link:hover {
+        background-color: var(--hover-accent);
+        color: white;
+        border: none;
+    }
+
+    /* Checkmark styling */
+    .check { color: #2eb85c; }
+    .tilde { color: var(--text-medium); }
+</style>
+
+<article class="post-content">
+    <div class="chapter-header">
+        <p class="series-title"><a href="/retrospective-benchmarks/">Retrospective Benchmarks for Machine Intelligence</a></p>
+        <p class="subtitle">Evaluating Current AI Against Historical Specifications</p>
+        <h1>Chapter 2: The Reinvention Benchmark (2002)</h1>
+        <p class="author">Dakota Schuck</p>
+        <p class="date">December 2025</p>
+        <p class="working-paper">Working paper. Comments welcome.</p>
+    </div>
+
+    <p><a href="chapter2-reinvention-benchmark_schuck.pdf" class="download-link">Download PDF</a></p>
+
+    <h2>Preface: Methodology</h2>
+
+    <p>This chapter continues the methodology established in Chapter 1. We treat historical definitions of machine intelligence as testable specifications, then evaluate current AI systems against them. For full methodological discussion, see Chapter 1 (The Gubrud Benchmark).</p>
+
+    <p>The 2002 case is unusual: Legg, Goertzel, and Voss did not publish an explicit definition. They coined a term to name a research direction. We have reconstructed their implicit definition from primary sources. This reconstruction is itself contestable.</p>
+
+    <p>Every factual claim should be cited. Where citations are missing, we have marked them. Where we have made interpretive choices, we have flagged them. This is a first attempt, meant to be improved by others.<sup class="ref"><a href="#fn1" id="ref1">[1]</a></sup></p>
+
+    <h2>Introduction: Three Men and a Name</h2>
+
+    <p>In April 2001, a company called Webmind Inc. stopped paying its employees and was evicted from its offices at the southern tip of Manhattan.<sup class="ref"><a href="#fn2" id="ref2">[2]</a></sup> The startup had promised to raise a digital baby brain on the internet, letting it grow into something "far smarter than humans."<sup class="ref"><a href="#fn3" id="ref3">[3]</a></sup> It had burned through $20 million. The economy had turned. The dream was over.</p>
+
+    <p>Among the wreckage were two men who would stay in touch: Ben Goertzel, the founder, and Shane Legg, a New Zealand–born researcher who had joined the company's quixotic mission. They had failed to build a thinking machine. But they hadn't stopped thinking about what one would be.</p>
+
+    <p>A year later, Goertzel was editing a book. He and his colleague Cassio Pennachin had gathered essays from researchers working on what they considered the real goal of AI—not chess programs or spam filters, but genuine machine intelligence. They had the content. They didn't have a title.</p>
+
+    <p>"I emailed a number of colleagues asking for suggestions," Goertzel later recalled.<sup class="ref"><a href="#fn4" id="ref4">[4]</a></sup> One of those colleagues was Legg. The suggestion came back: Artificial General Intelligence.</p>
+
+    <p>Goertzel liked it. Pennachin liked it. AGI, as an acronym, had a ring to it.<sup class="ref"><a href="#fn5" id="ref5">[5]</a></sup> The book would be published in 2007 under that title, and the term would spread—through a conference series Goertzel launched in 2008, through the research community that coalesced around it, and eventually into corporate mission statements worth hundreds of billions of dollars.</p>
+
+    <p>But here is where the story gets strange. A third man, Peter Voss, claims he was part of the original conversation. "In 2002, after some deliberation, three of us (Shane Legg, Ben Goertzel and myself) decided that 'Artificial General Intelligence', or AGI, best described our shared goal."<sup class="ref"><a href="#fn6" id="ref6">[6]</a></sup></p>
+
+    <p>And stranger still: a few years after the book was published, someone pointed out to Goertzel that a physicist named Mark Gubrud had used the exact phrase in 1997—five years before Legg's email.<sup class="ref"><a href="#fn7" id="ref7">[7]</a></sup> Legg's reaction, years later: "Someone comes out of nowhere and says, 'I invented the AGI definition in '97,' and we say, 'Who the hell are you?' Then we checked, and indeed there was a paper."<sup class="ref"><a href="#fn8" id="ref8">[8]</a></sup></p>
+
+    <p>So the term was coined twice. Or perhaps three times. The 2002 reinvention was independent of Gubrud's 1997 coinage. Two groups of people, thinking about the same problem, reached for the same three words.</p>
+
+    <h2>The Implicit Definition</h2>
+
+    <p>Unlike Gubrud, who wrote a single sentence defining AGI, the 2002 coiners left no explicit definition. They were naming a research direction, not specifying a threshold. The following is reconstructed from their subsequent writings and interviews.</p>
+
+    <p>From Goertzel's 2014 retrospective:<sup class="ref"><a href="#fn9" id="ref9">[9]</a></sup></p>
+
+    <blockquote>
+        <p>"The creation and study of synthetic intelligences with sufficiently broad (e.g. human-level) scope and strong generalization capability, is at bottom qualitatively different from the creation and study of synthetic intelligences with significantly narrower scope and weaker generalization capability."</p>
+    </blockquote>
+
+    <p>From Voss's definition (2017/2024):<sup class="ref"><a href="#fn10" id="ref10">[10]</a></sup></p>
+
+    <blockquote>
+        <p>"A computer system that can learn incrementally, by itself, to reliably perform any cognitive task that a competent human can—including the discovery of new knowledge and solving novel problems. Crucially, it must be able to do this in the real world, meaning: in real time, with incomplete or contradictory data, and given limited time and resources."</p>
+    </blockquote>
+
+    <p>From Legg's "one-brain" framing:<sup class="ref"><a href="#fn11" id="ref11">[11]</a></sup> A single system that can learn multiple tasks without architectural changes or memory wipes, contrasted with "one-algorithm" systems that need different algorithms for different problems.</p>
+
+    <h3>Context</h3>
+
+    <p>By 2002, the field called "AI" had drifted far from its origins. When John McCarthy coined that term in 1956, the ambition was to build machines that could think—really think, the way humans do.<sup class="ref"><a href="#fn12" id="ref12">[12]</a></sup> Half a century later, the field had produced chess programs, expert systems, and speech recognition software. Impressive tools. But not thinking machines.</p>
+
+    <p>The researchers who still cared about the original goal needed a way to distinguish themselves. "Strong AI" was problematic—John Searle had used it to mean consciousness, not capability.<sup class="ref"><a href="#fn13" id="ref13">[13]</a></sup> What Legg, Goertzel, and Voss wanted was a term that was: (1) neutral on consciousness, (2) focused on generality, and (3) distinct from mainstream narrow AI.</p>
+
+    <h3>Operationalization</h3>
+
+    <p>From the primary sources, we extract a composite definition representing what the coiners appear to have meant:</p>
+
+    <blockquote>
+        <p><strong>Artificial General Intelligence (2002 reinvention):</strong> A single artificial system that can learn to perform a broad range of cognitive tasks at a level comparable to competent humans, can transfer knowledge across domains, can handle novel problems, and can do so with the same underlying architecture—without requiring fundamental reprogramming or retraining for each new task.</p>
+    </blockquote>
+
+    <p>This definition has five components, which we now operationalize as criteria:</p>
+
+    <ol>
+        <li><strong>Single system</strong> — One architecture, not a collection of separate programs</li>
+        <li><strong>Broad cognitive range</strong> — Many task types, not just one</li>
+        <li><strong>Human-level competence</strong> — Performance comparable to typical humans</li>
+        <li><strong>Transfer and generalization</strong> — Applying knowledge across domains</li>
+        <li><strong>Architectural stability</strong> — Same system handles diverse tasks without fundamental changes</li>
+    </ol>
+
+    <p>Scoring:</p>
+    <ul>
+        <li>☐ 0% — Clearly does not meet criterion</li>
+        <li>☐ 50% — Contested; reasonable arguments exist on both sides</li>
+        <li>☐ 100% — Clearly meets criterion</li>
+    </ul>
+
+    <h2>Criterion 1: Single System</h2>
+
+    <h3>What the Coiners Probably Meant</h3>
+
+    <p>The distinction between AGI and a collection of narrow AI tools is that AGI is one system. You don't need to swap out the chess module for the language module. Legg's "one-brain" framing makes this explicit: a single unified system, not separate algorithms for separate tasks.<sup class="ref"><a href="#fn14" id="ref14">[14]</a></sup></p>
+
+    <h3>Architectural Unity</h3>
+
+    <p><strong>Measure:</strong> Does the system use a single learned model to handle diverse tasks, or does it route to specialized subsystems?</p>
+
+    <p><strong>Reference values:</strong></p>
+    <ul>
+        <li>Deep Blue (1997): Single-task chess engine, no generalization</li>
+        <li>GPT-4, Claude, Gemini (2024–25): Single transformer model handles language, math, coding, reasoning</li>
+        <li>Multi-agent systems: Route tasks to specialized models</li>
+    </ul>
+
+    <p><strong>Threshold:</strong> Same weights process all cognitive task types without explicit routing to separate models.</p>
+
+    <p><strong>Assessment:</strong> Frontier LLMs use a single trained model for diverse cognitive tasks. Tool use (calculators, code interpreters) is called by the model rather than routing around it. Some systems add retrieval or specialized adapters, but the core model remains unified.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option selected">☒ 100% — Clearly meets criterion</div>
+    </div>
+
+    <p><strong>Caveats:</strong> Tool augmentation blurs the boundary. A model calling a calculator is still "one system" in a meaningful sense, but the line between "tool use" and "routing to subsystems" is not always clear.</p>
+
+    <h3>Memory Continuity</h3>
+
+    <p><strong>Measure:</strong> Does the system maintain a unified memory/knowledge base across tasks and sessions?</p>
+
+    <p><strong>Reference values:</strong></p>
+    <ul>
+        <li>Human cognition: Persistent memory accumulating over lifetime</li>
+        <li>Early LLMs: No persistence across sessions</li>
+        <li>2025 deployments: Some memory features (Claude memory, ChatGPT memory) but limited</li>
+    </ul>
+
+    <p><strong>Threshold:</strong> Persistent memory that accumulates across sessions without retraining.</p>
+
+    <p><strong>Assessment:</strong> Context maintained within sessions; some deployments offer limited cross-session memory. However, no true online learning—systems cannot update weights from interaction. Memory features are retrieval-based, not learned.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option selected">☒ 50% — Contested</div>
+        <div class="option">☐ 100% — Clearly meets criterion</div>
+    </div>
+
+    <p><strong>Caveats:</strong> Memory features are evolving rapidly. This assessment may be outdated by the time of reading.</p>
+
+    <h2>Criterion 2: Broad Cognitive Range</h2>
+
+    <h3>What the Coiners Probably Meant</h3>
+
+    <p>AGI should be able to do many cognitive tasks, not just one. The contrast with "narrow AI" is central. The paradigm case of narrow AI in 2002 was Deep Blue: it could play chess brilliantly but couldn't write a poem or explain quantum mechanics.<sup class="ref"><a href="#fn15" id="ref15">[15]</a></sup></p>
+
+    <h3>Task-Type Diversity</h3>
+
+    <p><strong>Measure:</strong> Number of distinct cognitive task categories performed at human-competent level.</p>
+
+    <p><strong>Reference categories:</strong> Language understanding, language generation, mathematical reasoning, logical reasoning, coding/programming, scientific Q&A, creative writing, translation, summarization, instruction-following, multi-step planning, classification, extraction, dialogue.</p>
+
+    <p><strong>Reference values:</strong></p>
+    <ul>
+        <li>MMLU benchmark: 57 subject areas<sup class="ref"><a href="#fn16" id="ref16">[16]</a></sup></li>
+        <li>BIG-Bench: 204 tasks<sup class="ref"><a href="#fn17" id="ref17">[17]</a></sup></li>
+        <li>Human competence: Thousands of task types</li>
+    </ul>
+
+    <p><strong>Threshold:</strong> Competent performance (≥50th percentile human) across ≥10 cognitively distinct task categories.</p>
+
+    <p><strong>Assessment:</strong> Frontier LLMs demonstrate competence across all 14 reference categories listed above. Performance is not uniform—stronger on language tasks, more variable on mathematical reasoning—but breadth is clearly established.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option selected">☒ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h3>Modality Coverage</h3>
+
+    <p><strong>Measure:</strong> Can the system handle multiple input/output modalities?</p>
+
+    <p><strong>Reference modalities:</strong> Text, images, audio, video, code, structured data.</p>
+
+    <p><strong>Reference values:</strong></p>
+    <ul>
+        <li>GPT-4V, Gemini, Claude 3+: Text, image input; text, code output</li>
+        <li>Some models: Audio input/output</li>
+        <li>Most models: Limited or no video processing</li>
+    </ul>
+
+    <p><strong>Threshold:</strong> Competent performance in ≥3 modalities with cross-modal integration.</p>
+
+    <p><strong>Assessment:</strong> Frontier multimodal models handle text, images, and code competently. Audio capabilities vary. Video remains limited. Cross-modal integration exists but is not fully balanced.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option selected">☒ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h2>Criterion 3: Human-Level Competence</h2>
+
+    <h3>What the Coiners Probably Meant</h3>
+
+    <p>The system should perform at a level "comparable to competent humans"—not necessarily experts, but not novices either. Voss's definition specifies "any cognitive task that a competent human can" perform.<sup class="ref"><a href="#fn18" id="ref18">[18]</a></sup></p>
+
+    <h3>General Knowledge</h3>
+
+    <p><strong>Measure:</strong> Factual knowledge across domains.</p>
+
+    <p><strong>Primary benchmark:</strong> MMLU (Massive Multitask Language Understanding)—57 subjects from elementary to professional level.<sup class="ref"><a href="#fn19" id="ref19">[19]</a></sup></p>
+
+    <p><strong>Reference values:</strong></p>
+    <ul>
+        <li>Human expert ceiling: ~89.8%<sup class="ref"><a href="#fn20" id="ref20">[20]</a></sup></li>
+        <li>Average educated human: ~35–70% depending on subject</li>
+        <li>Frontier LLMs (2025): 88–91%</li>
+    </ul>
+
+    <p><strong>Threshold:</strong> ≥85% MMLU accuracy.</p>
+
+    <p><strong>Assessment:</strong> Frontier models exceed 85% and approach human expert ceiling.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option selected">☒ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h3>Reasoning</h3>
+
+    <p><strong>Measure:</strong> Performance on expert-level reasoning tasks.</p>
+
+    <p><strong>Primary benchmark:</strong> GPQA-Diamond (graduate-level science questions designed to be difficult for non-experts).<sup class="ref"><a href="#fn21" id="ref21">[21]</a></sup></p>
+
+    <p><strong>Reference values:</strong></p>
+    <ul>
+        <li>Domain PhD experts: ~65%<sup class="ref"><a href="#fn22" id="ref22">[22]</a></sup></li>
+        <li>Non-expert humans: ~25–35%</li>
+        <li>Frontier LLMs (2025): 84–92%</li>
+    </ul>
+
+    <p><strong>Threshold:</strong> ≥65% (human expert level).</p>
+
+    <p><strong>Assessment:</strong> Frontier models exceed human expert performance on GPQA-Diamond.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option selected">☒ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h3>Practical Task Completion</h3>
+
+    <p><strong>Measure:</strong> Performance on real-world professional tasks.</p>
+
+    <p><strong>Primary benchmark:</strong> SWE-Bench Verified (real GitHub issues requiring code changes).<sup class="ref"><a href="#fn23" id="ref23">[23]</a></sup></p>
+
+    <p><strong>Reference values:</strong></p>
+    <ul>
+        <li>Entry-level software engineer: ~70% (estimated) [CITATION NEEDED: rigorous human baseline]</li>
+        <li>Claude Opus 4.5: ~81%</li>
+        <li>Frontier models: 70–81%</li>
+    </ul>
+
+    <p><strong>Threshold:</strong> ≥70% on SWE-Bench Verified.</p>
+
+    <p><strong>Assessment:</strong> Multiple frontier models exceed threshold.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option selected">☒ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h3>Common Sense and Everyday Reasoning</h3>
+
+    <p><strong>Measure:</strong> Performance on everyday reasoning tasks.</p>
+
+    <p><strong>Primary benchmarks:</strong> HellaSwag, WinoGrande, ARC-Easy/Challenge.<sup class="ref"><a href="#fn24" id="ref24">[24]</a></sup></p>
+
+    <p><strong>Reference values:</strong></p>
+    <ul>
+        <li>Human performance: ~95%+ on most common-sense benchmarks</li>
+        <li>Frontier LLMs: 90–98% on standard benchmarks</li>
+    </ul>
+
+    <p><strong>Threshold:</strong> ≥90% on common-sense benchmarks.</p>
+
+    <p><strong>Assessment:</strong> Formal benchmarks largely passed. Real-world common sense remains more variable—surprising failures occur.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option selected">☒ 100% — Clearly meets criterion</div>
+    </div>
+
+    <p>(On benchmarks; real-world performance arguably 50%)</p>
+
+    <h2>Criterion 4: Transfer and Generalization</h2>
+
+    <h3>What the Coiners Probably Meant</h3>
+
+    <p>AGI should be able to apply knowledge learned in one domain to problems in another. This is perhaps the core of "generality." Goertzel's "Core AGI Hypothesis" emphasizes that general intelligence is qualitatively different from narrow intelligence—not just broader, but capable of genuine transfer.<sup class="ref"><a href="#fn25" id="ref25">[25]</a></sup></p>
+
+    <h3>Cross-Domain Transfer</h3>
+
+    <p><strong>Measure:</strong> Application of concepts from one domain to problems in another.</p>
+
+    <p><strong>Reference values:</strong></p>
+    <ul>
+        <li>Webb et al. (2023): Frontier LLMs show analogical reasoning "at a level comparable to human performance"<sup class="ref"><a href="#fn26" id="ref26">[26]</a></sup></li>
+        <li>Various studies: LLMs also show brittleness to surface-level changes<sup class="ref"><a href="#fn27" id="ref27">[27]</a></sup></li>
+    </ul>
+
+    <p><strong>Threshold:</strong> Consistent analogical reasoning across domains; robust to surface-level changes.</p>
+
+    <p><strong>Assessment:</strong> Analogical reasoning present but inconsistent. Transfer works for some domain pairs but not others. Brittleness to problem framing remains.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option selected">☒ 50% — Contested</div>
+        <div class="option">☐ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h3>Novel Problem-Solving</h3>
+
+    <p><strong>Measure:</strong> Performance on problems genuinely unlike training data.</p>
+
+    <p><strong>Primary benchmark:</strong> ARC-AGI (Abstraction and Reasoning Corpus)—explicitly designed to test skill-acquisition efficiency on novel problems.<sup class="ref"><a href="#fn28" id="ref28">[28]</a></sup></p>
+
+    <p><strong>Reference values:</strong></p>
+    <ul>
+        <li>Humans: ~73–85% on ARC-AGI-1<sup class="ref"><a href="#fn29" id="ref29">[29]</a></sup></li>
+        <li>Best AI (late 2024): ~55% on private set</li>
+        <li>OpenAI o3 (high compute): ~87.5%<sup class="ref"><a href="#fn30" id="ref30">[30]</a></sup></li>
+        <li>AI on ARC-AGI-2 (2025): Single-digit percentages<sup class="ref"><a href="#fn31" id="ref31">[31]</a></sup></li>
+    </ul>
+
+    <p><strong>Threshold:</strong> ≥75% ARC-AGI-1 (human average).</p>
+
+    <p><strong>Assessment:</strong> o3 crossed the threshold on ARC-AGI-1, but ARC-AGI-2 remains largely unsolved. Whether high-compute solutions represent genuine skill acquisition or brute-force search is contested.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option selected">☒ 50% — Contested</div>
+        <div class="option">☐ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h3>Learning Efficiency</h3>
+
+    <p><strong>Measure:</strong> Examples needed to learn a new task.</p>
+
+    <p><strong>Reference values:</strong></p>
+    <ul>
+        <li>Humans: Can often learn genuinely new skills from 1–3 examples plus explanation [CITATION NEEDED: systematic comparison]</li>
+        <li>LLMs: Few-shot learning works for tasks similar to training; genuinely novel tasks require extensive prompting or fine-tuning</li>
+    </ul>
+
+    <p><strong>Threshold:</strong> Can learn genuinely new task types from ≤10 examples.</p>
+
+    <p><strong>Assessment:</strong> In-context learning is impressive but primarily works for tasks within the training distribution. Genuinely novel task types remain challenging.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option selected">☒ 50% — Contested</div>
+        <div class="option">☐ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h2>Criterion 5: Architectural Stability</h2>
+
+    <h3>What the Coiners Probably Meant</h3>
+
+    <p>The same system should handle diverse tasks without needing to be fundamentally reprogrammed or retrained for each one. This is the "foundation model" paradigm avant la lettre.<sup class="ref"><a href="#fn32" id="ref32">[32]</a></sup></p>
+
+    <h3>No Task-Specific Retraining</h3>
+
+    <p><strong>Measure:</strong> Can the system handle new task types without weight updates?</p>
+
+    <p><strong>Reference values:</strong></p>
+    <ul>
+        <li>Pre-foundation era: Separate training required for each task</li>
+        <li>Current frontier models: Handle hundreds of task types via prompting alone</li>
+    </ul>
+
+    <p><strong>Threshold:</strong> Can handle ≥100 distinct task types without retraining.</p>
+
+    <p><strong>Assessment:</strong> Frontier LLMs handle diverse tasks via prompting. Novel tasks handled competently without weight updates.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option selected">☒ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h3>Graceful Capability Extension</h3>
+
+    <p><strong>Measure:</strong> Can new capabilities be added without degrading existing ones?</p>
+
+    <p><strong>Reference values:</strong></p>
+    <ul>
+        <li>"Catastrophic forgetting" problem: Fine-tuning can degrade existing capabilities<sup class="ref"><a href="#fn33" id="ref33">[33]</a></sup></li>
+        <li>Tool use: Allows capability extension without weight changes</li>
+        <li>Model updates: New versions may improve some capabilities while degrading others</li>
+    </ul>
+
+    <p><strong>Threshold:</strong> New capabilities can be added without significant degradation of existing capabilities.</p>
+
+    <p><strong>Assessment:</strong> Tool use allows graceful extension. Fine-tuning risks forgetting. Continuous learning without catastrophic forgetting remains unsolved.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option selected">☒ 50% — Contested</div>
+        <div class="option">☐ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h2>Summary: The Reinvention Benchmark</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Criterion</th>
+                <th>Subcriterion</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1. Single System</td>
+                <td>1.1 Architectural unity</td>
+                <td>100%</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>1.2 Memory continuity</td>
+                <td>50%</td>
+            </tr>
+            <tr class="criterion-average">
+                <td></td>
+                <td><strong>Criterion average</strong></td>
+                <td><strong>75%</strong></td>
+            </tr>
+            <tr>
+                <td>2. Broad Cognitive Range</td>
+                <td>2.1 Task-type diversity</td>
+                <td>100%</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>2.2 Modality coverage</td>
+                <td>100%</td>
+            </tr>
+            <tr class="criterion-average">
+                <td></td>
+                <td><strong>Criterion average</strong></td>
+                <td><strong>100%</strong></td>
+            </tr>
+            <tr>
+                <td>3. Human-Level Competence</td>
+                <td>3.1 General knowledge</td>
+                <td>100%</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>3.2 Reasoning</td>
+                <td>100%</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>3.3 Practical task completion</td>
+                <td>100%</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>3.4 Common sense</td>
+                <td>100%</td>
+            </tr>
+            <tr class="criterion-average">
+                <td></td>
+                <td><strong>Criterion average</strong></td>
+                <td><strong>100%</strong></td>
+            </tr>
+            <tr>
+                <td>4. Transfer & Generalization</td>
+                <td>4.1 Cross-domain transfer</td>
+                <td>50%</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>4.2 Novel problem-solving</td>
+                <td>50%</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>4.3 Learning efficiency</td>
+                <td>50%</td>
+            </tr>
+            <tr class="criterion-average">
+                <td></td>
+                <td><strong>Criterion average</strong></td>
+                <td><strong>50%</strong></td>
+            </tr>
+            <tr>
+                <td>5. Architectural Stability</td>
+                <td>5.1 No task-specific retraining</td>
+                <td>100%</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>5.2 Graceful capability extension</td>
+                <td>50%</td>
+            </tr>
+            <tr class="criterion-average">
+                <td></td>
+                <td><strong>Criterion average</strong></td>
+                <td><strong>75%</strong></td>
+            </tr>
+            <tr class="overall-score">
+                <td colspan="2"><strong>Overall Reinvention Benchmark Score</strong></td>
+                <td><strong>80%</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Interpretation</h2>
+
+    <h3>What Frontier AI Clearly Achieves (100%)</h3>
+
+    <ul>
+        <li>Architectural unity (single model handles diverse tasks)</li>
+        <li>Broad cognitive range (many task types)</li>
+        <li>Human-level competence on formal benchmarks</li>
+        <li>Multimodal capability</li>
+        <li>No task-specific retraining required</li>
+    </ul>
+
+    <h3>What Remains Contested (50%)</h3>
+
+    <ul>
+        <li>Memory continuity across sessions</li>
+        <li>Cross-domain transfer and analogical reasoning</li>
+        <li>Novel problem-solving (ARC-AGI-2 unsolved)</li>
+        <li>Learning efficiency on genuinely new tasks</li>
+        <li>Graceful capability extension without forgetting</li>
+    </ul>
+
+    <h3>What Is Clearly Not Achieved (0%)</h3>
+
+    <p>No subcriteria score 0% for frontier models. However, several 50% scores reflect generous interpretation of ambiguous evidence—particularly on transfer and generalization.</p>
+
+    <h2>The Verdict (Provisional)</h2>
+
+    <p>The 2002 implicit definition describes a system that:</p>
+    <ul>
+        <li>Is a single unified system <span class="check">✓</span> (clearly met)</li>
+        <li>Handles broad cognitive tasks <span class="check">✓</span> (clearly met)</li>
+        <li>Performs at human-competent level <span class="check">✓</span> (on benchmarks)</li>
+        <li>Transfers knowledge across domains <span class="tilde">~</span> (inconsistent)</li>
+        <li>Handles novel problems <span class="tilde">~</span> (some progress, ARC-AGI-2 unsolved)</li>
+        <li>Is architecturally stable <span class="tilde">~</span> (mostly, but forgetting remains)</li>
+    </ul>
+
+    <p>At 80%, <strong>current frontier AI substantially meets the 2002 implicit definition</strong>—if we interpret "generality" as the contrast with narrow, single-task systems that motivated the term's coinage.</p>
+
+    <p>The coiners were distinguishing general from narrow. By that distinction, systems that can converse, reason, code, analyze images, and adapt to new prompts without retraining are clearly on the "general" side of the line. Deep Blue could not write a poem. Claude can.</p>
+
+    <p>However, this interpretation may be too generous. If the coiners meant not just "broader than narrow" but "genuinely flexible in the way human cognition is flexible," then the 50% scores on transfer and generalization matter more. The inability to solve ARC-AGI-2, the brittleness to surface changes, the lack of true online learning—these suggest that something important about generality remains unachieved.</p>
+
+    <p>We do not attempt to speak for the coiners. Legg, Goertzel, and Voss are alive and have publicly commented on whether current LLMs constitute AGI. Their views vary.<sup class="ref"><a href="#fn34" id="ref34">[34]</a></sup></p>
+
+    <h3>Comparison with Gubrud (1997)</h3>
+
+    <p>The Gubrud benchmark (Chapter 1) yielded 66%; the Reinvention benchmark yields 80%. The difference reflects their different emphases: Gubrud specified brain-parity and industrial/military usability; the 2002 coiners emphasized the general/narrow distinction without setting as specific a capability bar.</p>
+
+    <p>A system could satisfy the 2002 definition (being "general" rather than "narrow") while falling short of Gubrud's requirement for brain-parity complexity or essentially any industrial application.</p>
+
+    <h2>Methodological Notes</h2>
+
+    <p>This evaluation uses an intentionally coarse scoring system (0%/50%/100%) and unweighted criteria. This is a deliberate choice.</p>
+
+    <p><strong>Why only three scores?</strong> Finer gradations would imply precision we do not have. A score of 65% versus 70% would suggest a confidence in measurement that no current benchmark supports. The three-point scale forces honesty: either the evidence clearly supports a claim (100%), clearly refutes it (0%), or the matter is genuinely contested (50%).</p>
+
+    <p><strong>Why no weighting?</strong> Differential weighting would require judgments about the coiners' priorities that we cannot make with confidence. Did Legg consider "architectural unity" more important than "transfer"? Did Goertzel prioritize "broad cognitive range" over "learning efficiency"? Their writings do not say. We could guess, but we would rather be honestly approximate than precisely wrong.</p>
+
+    <p><strong>The reconstruction problem.</strong> Unlike Gubrud's explicit definition, the 2002 benchmark is reconstructed from subsequent writings and interviews. The coiners did not write a specification; they named a direction. Our operationalization—extracting five criteria from scattered sources—is itself contestable. Different readers might extract different criteria or weight them differently.</p>
+
+    <p><strong>The goal is accuracy at the expense of precision.</strong> This is a roughly hewn outline of a model. Readers are invited to argue about specifics, tweaks, weights, and operationalizations.</p>
+
+    <h2>Citation Gaps and Requests for Collaboration</h2>
+
+    <p>The following claims would benefit from stronger sourcing:</p>
+
+    <ul>
+        <li>Rigorous human baseline on SWE-Bench Verified</li>
+        <li>Systematic comparison of human vs. LLM sample efficiency on genuinely novel tasks</li>
+        <li>Documentation of the 2002 email exchange (if accessible)</li>
+        <li>Peter Voss's earliest published articulation of the AGI definition</li>
+        <li>Systematic benchmarks for cross-domain transfer in LLMs</li>
+        <li>Quantified brittleness to surface-level changes across models</li>
+    </ul>
+
+    <p>If you can fill any of these gaps, please contribute.</p>
+
+    <div class="endnotes">
+        <h2>Notes</h2>
+        <ol>
+            <li id="fn1">AI Assistance Disclosure: Research, drafting, and analysis were conducted with the assistance of Claude (Anthropic, 2025). The author provided editorial direction and final approval. <a href="#ref1" class="backlink">↩</a></li>
+            <li id="fn2">Goertzel, Ben. "Waking Up from the Economy of Dreams." April 2001. <a href="https://www.goertzel.org/benzine/WakingUp.htm">https://www.goertzel.org/benzine/WakingUp.htm</a> <a href="#ref2" class="backlink">↩</a></li>
+            <li id="fn3">Goertzel quoted in Christian Science Monitor, 1998. See also: Heaven, Will Douglas. "Artificial general intelligence: Are we close, and does it even make sense to try?" <em>MIT Technology Review</em>, October 15, 2020. <a href="https://www.technologyreview.com/2020/10/15/1010461/artificial-general-intelligence-robots-ai-agi-deepmind-google-openai/">https://www.technologyreview.com/2020/10/15/1010461/artificial-general-intelligence-robots-ai-agi-deepmind-google-openai/</a> <a href="#ref3" class="backlink">↩</a></li>
+            <li id="fn4">Goertzel, Ben. "Artificial General Intelligence: Concept, State of the Art, and Future Prospects." <em>Journal of Artificial General Intelligence</em> 5, no. 1 (2014): 1–48. <a href="https://doi.org/10.2478/jagi-2014-0001">https://doi.org/10.2478/jagi-2014-0001</a> <a href="#ref4" class="backlink">↩</a></li>
+            <li id="fn5">"AGI kind of has a ring to it as an acronym." Legg quoted in Heaven 2020, op. cit. <a href="#ref5" class="backlink">↩</a></li>
+            <li id="fn6">Voss, Peter. "What is (Real) AGI?" <em>Peter's Substack</em>, March 30, 2024 (originally 2017). <a href="https://petervoss.substack.com/p/what-is-real-agi">https://petervoss.substack.com/p/what-is-real-agi</a> <a href="#ref6" class="backlink">↩</a></li>
+            <li id="fn7">Goertzel 2014, op. cit. <a href="#ref7" class="backlink">↩</a></li>
+            <li id="fn8">36kr.com, "He Invented Trillion-Worth AGI but Now Is Down and Out," 2025. <a href="https://eu.36kr.com/en/p/3539380848504965">https://eu.36kr.com/en/p/3539380848504965</a> <a href="#ref8" class="backlink">↩</a></li>
+            <li id="fn9">Goertzel 2014, op. cit. <a href="#ref9" class="backlink">↩</a></li>
+            <li id="fn10">Voss 2024, op. cit. <a href="#ref10" class="backlink">↩</a></li>
+            <li id="fn11">Legg, Shane. Discussion of "one-algorithm" vs. "one-brain" distinction, as reported in Heaven, Will Douglas. "Artificial general intelligence: Are we close, and does it even make sense to try?" <em>MIT Technology Review</em>, October 15, 2020. <a href="https://www.technologyreview.com/2020/10/15/1010461/artificial-general-intelligence-robots-ai-agi-deepmind-google-openai/">https://www.technologyreview.com/2020/10/15/1010461/artificial-general-intelligence-robots-ai-agi-deepmind-google-openai/</a> <a href="#ref11" class="backlink">↩</a></li>
+            <li id="fn12">McCarthy, John, Marvin L. Minsky, Nathaniel Rochester, and Claude E. Shannon. "A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence, August 31, 1955." <em>AI Magazine</em> 27, no. 4 (2006): 12. <a href="https://doi.org/10.1609/aimag.v27i4.1904">https://doi.org/10.1609/aimag.v27i4.1904</a> <a href="#ref12" class="backlink">↩</a></li>
+            <li id="fn13">Searle, John. "Minds, Brains and Programs." <em>Behavioral and Brain Sciences</em> 3, no. 3 (1980): 417–457. <a href="https://doi.org/10.1017/S0140525X00005756">https://doi.org/10.1017/S0140525X00005756</a> <a href="#ref13" class="backlink">↩</a></li>
+            <li id="fn14">Legg "one-brain" framing, see note 11. <a href="#ref14" class="backlink">↩</a></li>
+            <li id="fn15">Deep Blue defeated Kasparov in 1997 but had no capabilities outside chess. <a href="#ref15" class="backlink">↩</a></li>
+            <li id="fn16">Hendrycks, Dan, et al. "Measuring Massive Multitask Language Understanding." arXiv:2009.03300, 2020. <a href="https://arxiv.org/abs/2009.03300">https://arxiv.org/abs/2009.03300</a> <a href="#ref16" class="backlink">↩</a></li>
+            <li id="fn17">Srivastava, Aarohi, et al. "Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models." arXiv:2206.04615, 2022. <a href="https://arxiv.org/abs/2206.04615">https://arxiv.org/abs/2206.04615</a> <a href="#ref17" class="backlink">↩</a></li>
+            <li id="fn18">Voss 2024, op. cit. <a href="#ref18" class="backlink">↩</a></li>
+            <li id="fn19">Hendrycks et al. 2020, op. cit. <a href="#ref19" class="backlink">↩</a></li>
+            <li id="fn20">Gema, Aryo Pradipta, et al. "We Need to Talk about MMLU: The Importance of Studying Benchmark Errors." arXiv:2406.04127, 2024. <a href="https://arxiv.org/abs/2406.04127">https://arxiv.org/abs/2406.04127</a> <a href="#ref20" class="backlink">↩</a></li>
+            <li id="fn21">Rein, David, et al. "GPQA: A Graduate-Level Google-Proof Q&A Benchmark." arXiv:2311.12022, 2023. <a href="https://arxiv.org/abs/2311.12022">https://arxiv.org/abs/2311.12022</a> <a href="#ref21" class="backlink">↩</a></li>
+            <li id="fn22">GPQA paper reports ~65% expert validator accuracy. <a href="#ref22" class="backlink">↩</a></li>
+            <li id="fn23">Jimenez, Carlos E., et al. "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?" arXiv:2310.06770, 2023. <a href="https://arxiv.org/abs/2310.06770">https://arxiv.org/abs/2310.06770</a> <a href="#ref23" class="backlink">↩</a></li>
+            <li id="fn24">See benchmark compilations at Hugging Face and Papers With Code. <a href="https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard">https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard</a> <a href="#ref24" class="backlink">↩</a></li>
+            <li id="fn25">Goertzel 2014, op. cit. <a href="#ref25" class="backlink">↩</a></li>
+            <li id="fn26">Webb, Taylor, et al. "Emergent analogical reasoning in large language models." <em>Nature Human Behaviour</em> 7 (2023): 1526–1541. <a href="https://doi.org/10.1038/s41562-023-01659-w">https://doi.org/10.1038/s41562-023-01659-w</a> <a href="#ref26" class="backlink">↩</a></li>
+            <li id="fn27">McCoy, Tom, Ellie Pavlick, and Tal Linzen. "Right for the Wrong Reasons: Diagnosing Syntactic Heuristics in Natural Language Inference." ACL 2019. <a href="https://aclanthology.org/P19-1334/">https://aclanthology.org/P19-1334/</a> <a href="#ref27" class="backlink">↩</a></li>
+            <li id="fn28">Chollet, François. "On the Measure of Intelligence." arXiv:1911.01547, 2019. <a href="https://arxiv.org/abs/1911.01547">https://arxiv.org/abs/1911.01547</a> <a href="#ref28" class="backlink">↩</a></li>
+            <li id="fn29">Johnson, Aaditya, et al. "Testing ARC on Humans: A Large-Scale Assessment." NYU, 2024. <a href="https://lab42.global/arc-agi-benchmark-human-study/">https://lab42.global/arc-agi-benchmark-human-study/</a> <a href="#ref29" class="backlink">↩</a></li>
+            <li id="fn30">OpenAI. "Introducing o3." December 2024. <a href="https://openai.com/index/deliberative-alignment/">https://openai.com/index/deliberative-alignment/</a> <a href="#ref30" class="backlink">↩</a></li>
+            <li id="fn31">ARC-AGI-2 released early 2025; top scores remain single-digit percentages. <a href="https://arcprize.org/">https://arcprize.org/</a> <a href="#ref31" class="backlink">↩</a></li>
+            <li id="fn32">Bommasani, Rishi, et al. "On the Opportunities and Risks of Foundation Models." arXiv:2108.07258, 2021. <a href="https://arxiv.org/abs/2108.07258">https://arxiv.org/abs/2108.07258</a> <a href="#ref32" class="backlink">↩</a></li>
+            <li id="fn33">McCloskey, Michael, and Neal J. Cohen. "Catastrophic Interference in Connectionist Networks: The Sequential Learning Problem." <em>Psychology of Learning and Motivation</em> 24 (1989): 109–165. <a href="https://doi.org/10.1016/S0079-7421(08)60536-8">https://doi.org/10.1016/S0079-7421(08)60536-8</a> <a href="#ref33" class="backlink">↩</a></li>
+            <li id="fn34">Legg (DeepMind), Goertzel (SingularityNET), and Voss (Aigo.ai) have varied public positions. See interviews and public statements from each. <a href="#ref34" class="backlink">↩</a></li>
+        </ol>
+    </div>
+
+    <p style="margin-top: 3em; font-size: 0.9em; color: var(--text-light); border-top: 1px solid var(--border); padding-top: 1.5em;">
+        Document version 0.1 — December 25, 2025<br>
+        © 2025 Dakota Schuck. Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+    </p>
+</article>
