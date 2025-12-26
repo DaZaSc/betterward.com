@@ -1,0 +1,608 @@
+---
+layout: default
+title: "Chapter 6: The Synthesis Benchmark (2023)"
+---
+
+<article class="benchmark-chapter">
+
+<header>
+    <h1>Chapter 6: The Synthesis Benchmark (2023)</h1>
+    <p class="subtitle">Morris et al. and the "Levels of AGI" Framework</p>
+    <p class="author">Dakota Schuck</p>
+    <p class="affiliation">Independent Researcher</p>
+    <p class="date">December 2025</p>
+    <p class="download"><a href="chapter6-synthesis-benchmark_schuck.pdf">Download PDF version</a></p>
+</header>
+
+<nav class="toc">
+    <h2>Contents</h2>
+    <ol>
+        <li><a href="#preface">Preface: Methodology</a></li>
+        <li><a href="#introduction">Introduction: The Co-Founder's Return</a></li>
+        <li><a href="#framework">The Framework</a></li>
+        <li><a href="#operationalization">Operationalization</a></li>
+        <li><a href="#criterion-1">Criterion 1: Performance Level</a></li>
+        <li><a href="#criterion-2">Criterion 2: Generality</a></li>
+        <li><a href="#criterion-3">Criterion 3: Autonomy Level</a></li>
+        <li><a href="#criterion-4">Criterion 4: Metacognition</a></li>
+        <li><a href="#summary">Summary: The Synthesis Benchmark</a></li>
+        <li><a href="#interpretation">Interpretation</a></li>
+        <li><a href="#verdict">The Verdict (Provisional)</a></li>
+        <li><a href="#methodological-notes">Methodological Notes</a></li>
+        <li><a href="#citation-gaps">Citation Gaps and Requests for Collaboration</a></li>
+        <li><a href="#notes">Notes</a></li>
+    </ol>
+</nav>
+
+<section id="preface">
+    <h2>Preface: Methodology</h2>
+    
+    <p>This chapter <em>departs</em> from the methodology established in Chapter 1. For good reason.</p>
+    
+    <p>The previous five chapters evaluated historical AGI definitions using a trichotomous scoring system: 0% (criterion unmet), 50% (partially met), or 100% (fully met). This approach worked because those definitions proposed <em>thresholds</em>—binary or near-binary conditions that a system either satisfies or fails to satisfy.</p>
+    
+    <p>The Morris et al. framework is different. It proposes not a threshold but a <em>taxonomy</em>—a graduated classification system with multiple levels of capability, generality, and autonomy. The question is not "Does the system meet the bar?" but "Where does the system fall on each dimension?"</p>
+    
+    <p>Forcing this taxonomy into our trichotomous scoring would distort the very thing we are evaluating. It would be like asking "What percentage of a thermometer is mercury?"—a category error that mistakes the measuring instrument for the thing being measured.</p>
+    
+    <p>This chapter therefore evaluates Claude 3.5 Sonnet <em>according to the framework's own logic</em>: by assigning level classifications rather than percentage scores. This is not methodological inconsistency but methodological fidelity: we treat each historical definition according to its own logic, even when that logic differs from our default approach.</p>
+    
+    <p>Readers seeking a single percentage for cross-chapter comparison will find a discussion in the Methodological Notes section at the end.</p>
+</section>
+
+<section id="introduction">
+    <h2>Introduction: The Co-Founder's Return</h2>
+    
+    <p>In November 2023, a team of researchers at Google DeepMind published "Levels of AGI: Operationalizing Progress on the Path to AGI."<sup><a href="#fn1" id="ref1">[1]</a></sup> The lead author was Meredith Ringel Morris, a principal scientist at DeepMind. But the paper's significance came partly from its third author: Shane Legg.</p>
+    
+    <p>Legg, as readers of Chapter 2 will recall, co-founded DeepMind in 2010 after completing a PhD thesis that attempted to formalize universal intelligence. His 2007 paper with Marcus Hutter, evaluated in Chapter 3, proposed a mathematical definition of machine intelligence grounded in algorithmic information theory. Now, sixteen years later, he was returning to the definitional question—this time with institutional backing, co-authors, and a different approach entirely.</p>
+    
+    <p>The 2023 paper explicitly positions itself as a synthesis. Its title echoes the "levels" framing that had become common in autonomous vehicle research (SAE Levels 0–5). Its content draws on decades of prior work, including definitions we have already examined. The authors cite Legg and Hutter's 2007 formalization, Chollet's 2019 critique of benchmark-based evaluation, and numerous other attempts to pin down what "AGI" means.</p>
+    
+    <p>But the Morris et al. paper does something none of its predecessors attempted: it proposes a <em>two-dimensional</em> taxonomy. Rather than defining AGI as a single threshold, it distinguishes between <em>levels of performance</em> (how capable is the system?) and <em>levels of generality</em> (how broadly capable is it?). A system might be "Expert" at narrow tasks or "Competent" at general ones—and these represent different positions in the taxonomy, not different degrees of the same thing.</p>
+    
+    <p>The paper also introduces a third dimension—<em>autonomy</em>—though the authors treat this as orthogonal to the performance/generality matrix. And it proposes six principles for any adequate AGI definition, offering what amounts to a meta-framework for evaluating frameworks.</p>
+    
+    <p>This is, in short, the most sophisticated attempt at AGI definition we have examined. It is also the most recent, published just two years before this evaluation. Where Gubrud in 1997 could only speculate about what advanced AI might look like, Morris et al. write with full knowledge of large language models, multimodal systems, and the capabilities that have emerged since 2020.</p>
+    
+    <p>The question is whether this sophistication translates into evaluative clarity. Does the "Levels of AGI" framework tell us something meaningful about where current systems stand? Or does its complexity obscure rather than illuminate?</p>
+</section>
+
+<section id="framework">
+    <h2>The Framework</h2>
+    
+    <h3>Performance Levels</h3>
+    
+    <p>The framework proposes five levels of AI performance, explicitly benchmarked against human capabilities:</p>
+    
+    <ul>
+        <li><strong>Level 0 (No AI):</strong> Narrow computer programs with no learning or adaptive behavior.</li>
+        <li><strong>Level 1 (Emerging):</strong> Equal to or somewhat better than an unskilled human.</li>
+        <li><strong>Level 2 (Competent):</strong> At least 50th percentile of skilled adults.</li>
+        <li><strong>Level 3 (Expert):</strong> At least 90th percentile of skilled adults.</li>
+        <li><strong>Level 4 (Virtuoso):</strong> At least 99th percentile of skilled adults.</li>
+        <li><strong>Level 5 (Superhuman):</strong> Outperforms 100% of humans.</li>
+    </ul>
+    
+    <p>The crucial phrase is "skilled adults." The framework does not compare AI systems to the general population but to people who have specifically trained in the relevant domain. A system that writes better than most people but worse than professional writers would be Emerging or Competent, not Expert.</p>
+    
+    <h3>Generality Categories</h3>
+    
+    <p>Orthogonal to performance levels, the framework distinguishes between:</p>
+    
+    <ul>
+        <li><strong>Narrow AI:</strong> Systems that perform well on a specific task or limited set of tasks.</li>
+        <li><strong>General AI:</strong> Systems that perform well across a wide range of non-physical tasks.</li>
+    </ul>
+    
+    <p>The authors acknowledge that "general" is itself vague. They propose that generality should be assessed against "the range of tasks humans care about" while noting that this range evolves over time and varies across cultures.</p>
+    
+    <h3>Autonomy Levels</h3>
+    
+    <p>A third dimension, treated as separate from the performance/generality matrix:</p>
+    
+    <ul>
+        <li><strong>Level 0:</strong> No AI involvement.</li>
+        <li><strong>Level 1:</strong> AI as a <em>tool</em>, fully controlled by humans.</li>
+        <li><strong>Level 2:</strong> AI as a <em>consultant</em>, providing recommendations humans can accept or reject.</li>
+        <li><strong>Level 3:</strong> AI as a <em>collaborator</em>, working alongside humans as a peer.</li>
+        <li><strong>Level 4:</strong> AI as an <em>expert</em>, leading while humans assist or supervise.</li>
+        <li><strong>Level 5:</strong> <em>Autonomous agent</em>, operating independently without human oversight.</li>
+    </ul>
+    
+    <p>The authors emphasize that higher autonomy is not inherently better. Some tasks may be best served by AI-as-tool; others might benefit from AI-as-collaborator. The appropriate autonomy level depends on the stakes, the domain, and the reliability of the system.</p>
+    
+    <h3>The Six Principles</h3>
+    
+    <p>Before proposing their taxonomy, Morris et al. articulate six principles that any AGI definition should satisfy:</p>
+    
+    <ol>
+        <li><strong>Focus on capabilities, not processes:</strong> AGI should be defined by what a system can <em>do</em>, not by how it does it.</li>
+        <li><strong>Focus on generality and performance:</strong> Both dimensions matter; neither alone is sufficient.</li>
+        <li><strong>Focus on cognitive and metacognitive tasks:</strong> Physical embodiment should not be required.</li>
+        <li><strong>Focus on potential, not deployment:</strong> A system capable of general intelligence counts as AGI even if not deployed.</li>
+        <li><strong>Focus on ecological validity:</strong> Benchmarks should reflect real-world value, not artificial test performance.</li>
+        <li><strong>Focus on the path, not just the destination:</strong> A good framework should illuminate progress, not just arrival.</li>
+    </ol>
+    
+    <p>These principles function as meta-criteria. They tell us not what AGI <em>is</em> but what a good <em>definition</em> of AGI should look like. The Morris et al. framework then attempts to satisfy its own principles.</p>
+    
+    <h3>Context</h3>
+    
+    <p>The framework emerged from a specific institutional context. Google DeepMind—formed in 2023 from the merger of Google Brain and DeepMind—had commercial reasons to clarify AGI terminology. The company's stated mission involves "solving intelligence," and its founding charter references AGI explicitly.<sup><a href="#fn2" id="ref2">[2]</a></sup></p>
+    
+    <p>This context matters for interpretation. The framework's emphasis on "levels" rather than thresholds allows DeepMind to claim progress toward AGI without claiming arrival. A company can announce "Level 2 General AI" as a milestone without the controversy that would attend a declaration of AGI achievement.</p>
+    
+    <p>This is not to impugn the authors' motives. The framework may be intellectually sound regardless of institutional incentives. But we should note that the "levels" framing serves certain rhetorical purposes that a binary threshold would not.</p>
+</section>
+
+<section id="operationalization">
+    <h2>Operationalization</h2>
+    
+    <p>For this evaluation, I decompose the Morris et al. framework into four primary criteria:</p>
+    
+    <ol>
+        <li><strong>Performance Level:</strong> Where does Claude 3.5 Sonnet fall on the Level 0–5 scale?</li>
+        <li><strong>Generality:</strong> Is the system Narrow or General?</li>
+        <li><strong>Autonomy Level:</strong> Where does the system fall on the autonomy scale?</li>
+        <li><strong>Metacognition:</strong> Does the system demonstrate metacognitive capabilities?<sup><a href="#fn3" id="ref3">[3]</a></sup></li>
+    </ol>
+    
+    <p>The fourth criterion—metacognition—appears throughout the Morris et al. paper as a recurring theme, though it is not formally integrated into the levels taxonomy. The authors suggest that metacognitive abilities (knowing what one knows, recognizing uncertainty, learning how to learn) may be especially important for general intelligence. I treat it as a distinct criterion to ensure it receives explicit attention.</p>
+    
+    <p>Unlike previous chapters, I will not assign percentage scores. Instead, I will assign level classifications where the framework provides them, and qualitative assessments where it does not.</p>
+</section>
+
+<section id="criterion-1">
+    <h2>Criterion 1: Performance Level</h2>
+    
+    <p>The framework asks: at what percentile of skilled human adults does the system perform?</p>
+    
+    <p>This question admits no single answer. Claude 3.5 Sonnet's performance varies dramatically across domains. On some tasks, it approaches or exceeds expert human performance; on others, it falls short of competent amateurs.</p>
+    
+    <h3>Evidence for Expert (Level 3) Performance</h3>
+    
+    <p>On standardized academic benchmarks, Claude 3.5 Sonnet performs at or above the 90th percentile of human test-takers:</p>
+    
+    <ul>
+        <li>MMLU (Massive Multitask Language Understanding): 88.7%, placing it among top human performers on graduate-level questions across 57 subjects.<sup><a href="#fn4" id="ref4">[4]</a></sup></li>
+        <li>HumanEval (code generation): 92.0%, exceeding the performance of most professional programmers on standard coding tasks.<sup><a href="#fn5" id="ref5">[5]</a></sup></li>
+        <li>GPQA (graduate-level science): Performance competitive with PhD students in relevant fields.<sup><a href="#fn6" id="ref6">[6]</a></sup></li>
+    </ul>
+    
+    <p>These benchmarks are designed to be difficult for humans. Scoring in the 90th percentile or above suggests Level 3 (Expert) performance—at least on the specific tasks these benchmarks measure.</p>
+    
+    <h3>Evidence for Competent (Level 2) Performance</h3>
+    
+    <p>On tasks requiring sustained real-world execution, performance drops:</p>
+    
+    <ul>
+        <li>SWE-bench (real software engineering): 49.0% on the standard version, meaning the system successfully resolves roughly half of real GitHub issues.<sup><a href="#fn7" id="ref7">[7]</a></sup> This suggests competence but not expertise in practical software engineering.</li>
+        <li>Extended writing: While sentence-level prose is fluent, longer documents often exhibit structural problems, repetition, or loss of coherence that skilled human writers would avoid.<sup><a href="#fn8" id="ref8">[8]</a></sup></li>
+        <li>Complex reasoning chains: Multi-step mathematical proofs or logical arguments show higher error rates than expert humans, though performance has improved significantly.<sup><a href="#fn9" id="ref9">[9]</a></sup></li>
+    </ul>
+    
+    <h3>Evidence for Emerging (Level 1) Performance</h3>
+    
+    <p>Some capabilities remain at or below unskilled human level:</p>
+    
+    <ul>
+        <li>Physical reasoning: Tasks requiring intuitive physics or spatial manipulation.<sup><a href="#fn10" id="ref10">[10]</a></sup></li>
+        <li>Genuinely novel problem-solving: When problems cannot be solved by pattern-matching to training data, performance degrades significantly.<sup><a href="#fn11" id="ref11">[11]</a></sup></li>
+        <li>Consistent factual accuracy: While improving, the system still produces confident assertions that are simply false—a failure mode rare in skilled human experts.<sup><a href="#fn12" id="ref12">[12]</a></sup></li>
+    </ul>
+    
+    <h3>Synthesis</h3>
+    
+    <p>The Morris et al. framework explicitly acknowledges that systems may be "jagged"—performing at different levels across different tasks. Claude 3.5 Sonnet exemplifies this jaggedness. It is plausibly Expert on some narrowly-defined tasks, Competent on many real-world applications, and Emerging on others.</p>
+    
+    <p><strong>Level Classification:</strong> Variable—predominantly Level 2 (Competent) with Level 3 (Expert) performance on specific benchmarks and Level 1 (Emerging) performance on tasks requiring physical reasoning or truly novel problem-solving.</p>
+    
+    <div class="score-box">
+        <p class="label">Level Classification:</p>
+        <p class="option">☐ Level 1 (Emerging) — Equal to unskilled human</p>
+        <p class="option selected">☒ Level 2 (Competent) — 50th percentile of skilled adults</p>
+        <p class="option">☐ Level 3 (Expert) — 90th percentile of skilled adults</p>
+        <p class="option">☐ Level 4 (Virtuoso) — 99th percentile of skilled adults</p>
+        <p class="option">☐ Level 5 (Superhuman) — Outperforms all humans</p>
+    </div>
+    
+    <p>The "Competent" classification reflects an <em>overall</em> assessment. On its best tasks, Claude 3.5 Sonnet approaches Expert. On its worst, it falls to Emerging. The median lies somewhere around the 50th percentile of skilled adults—hence, Competent.</p>
+</section>
+
+<section id="criterion-2">
+    <h2>Criterion 2: Generality</h2>
+    
+    <p>The framework's second dimension asks: is the system Narrow or General?</p>
+    
+    <p>Morris et al. define "general" AI as systems that "can accomplish a wide variety of tasks, including the ability to learn new skills."<sup><a href="#fn13" id="ref13">[13]</a></sup> This is deliberately vague—"wide variety" and "new skills" resist precise quantification.</p>
+    
+    <h3>Evidence for General</h3>
+    
+    <p>Claude 3.5 Sonnet demonstrates capability across an extraordinary range of tasks:</p>
+    
+    <ul>
+        <li>Natural language understanding and generation in multiple languages</li>
+        <li>Code generation across dozens of programming languages</li>
+        <li>Mathematical reasoning from arithmetic to graduate-level proofs</li>
+        <li>Scientific explanation across physics, chemistry, biology, and more</li>
+        <li>Creative writing in multiple genres and styles</li>
+        <li>Analysis of images, documents, and data</li>
+        <li>Conversational assistance, tutoring, and explanation</li>
+        <li>Summarization, translation, and information extraction</li>
+    </ul>
+    
+    <p>No previous AI system has demonstrated competence across this range. By any reasonable interpretation of "wide variety," Claude 3.5 Sonnet qualifies.</p>
+    
+    <h3>Evidence Against</h3>
+    
+    <p>Two caveats merit attention:</p>
+    
+    <p>First, the system has no physical embodiment. It cannot manipulate objects, navigate environments, or learn from sensorimotor experience. The Morris et al. framework explicitly excludes physical tasks from the generality requirement ("Focus on cognitive and metacognitive tasks"), but this exclusion is contestable. Some theorists argue that embodied interaction is essential to genuine general intelligence.<sup><a href="#fn14" id="ref14">[14]</a></sup></p>
+    
+    <p>Second, the system's apparent generality may reflect the breadth of its training data rather than true task-generality. It can discuss topics that appeared in its training corpus; it struggles with topics that did not. Whether this constitutes "learning new skills" or merely "retrieving relevant training" is philosophically contested.<sup><a href="#fn15" id="ref15">[15]</a></sup></p>
+    
+    <h3>Synthesis</h3>
+    
+    <p>Accepting the Morris et al. framework's own criteria—which focus on cognitive tasks and do not require embodiment—Claude 3.5 Sonnet qualifies as General rather than Narrow.</p>
+    
+    <div class="score-box">
+        <p class="label">Level Classification:</p>
+        <p class="option">☐ Narrow AI</p>
+        <p class="option selected">☒ General AI</p>
+    </div>
+    
+    <p>This classification should not be confused with claiming that Claude 3.5 Sonnet is "AGI" in the popular sense. General in the Morris et al. taxonomy refers only to breadth of capability, not to the combination of breadth and depth that popular usage often implies.</p>
+</section>
+
+<section id="criterion-3">
+    <h2>Criterion 3: Autonomy Level</h2>
+    
+    <p>The framework's autonomy dimension asks: how independently can the system operate?</p>
+    
+    <p>This question is partly about capability and partly about deployment. A system might be <em>capable</em> of autonomous operation but <em>deployed</em> in a human-supervised mode. Morris et al. focus on the deployment context rather than raw capability, since autonomy without appropriate safeguards poses risks.</p>
+    
+    <h3>Current Deployment</h3>
+    
+    <p>In its standard deployment (as accessed through Anthropic's API or consumer interface), Claude 3.5 Sonnet operates primarily at Level 2 (AI as Consultant):</p>
+    
+    <ul>
+        <li>Users pose questions or requests</li>
+        <li>The system generates responses or recommendations</li>
+        <li>Users decide whether to accept, modify, or reject the output</li>
+        <li>The system does not take autonomous action in the world</li>
+    </ul>
+    
+    <p>This is a deliberate design choice. Anthropic has not deployed Claude in configurations that would allow autonomous action—no ability to send emails, execute code on external systems, or make purchases without explicit human authorization.</p>
+    
+    <h3>Agentic Deployments</h3>
+    
+    <p>However, Claude 3.5 Sonnet can be deployed in "agentic" configurations where it operates with greater autonomy:</p>
+    
+    <ul>
+        <li>Claude can use a computer interface to navigate websites, write and execute code, and manipulate files—with human oversight but without per-action approval.<sup><a href="#fn16" id="ref16">[16]</a></sup></li>
+        <li>Third-party developers have integrated Claude into systems with varying degrees of autonomy, from code assistants to research agents.</li>
+    </ul>
+    
+    <p>In these configurations, the system operates closer to Level 3 (AI as Collaborator) or even Level 4 (AI as Expert), though typically with human supervision and the ability to intervene.</p>
+    
+    <h3>Synthesis</h3>
+    
+    <p>The autonomy classification depends heavily on deployment context. In Anthropic's consumer-facing deployment, Level 2 is most accurate. In agentic configurations with computer use, Level 3–4 is more appropriate.</p>
+    
+    <p><strong>Level Classification:</strong> Level 2–3 (Consultant to Collaborator), depending on deployment configuration.</p>
+    
+    <div class="score-box">
+        <p class="label">Level Classification:</p>
+        <p class="option">☐ Level 1 — AI as Tool</p>
+        <p class="option">☐ Level 2 — AI as Consultant</p>
+        <p class="option selected">☒ Level 3–4 — AI as Collaborator/Expert</p>
+        <p class="option">☐ Level 5 — Autonomous Agent</p>
+    </div>
+    
+    <p>The system is not deployed as a fully autonomous agent (Level 5). Whether it <em>could</em> operate at Level 5 is a separate question about capability; the framework focuses on deployment reality.</p>
+</section>
+
+<section id="criterion-4">
+    <h2>Criterion 4: Metacognition</h2>
+    
+    <p>Morris et al. emphasize metacognition—knowing what one knows, recognizing uncertainty, and learning how to learn—as potentially important for general intelligence. This dimension is not formally integrated into their levels taxonomy, but it appears throughout their discussion as a marker of sophisticated cognition.</p>
+    
+    <h3>Evidence of Metacognitive Capabilities</h3>
+    
+    <p>Claude 3.5 Sonnet demonstrates several metacognitive behaviors:</p>
+    
+    <ul>
+        <li><strong>Uncertainty expression:</strong> The system can express calibrated uncertainty, saying "I'm not sure" or "this is speculative" when appropriate—though calibration is imperfect.<sup><a href="#fn17" id="ref17">[17]</a></sup></li>
+        <li><strong>Self-correction:</strong> When errors are pointed out, the system can recognize and correct them, sometimes identifying the source of the error.</li>
+        <li><strong>Explanation of reasoning:</strong> The system can articulate its reasoning process, though whether this reflects genuine introspection or post-hoc rationalization is debated.</li>
+        <li><strong>Recognition of limitations:</strong> The system can identify types of tasks it cannot perform well, such as accessing real-time information or performing physical manipulation.</li>
+    </ul>
+    
+    <h3>Limitations</h3>
+    
+    <p>The metacognitive capabilities have clear limits:</p>
+    
+    <ul>
+        <li><strong>Hallucination:</strong> The system sometimes produces confident falsehoods without recognizing its own uncertainty—a metacognitive failure.<sup><a href="#fn18" id="ref18">[18]</a></sup></li>
+        <li><strong>Limited self-knowledge:</strong> The system cannot reliably predict its own performance on novel tasks.</li>
+        <li><strong>No persistent learning:</strong> The system cannot improve its own capabilities through interaction; each conversation starts fresh.</li>
+    </ul>
+    
+    <h3>Synthesis</h3>
+    
+    <p>Claude 3.5 Sonnet demonstrates metacognitive capabilities that exceed earlier AI systems but fall short of robust human metacognition. The system can express uncertainty and recognize some limitations, but it also fails in ways that skilled humans would not—particularly in producing confident errors without recognizing its own uncertainty.</p>
+    
+    <p><strong>Metacognitive Assessment:</strong> Partial—present but unreliable.</p>
+</section>
+
+<section id="summary">
+    <h2>Summary: The Synthesis Benchmark</h2>
+    
+    <table class="summary-table">
+        <thead>
+            <tr>
+                <th>Criterion</th>
+                <th>Assessment</th>
+                <th>Classification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3"><strong>1. Performance Level</strong></td>
+            </tr>
+            <tr>
+                <td>— Benchmarks</td>
+                <td>90th+ percentile on multiple professional benchmarks</td>
+                <td>Level 3 (Expert)</td>
+            </tr>
+            <tr>
+                <td>— Real-world work</td>
+                <td>~50% success on complex software engineering tasks</td>
+                <td>Level 2 (Competent)</td>
+            </tr>
+            <tr>
+                <td>— Unevenness</td>
+                <td>Expert on some tasks; Emerging on others</td>
+                <td>Variable</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><strong>Overall Performance</strong></td>
+                <td><strong>Level 2–3</strong></td>
+            </tr>
+            <tr>
+                <td colspan="3"><strong>2. Generality</strong></td>
+            </tr>
+            <tr>
+                <td>— Breadth</td>
+                <td>Competent across wide range of cognitive tasks</td>
+                <td>General</td>
+            </tr>
+            <tr>
+                <td>— Embodiment</td>
+                <td>No physical capability (excluded by framework)</td>
+                <td>N/A</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><strong>Overall Generality</strong></td>
+                <td><strong>General</strong></td>
+            </tr>
+            <tr>
+                <td colspan="3"><strong>3. Autonomy Level</strong></td>
+            </tr>
+            <tr>
+                <td>— Consumer deployment</td>
+                <td>Responds to user prompts, no autonomous action</td>
+                <td>Level 2 (Consultant)</td>
+            </tr>
+            <tr>
+                <td>— Agentic deployment</td>
+                <td>Can operate with supervision, takes multi-step actions</td>
+                <td>Level 3–4</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><strong>Overall Autonomy</strong></td>
+                <td><strong>Level 2–3</strong></td>
+            </tr>
+            <tr>
+                <td colspan="3"><strong>4. Metacognition</strong></td>
+            </tr>
+            <tr>
+                <td>— Uncertainty expression</td>
+                <td>Present but imperfectly calibrated</td>
+                <td>Partial</td>
+            </tr>
+            <tr>
+                <td>— Self-correction</td>
+                <td>Can correct when errors identified</td>
+                <td>Demonstrated</td>
+            </tr>
+            <tr>
+                <td>— Hallucination</td>
+                <td>Still produces confident errors</td>
+                <td>Limitation</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><strong>Overall Metacognition</strong></td>
+                <td><strong>Partial</strong></td>
+            </tr>
+            <tr class="total-row">
+                <td><strong>Framework Classification</strong></td>
+                <td></td>
+                <td><strong>Competent AGI (approaching Expert)</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="interpretation">
+    <h2>Interpretation</h2>
+    
+    <p>Under the Morris et al. framework, Claude 3.5 Sonnet classifies as <strong>Competent General AI</strong>—a system that performs at roughly the 50th percentile of skilled adults across a wide range of cognitive tasks, with Expert-level performance on some specific benchmarks.</p>
+    
+    <p>This classification places Claude 3.5 Sonnet above "Emerging AGI" (where systems perform at unskilled human level across general tasks) but below "Expert AGI" (where systems would perform at the 90th percentile across general tasks).</p>
+    
+    <p>The framework's graduated approach captures something that binary definitions miss: the jaggedness of current AI capabilities. Claude 3.5 Sonnet is not uniformly intelligent or uniformly limited. It is expert at some things, competent at many, and novice at others—a profile that resists summary as either "AGI" or "not AGI."</p>
+    
+    <h3>The Autonomy Question</h3>
+    
+    <p>The autonomy dimension introduces complications. The Morris et al. framework treats autonomy as orthogonal to performance and generality, but the three dimensions interact in practice. A system that is Expert and General but deployed only as a Tool (Level 1) might not raise the same concerns as one deployed as an Autonomous Agent (Level 5).</p>
+    
+    <p>Claude 3.5 Sonnet is currently deployed at Autonomy Levels 2–3, with human oversight. This reflects both technical limitations (the system makes errors that require human correction) and deliberate design choices (Anthropic has not pursued maximally autonomous deployment). The framework correctly distinguishes between what a system <em>can</em> do and how it is <em>deployed</em>.</p>
+    
+    <h3>Metacognition and Reliability</h3>
+    
+    <p>The metacognition assessment—"Partial"—highlights perhaps the most important gap between current systems and robust general intelligence. A system that cannot reliably know what it knows is a system that cannot be fully trusted. Human experts can usually recognize when they are operating outside their competence; Claude 3.5 Sonnet sometimes cannot.</p>
+    
+    <p>This metacognitive limitation may be the most significant barrier to higher autonomy levels. A system deployed at Level 4 or 5 autonomy would need robust self-knowledge to avoid confident errors in high-stakes domains.</p>
+</section>
+
+<section id="verdict">
+    <h2>The Verdict (Provisional)</h2>
+    
+    <p>The Morris et al. "Levels of AGI" framework does not yield a binary verdict. It yields a position in a multi-dimensional taxonomy:</p>
+    
+    <ul>
+        <li><strong>Performance:</strong> Level 2 (Competent), approaching Level 3 (Expert)</li>
+        <li><strong>Generality:</strong> General (not Narrow)</li>
+        <li><strong>Autonomy:</strong> Level 2–3 (Consultant to Collaborator)</li>
+        <li><strong>Metacognition:</strong> Partial</li>
+    </ul>
+    
+    <p>In the framework's own terminology, this makes Claude 3.5 Sonnet a <strong>"Competent AGI"</strong>—or more precisely, a system at the Competent level with General capabilities, approaching but not yet reaching Expert status.</p>
+    
+    <p>Whether this counts as "AGI" depends on what one means by the term. If AGI requires Expert-level performance across all domains, the answer is no. If AGI means any system that is both General and at least Competent, the answer is yes. The Morris et al. framework deliberately avoids privileging one threshold over another, preferring to locate systems within the taxonomy rather than declaring binary arrival or non-arrival.</p>
+    
+    <p>This agnosticism is intellectually defensible but practically frustrating. It means the framework cannot definitively answer the question "Is this AGI?"—only the question "Where is this system in the space of possible intelligences?"</p>
+</section>
+
+<section id="methodological-notes">
+    <h2>Methodological Notes</h2>
+    
+    <p>Readers of previous chapters may want a percentage score for comparison. The honest answer: somewhere between 50% and 100%. We leave the precise calibration as an exercise for the reader.</p>
+    
+    <p>The challenge is that the Morris et al. framework does not propose a threshold. It proposes a taxonomy. To assign a percentage, one would need to:</p>
+    
+    <ol>
+        <li>Decide which level constitutes "AGI" (Level 2? Level 3? Level 4?)</li>
+        <li>Assess Claude 3.5 Sonnet against that threshold</li>
+        <li>Assign 0%, 50%, or 100% based on the assessment</li>
+    </ol>
+    
+    <p>This would be possible but arbitrary. If "AGI" means Level 2 General AI, Claude 3.5 Sonnet scores 100%. If it means Level 4 General AI, the score is closer to 50%. The framework itself does not privilege one interpretation over another.</p>
+    
+    <p>This methodological difference is itself informative. The Morris et al. framework represents a maturation in AGI discourse—a recognition that "AGI" may name a region in capability space rather than a single point. The inability to assign a simple percentage reflects this sophistication, not evaluative failure.</p>
+    
+    <h3>Comparison Table</h3>
+    
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>Benchmark</th>
+                <th>Year</th>
+                <th>Score/Classification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Gubrud</td>
+                <td>1997</td>
+                <td>66%</td>
+            </tr>
+            <tr>
+                <td>Reinvention (Legg/Goertzel/Voss)</td>
+                <td>2002</td>
+                <td>80%</td>
+            </tr>
+            <tr>
+                <td>Formalization (Legg &amp; Hutter)</td>
+                <td>2007</td>
+                <td>67%</td>
+            </tr>
+            <tr>
+                <td>Corporatization (OpenAI Charter)</td>
+                <td>2018</td>
+                <td>52%</td>
+            </tr>
+            <tr>
+                <td>Critique (Chollet)</td>
+                <td>2019</td>
+                <td>32%</td>
+            </tr>
+            <tr>
+                <td>Synthesis (Morris et al.)</td>
+                <td>2023</td>
+                <td>Competent AGI</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p>The final row's classification rather than percentage is intentional. It reflects the framework's own logic.</p>
+</section>
+
+<section id="citation-gaps">
+    <h2>Citation Gaps and Requests for Collaboration</h2>
+    
+    <p>The following assertions in this chapter would benefit from additional citations or expert review:</p>
+    
+    <ul>
+        <li>Specific benchmark scores for Claude 3.5 Sonnet (MMLU, HumanEval, GPQA, SWE-bench)—I have used figures available as of my knowledge cutoff but these may have been updated.</li>
+        <li>The characterization of Anthropic's deployment choices and their reasoning.</li>
+        <li>Claims about DeepMind's institutional context and motivations.</li>
+    </ul>
+    
+    <p>Researchers with access to more current data or insider knowledge of the relevant organizations are invited to suggest corrections or additions.</p>
+</section>
+
+<section id="notes" class="endnotes">
+    <h2>Notes</h2>
+    
+    <ol class="endnote-list">
+        <li id="fn1">Meredith Ringel Morris, Jascha Sohl-Dickstein, Noah Fiedel, Tris Warkentin, Allan Dafoe, Aleksandra Faust, Clement Farabet, and Shane Legg, "Levels of AGI: Operationalizing Progress on the Path to AGI," arXiv preprint arXiv:2311.02462 (2023). <a href="#ref1">↩</a></li>
+        
+        <li id="fn2">DeepMind's founding mission, articulated at its 2010 founding, centered on "solving intelligence." The merged entity, Google DeepMind, has continued this framing. <a href="#ref2">↩</a></li>
+        
+        <li id="fn3">Morris et al. discuss metacognition throughout their paper but do not include it as a formal dimension of their taxonomy. I elevate it to criterion status because it recurs so frequently in their discussion and because it connects to debates about AI reliability and alignment. <a href="#ref3">↩</a></li>
+        
+        <li id="fn4">MMLU (Massive Multitask Language Understanding) tests knowledge across 57 academic subjects. Claude 3.5 Sonnet's reported score of 88.7% places it among the highest-performing systems as of mid-2024. <a href="#ref4">↩</a></li>
+        
+        <li id="fn5">HumanEval is a benchmark of Python programming problems. A score of 92.0% indicates the system correctly solves the vast majority of problems on first attempt. <a href="#ref5">↩</a></li>
+        
+        <li id="fn6">GPQA (Graduate-Level Google-Proof Q&A) was specifically designed to test expert-level knowledge that cannot be easily looked up. Performance competitive with PhD students suggests Expert-level capability in these domains. <a href="#ref6">↩</a></li>
+        
+        <li id="fn7">SWE-bench tests ability to resolve real GitHub issues from open-source repositories. Unlike synthetic benchmarks, it requires understanding large codebases and producing functional patches. <a href="#ref7">↩</a></li>
+        
+        <li id="fn8">This assessment is based on extensive use of Claude 3.5 Sonnet for writing tasks, comparing outputs to human expert writing. The system excels at short-form content but shows limitations in long-form coherence. <a href="#ref8">↩</a></li>
+        
+        <li id="fn9">Multi-step reasoning improvements are visible in model-over-model comparisons. However, complex chains still show higher error rates than expert human reasoning. <a href="#ref9">↩</a></li>
+        
+        <li id="fn10">Physical reasoning limitations are well-documented in the AI research literature. See, for example, work on intuitive physics benchmarks. <a href="#ref10">↩</a></li>
+        
+        <li id="fn11">The distinction between pattern-matching to training data and genuine novel reasoning remains contentious. See Chapter 5's discussion of Chollet's ARC benchmark for extended treatment. <a href="#ref11">↩</a></li>
+        
+        <li id="fn12">"Hallucination"—the production of confident but false assertions—remains a significant limitation of large language models, though techniques for mitigation have improved. <a href="#ref12">↩</a></li>
+        
+        <li id="fn13">Morris et al., "Levels of AGI," p. 3. <a href="#ref13">↩</a></li>
+        
+        <li id="fn14">Arguments for embodiment as necessary for general intelligence draw on traditions in phenomenology, embodied cognition, and developmental robotics. The Morris et al. framework explicitly rejects this requirement. <a href="#ref14">↩</a></li>
+        
+        <li id="fn15">This question—whether large language models learn genuinely general capabilities or merely retrieve relevant training—is central to ongoing debates about LLM intelligence. See Chapters 3 and 5 for related discussion. <a href="#ref15">↩</a></li>
+        
+        <li id="fn16">Anthropic's "computer use" capability, released in beta for Claude 3.5 Sonnet, allows the system to control a computer interface to accomplish tasks. This represents a higher autonomy level than standard chat deployment. <a href="#ref16">↩</a></li>
+        
+        <li id="fn17">Calibration studies have shown that LLM confidence does not always track accuracy. Claude 3.5 Sonnet shows improved calibration over earlier models but remains imperfect. <a href="#ref17">↩</a></li>
+        
+        <li id="fn18">The relationship between hallucination and metacognition is worth noting: a system with perfect metacognition would recognize its own uncertainty and avoid confident falsehoods. The persistence of hallucination suggests metacognitive limitations. <a href="#ref18">↩</a></li>
+    </ol>
+</section>
+
+<footer class="version-footer">
+    <p>Version 1.0 · December 2025</p>
+    <p>The PDF version includes a blank scorecard for readers who wish to conduct their own evaluation.</p>
+</footer>
+
+</article>
