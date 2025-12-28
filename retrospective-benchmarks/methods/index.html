@@ -35,6 +35,24 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
         margin-top: 0.3em;
     }
 
+    /* PDF download link */
+    .download-link {
+        display: inline-block;
+        margin: 1.5em 0;
+        padding: 0.75em 1.5em;
+        background-color: var(--primary-accent);
+        color: white;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.95em;
+        border: none;
+        transition: background-color 0.2s ease;
+    }
+    .download-link:hover {
+        background-color: var(--hover-accent);
+        color: white;
+        border: none;
+    }
+
     /* Score boxes */
     .score-box {
         background-color: #f9f9f9;
@@ -170,6 +188,8 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
         <p class="author">Dakota Schuck</p>
         <p class="date">December 2025</p>
     </div>
+
+    <p><a href="Methods and Style Guide v1.2.pdf" class="download-link">Download PDF</a></p>
 
     <div class="abstract">
         <p class="abstract-label">Abstract</p>
