@@ -2,39 +2,108 @@
 layout: default
 title: Retrospective Benchmarks - Betterward
 ---
+<style>
+    .hub-header {
+        margin-bottom: 2em;
+        text-align: center;
+    }
+    .hub-header h2 {
+        font-weight: 300;
+        font-size: 1.8em;
+        margin-bottom: 0.5em;
+    }
+    .hub-intro {
+        font-size: 1.05em;
+        color: var(--text-medium);
+        margin-bottom: 2em;
+    }
+    
+    /* Part boxes */
+    .part-box {
+        border-left: 3px solid var(--primary-accent);
+        padding: 1.5em 2em;
+        margin: 2em 0;
+        background-color: #f9f9f9;
+    }
+    .part-box h3 {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 1.3em;
+        margin-top: 0;
+        margin-bottom: 0.3em;
+    }
+    .part-box .part-question {
+        font-style: italic;
+        color: var(--text-medium);
+        margin-bottom: 1em;
+    }
+    .part-box .part-description {
+        margin-bottom: 1em;
+    }
+    .part-box .part-links {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.95em;
+    }
+    .part-box .part-links a {
+        margin-right: 1.5em;
+    }
+    .part-box .exemplar {
+        color: var(--text-medium);
+    }
+    
+    /* Methods link section */
+    .methods-section {
+        margin: 3em 0;
+        padding: 1.5em 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+    }
+    .methods-section h3 {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 1.1em;
+        margin-bottom: 0.5em;
+    }
+    .methods-section p {
+        color: var(--text-medium);
+        margin-bottom: 0.5em;
+    }
+</style>
+
 <article class="page-content">
-    <h2 style="font-weight: 300;">Retrospective Benchmarks for Machine Intelligence</h2>
+    <div class="hub-header">
+        <h2>Retrospective Benchmarks for Machine Intelligence</h2>
+    </div>
     
-    <p class="section-intro">According to historical definitions of Artificial General Intelligence (AGI), have we achieved it?</p>
+    <p class="hub-intro">According to historical definitions of intelligence, mind, or thought—have we built it?</p>
     
-    <p>Six definitions, spanning 1997 to 2023, each treated as a testable specification. Each asked a different question about what machine intelligence would require. Each yields a different verdict when applied to frontier AI systems as of December 2025.</p>
+    <p>Each historical thinker who defined "intelligence" or "mind" or "soul" left us something like a specification. This project treats those texts as "unwitting benchmarks"—testable specifications their authors never intended as such. We operationalize the specification into criteria, evaluate current AI systems against those criteria, and report results.</p>
     
-    <nav class="gates">
-        <div class="gate-item">
-            <a href="/retrospective-benchmarks/chapter-1/" style="font-weight: 400;">Chapter 1: The Gubrud Benchmark (1997)</a>
-            <span>Does it rival the human brain in complexity and speed?</span>
-        </div>
-        <div class="gate-item">
-            <a href="/retrospective-benchmarks/chapter-2/" style="font-weight: 400;">Chapter 2: The Reinvention Benchmark (2002)</a>
-            <span>Can a single system handle broad cognitive tasks?</span>
-        </div>
-        <div class="gate-item">
-            <a href="/retrospective-benchmarks/chapter-3/" style="font-weight: 400;">Chapter 3: The Formalization Benchmark (2007)</a>
-            <span>Does it achieve goals and learn across environments?</span>
-        </div>
-        <div class="gate-item">
-            <a href="/retrospective-benchmarks/chapter-4/" style="font-weight: 400;">Chapter 4: The Corporatization Benchmark (2018)</a>
-            <span>Can it autonomously outperform humans at economically valuable work?</span>
-        </div>
-        <div class="gate-item">
-            <a href="/retrospective-benchmarks/chapter-5/" style="font-weight: 400;">Chapter 5: The Critique Benchmark (2019)</a>
-            <span>Does it efficiently acquire skills on genuinely novel tasks?</span>
-        </div>
-        <div class="gate-item">
-            <a href="/retrospective-benchmarks/chapter-6/" style="font-weight: 400;">Chapter 6: The Synthesis Benchmark (2023)</a>
-            <span>Where does it fall on the spectrum from emerging to superhuman?</span>
-        </div>
-    </nav>
+    <p>The findings: scores range from 32% to 100% depending on which definition is used. That spread is not measurement error—it is conceptual disagreement made visible.</p>
+
+    <div class="part-box">
+        <h3>Part I: The AGI Series</h3>
+        <p class="part-question">Did we meet their standard for AGI?</p>
+        <p class="part-description">Six definitions of Artificial General Intelligence, spanning 1997 to 2023. Each was explicitly trying to specify what machine intelligence would require. Each yields a different verdict when applied to frontier AI systems.</p>
+        <p class="part-links">
+            <a href="/retrospective-benchmarks/part-i/">All chapters →</a>
+            <span class="exemplar">Exemplar: <a href="/retrospective-benchmarks/part-i/chapter-1/">The Gubrud Benchmark (1997)</a></span>
+        </p>
+    </div>
+
+    <div class="part-box">
+        <h3>Part II: The Hunt for Anticipations</h3>
+        <p class="part-question">Would they recognize what we've built?</p>
+        <p class="part-description">Thinkers who had theories of mind without any concept of machines that might exhibit it. Aristotle's <em>nous</em>, Descartes' two tests, Lovelace's objection, Turing's imitation game. Standalone essays, titled by thinker and year.</p>
+        <p class="part-links">
+            <a href="/retrospective-benchmarks/part-ii/">All essays →</a>
+            <span class="exemplar">Exemplar: <a href="/retrospective-benchmarks/part-ii/turing/">Turing's Imitation Game (1950)</a></span>
+        </p>
+    </div>
+
+    <div class="methods-section">
+        <h3>Methods and Style Guide</h3>
+        <p>The methodology: three-point scoring, interpretation principles, scholarly tone, citation requirements. Everything needed to continue the project.</p>
+        <p><a href="/retrospective-benchmarks/methods/">Read the full methodology →</a></p>
+    </div>
     
     <p class="section-note">Evaluated December 2025. Working papers—comments welcome.</p>
 </article>
