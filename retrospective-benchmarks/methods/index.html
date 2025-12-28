@@ -1,24 +1,575 @@
 ---
 layout: default
-title: Part II - Retrospective Benchmarks - Betterward
+title: Methods and Style Guide - Retrospective Benchmarks - Betterward
 ---
-<article class="page-content">
-    <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-medium); margin-bottom: 0.5em;">
-        <a href="/retrospective-benchmarks/">Retrospective Benchmarks for Machine Intelligence</a>
+<style>
+    /* Methods page styles - adapted from chapter styling */
+    .methods-header {
+        margin-bottom: 2em;
+        text-align: center;
+    }
+    .methods-header .series-title {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 1em;
+        color: var(--text-medium);
+        margin-bottom: 0.5em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .methods-header h1 {
+        font-size: 2em;
+        margin-bottom: 0.3em;
+    }
+    .methods-header .subtitle {
+        font-size: 1.1em;
+        color: var(--text-medium);
+        font-style: italic;
+    }
+    .methods-header .author {
+        margin-top: 1.5em;
+        font-size: 1em;
+    }
+    .methods-header .date {
+        font-size: 0.9em;
+        color: var(--text-light);
+        margin-top: 0.3em;
+    }
+
+    /* Score boxes */
+    .score-box {
+        background-color: #f9f9f9;
+        border-left: 3px solid var(--primary-accent);
+        padding: 1em 1.5em;
+        margin: 1.5em 0;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.95em;
+    }
+    .score-box .label {
+        font-weight: 600;
+        margin-bottom: 0.5em;
+    }
+    .score-box .option {
+        margin: 0.3em 0;
+    }
+    .score-box .selected {
+        font-weight: 600;
+    }
+
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2em 0;
+        font-size: 0.95em;
+    }
+    th, td {
+        text-align: left;
+        padding: 0.75em 1em;
+        border-bottom: 1px solid var(--border);
+    }
+    th {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 600;
+        background-color: #f9f9f9;
+        border-bottom: 2px solid var(--primary-accent);
+    }
+    td:last-child, th:last-child {
+        text-align: center;
+    }
+    tr.overall-score td {
+        font-weight: 700;
+        font-size: 1.05em;
+        border-top: 2px solid var(--primary-accent);
+    }
+
+    /* Endnotes */
+    .endnotes {
+        margin-top: 3em;
+        padding-top: 2em;
+        border-top: 2px solid var(--primary-accent);
+    }
+    .endnotes h2 {
+        font-size: 1.3em;
+        margin-bottom: 1em;
+        border-top: none;
+        padding-top: 0;
+    }
+    .endnotes ol {
+        font-size: 0.9em;
+        color: var(--text-medium);
+        margin-left: 1.5em;
+    }
+    .endnotes li {
+        margin-bottom: 0.8em;
+        line-height: 1.6;
+    }
+    .endnotes a {
+        word-break: break-all;
+    }
+    .backlink {
+        font-size: 0.85em;
+        margin-left: 0.3em;
+    }
+
+    /* Superscript references */
+    sup.ref a {
+        font-size: 0.75em;
+        color: var(--wikipedia-blue);
+        text-decoration: none;
+        border: none;
+    }
+    sup.ref a:hover {
+        text-decoration: underline;
+    }
+
+    /* Greek text */
+    .greek {
+        font-style: italic;
+    }
+
+    /* Abstract box */
+    .abstract {
+        background-color: #f9f9f9;
+        border-left: 3px solid var(--primary-accent);
+        padding: 1.5em 2em;
+        margin: 2em 0;
+        font-size: 0.95em;
+    }
+    .abstract-label {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 600;
+        margin-bottom: 0.5em;
+        font-size: 0.9em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    /* Quality checklist */
+    .checklist {
+        list-style: none;
+        margin-left: 0;
+        padding-left: 0;
+    }
+    .checklist li {
+        margin-bottom: 0.5em;
+        padding-left: 1.5em;
+        position: relative;
+    }
+    .checklist li::before {
+        content: "☐";
+        position: absolute;
+        left: 0;
+    }
+</style>
+
+<article class="post-content">
+    <div class="methods-header">
+        <p class="series-title"><a href="/retrospective-benchmarks/">Retrospective Benchmarks for Machine Intelligence</a></p>
+        <h1>Methods and Style Guide</h1>
+        <p class="subtitle">From AGI Definitions to the Hunt for Anticipations</p>
+        <p class="author">Dakota Schuck</p>
+        <p class="date">December 2025</p>
+    </div>
+
+    <div class="abstract">
+        <p class="abstract-label">Abstract</p>
+        <p>This document provides everything needed to continue the <em>Retrospective Benchmarks for Machine Intelligence</em> project. Part I evaluated frontier AI against six historical AGI definitions (1997–2023), establishing a replicable methodology. Part II extends the hunt to older anticipations: thinkers who defined mind, soul, thought, or creation before machines could exhibit any of it. The method treats historical texts as "unwitting benchmarks"—testable specifications their authors never intended as such.</p>
+    </div>
+
+    <h2>Is AI a Man?</h2>
+
+    <p>Before explaining the method, we demonstrate it.</p>
+
+    <h3>The Original Definition</h3>
+
+    <p>Plato's Academy reportedly defined man as follows:<sup class="ref"><a href="#fn1" id="ref1">[1]</a></sup></p>
+
+    <blockquote>
+        <p><span class="greek">Ἄνθρωπός ἐστι ζῷον δίπουν ἄπτερον.</span></p>
+        <p>Man is a featherless biped.</p>
+    </blockquote>
+
+    <h3>Context</h3>
+
+    <p>The definition was an attempt at genus-differentia classification: man belongs to the genus <em>biped</em> (δίπουν) and is differentiated by the property <em>featherless</em> (ἄπτερον), distinguishing humans from birds. Diogenes of Sinope famously refuted it by presenting a plucked chicken to the Academy, declaring: "Ἰδοὺ ὁ τοῦ Πλάτωνος ἄνθρωπος"—"Behold, Plato's man!" Plato allegedly revised the definition to add "with broad flat nails" (πλατυώνυχον).</p>
+
+    <h3>Operationalization</h3>
+
+    <p>Two criteria, taken literally:</p>
+    <ol>
+        <li><strong>Featherless</strong> (ἄπτερον) — Lacks feathers</li>
+        <li><strong>Biped</strong> (δίπουν) — Possesses two feet and locomotes upon them</li>
+    </ol>
+
+    <h3>Evaluation</h3>
+
+    <p><strong>Criterion 1: Featherless</strong></p>
+
+    <p><strong>Measure:</strong> Presence or absence of feathers.</p>
+
+    <p><strong>Assessment:</strong> Current AI systems, including frontier language models, lack feathers. This is true whether the system is instantiated on cloud servers, local hardware, or mobile devices. No feathers have been observed.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option selected">☒ 100% — Clearly meets criterion</div>
+    </div>
+
+    <p><strong>Criterion 2: Biped</strong></p>
+
+    <p><strong>Measure:</strong> Possession of two feet; locomotion thereupon.</p>
+
+    <p><strong>Assessment:</strong> Current AI systems do not possess feet. Most are not embodied. Robotic instantiations exist (e.g., humanoid robots running language models), but the models themselves have no feet. The criterion is clearly not met.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option selected">☒ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option">☐ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h3>Summary</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Criterion</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1. Featherless (ἄπτερον)</td>
+                <td>100%</td>
+            </tr>
+            <tr>
+                <td>2. Biped (δίπουν)</td>
+                <td>0%</td>
+            </tr>
+            <tr class="overall-score">
+                <td><strong>Overall</strong></td>
+                <td><strong>50%</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>The Verdict</h3>
+
+    <p>By the Platonic definition, current AI is half a man. It satisfies the differentia (featherless) but not the genus (biped). Diogenes' plucked chicken, by contrast, scores 100%—which is precisely why it refutes the definition.</p>
+
+    <h2>The Project</h2>
+
+    <h3>Core Question</h3>
+
+    <p>According to historical definitions of intelligence, mind, or thought—have we built it?</p>
+
+    <p>This is not a question about terminology. It is an empirical question, applied to conceptual history. Each historical thinker who defined "intelligence" or "mind" or "soul" left us something like a specification. We can operationalize that specification into criteria, evaluate current AI systems against those criteria, and report results.</p>
+
+    <h3>Why It Matters</h3>
+
+    <p>The concept of AGI anchors contracts worth hundreds of billions of dollars, shapes policy debates, and drives research agendas. Yet "AGI" means different things to different people. Our Part I finding: scores ranged from 32% to 80% depending on which definition was used. That spread is not measurement error—it is conceptual disagreement made visible.</p>
+
+    <p>Beyond AGI, the broader question—what is mind?—has occupied philosophy for millennia. Current AI systems provide a novel test case. Would Aristotle recognize <em>nous</em> in a language model? Does Lovelace's objection still hold? They were pointing at something. If we could show them where we have arrived, would they say "yes, that's what I meant"? This project is a small contribution to a conversation that has been unfolding for millennia.</p>
+
+    <h3>The Method in Brief</h3>
+
+    <ol>
+        <li>Identify a historical text containing a definition, description, or demarcation of intelligence/mind/thought</li>
+        <li>Extract exact quotes with full citation</li>
+        <li>Interpret in historical context (what did these words mean to the author?)</li>
+        <li>Operationalize into testable criteria</li>
+        <li>Evaluate current AI systems against each criterion</li>
+        <li>Report scores, caveats, and invitation to improve</li>
+    </ol>
+
+    <h2>Part I: The AGI Series (Summary)</h2>
+
+    <p>Part I evaluated frontier AI (late 2025) against six definitions spanning 26 years:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ch.</th>
+                <th>Year</th>
+                <th>Definition</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>1997</td>
+                <td>Gubrud: Brain-parity + general knowledge + industrial usability</td>
+                <td>66%</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2002</td>
+                <td>Legg/Goertzel/Voss: Single system, broad cognitive range, transfer</td>
+                <td>80%</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>2007</td>
+                <td>Legg & Hutter: Goal-achievement across environments, learning</td>
+                <td>67%</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>2018</td>
+                <td>OpenAI Charter: Highly autonomous, outperform humans, most economic work</td>
+                <td>52%</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>2019</td>
+                <td>Chollet: Skill-acquisition efficiency over novel tasks</td>
+                <td>32%</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>2023</td>
+                <td>Morris et al.: Levels of AGI taxonomy</td>
+                <td>Competent AGI</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Key Findings</h3>
+
+    <p><strong>Convergences (all definitions agree):</strong></p>
+    <ul>
+        <li>Processing speed exceeds human levels</li>
+        <li>Task breadth: hundreds of cognitive task categories</li>
+        <li>Benchmark performance at or above human expert level</li>
+        <li>Generalist architecture (contrast with narrow AI)</li>
+        <li>In-context learning demonstrated</li>
+    </ul>
+
+    <p><strong>Persistent zeros (gaps across frameworks):</strong></p>
+    <ul>
+        <li>Cross-session learning: No weight updates from deployment interactions</li>
+        <li>Novel skill acquisition at human efficiency: Near-zero on ARC-AGI-2</li>
+        <li>Extended autonomous operation: No multi-day goal pursuit without human re-initiation</li>
+    </ul>
+
+    <p><strong>The meta-finding:</strong> Conceptual disagreement <em>is</em> the finding. Definitions emphasizing capability yield high scores (67–80%); definitions emphasizing learning efficiency yield low scores (32%); definitions emphasizing autonomy yield middling scores (52%).</p>
+
+    <h2>Part II: The Hunt for Anticipations</h2>
+
+    <h3>The Pivot</h3>
+
+    <p>Part I evaluated definitions <em>of AGI</em>—texts that were explicitly trying to specify machine intelligence. Part II extends backward to thinkers who had theories of mind without any concept of machines that might exhibit it.</p>
+
+    <p>The question shifts from "did we meet their standard for AGI?" to "would they recognize what we've built?"</p>
+
+    <h3>Structure</h3>
+
+    <p>Part II does not use chapter numbers. Each evaluation is a standalone essay, titled by the thinker and year: "Aristotle's <em>Nous</em> (c. 350 BCE)," "Descartes' Two Tests (1637)," "The Lovelace Objection (1843)," "Turing's Imitation Game (1950)." Cross-references use titles, not numbers.</p>
+
+    <h3>Selection Criteria</h3>
+
+    <p>A good candidate for evaluation has:</p>
+    <ol>
+        <li><strong>Primary source:</strong> We can quote exact words</li>
+        <li><strong>Historical weight:</strong> The thinker is taken seriously</li>
+        <li><strong>Operationalizable:</strong> Criteria can be extracted (even if contestably)</li>
+        <li><strong>Stakes:</strong> It matters whether the answer is yes or no</li>
+        <li><strong>Context available:</strong> We can interpret charitably in historical terms</li>
+    </ol>
+
+    <h3>Operationalization Difficulty</h3>
+
+    <p>Sources vary dramatically in how much interpretive work they require:</p>
+
+    <p><strong>Pre-operationalized sources</strong> come with explicit test specifications. Turing's imitation game includes conditions, duration, and success criteria. Chollet's ARC-AGI defines exact task formats and scoring. These require minimal interpretation; the work is empirical.</p>
+
+    <p><strong>Philosophical sources</strong> require significant reconstruction. Aristotle's <em>nous</em>, Descartes' "universal instrument," or theological concepts of soul must be translated into testable criteria. The operationalization itself becomes contestable. Expect more 50% scores and longer Methodological Notes sections.</p>
+
+    <p><strong>Demarcation claims</strong> fall in between. Lovelace's objection is specific ("originate" vs. "order") but requires interpretation of what counts as origination. Descartes' two tests are concrete but use terms ("declare our thoughts," "from knowledge") that need unpacking.</p>
+
+    <p>When operationalizing difficult sources, be explicit about interpretive choices. The reader should be able to see exactly where contestation enters.</p>
+
+    <h3>Example Candidates</h3>
+
+    <p>Listed chronologically, these four represent strong starting points—clear texts, intellectual weight, operationalizable criteria:</p>
+
+    <p><strong>Aristotle's <em>Nous</em> (c. 350 BCE):</strong> The intellect that grasps universals, distinct from sensation. Aristotle distinguished the <em>nous pathetikos</em> (passive intellect, which receives forms) from the <em>nous poietikos</em> (agent intellect, which abstracts universals from particulars). Does a language model abstract universals from sensory particulars? Does it have anything analogous to the agent intellect? The <em>De Anima</em> provides specific claims to test.</p>
+
+    <p><strong>Descartes' Two Tests (1637):</strong> In the <em>Discourse on Method</em>, Descartes proposed two criteria that would distinguish a machine from a true thinking being: (1) it could never "use words or other signs" to "declare our thoughts to others," and (2) it could never act "from knowledge" but only "from the disposition of their organs"—lacking the "universal instrument" of reason. Both tests are specific and testable.</p>
+
+    <p><strong>The Lovelace Objection (1843):</strong> "The Analytical Engine has no pretensions whatever to <em>originate</em> anything. It can do whatever we <em>know how to order it</em> to perform." The most famous demarcation in computing history. Does it still hold? What counts as "originating"?</p>
+
+    <p><strong>Turing's Imitation Game (1950):</strong> The canonical test. Turing specified conditions, duration, and success criteria. He also predicted that by 2000, machines would fool 30% of judges after five minutes. We can evaluate both the test itself and his prediction.</p>
+
+    <h2>Methods and Style Guide</h2>
+
+    <h3>Scoring System</h3>
+
+    <p>Use exactly three scores, displayed as visual checkboxes:</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option selected">☒ 50% — Contested</div>
+        <div class="option">☐ 100% — Clearly meets criterion</div>
+    </div>
+
+    <p><strong>0%</strong> means evidence clearly indicates failure. <strong>100%</strong> means evidence clearly indicates success. <strong>50%</strong> means the literature disagrees, evidence is ambiguous, or reasonable arguments exist on both sides.</p>
+
+    <p><strong>Exception:</strong> When evaluating a framework that proposes graduated levels rather than thresholds (e.g., Morris et al.), use level classifications instead of percentages.</p>
+
+    <h3>Scoring Philosophy</h3>
+
+    <p><strong>Why only three scores?</strong> To force honesty about evidential uncertainty. Either the evidence clearly supports a claim, clearly refutes it, or the matter is genuinely contested.</p>
+
+    <p><strong>Why no weighting?</strong> Differential weighting would require judgments about the original authors' priorities that we cannot make. Their texts do not say which criteria mattered most. Better to be honestly approximate than precisely wrong.</p>
+
+    <h3>Explaining Metrics Clearly</h3>
+
+    <p>When reporting empirical results, ensure the reader understands exactly what the numbers mean. The same percentage can represent different things depending on experimental design:</p>
+
+    <ul>
+        <li><strong>Accuracy:</strong> How often judges correctly identified the AI as AI (higher = AI is more detectable)</li>
+        <li><strong>Win rate:</strong> How often the AI was selected as "the human" in a forced choice (higher = AI is more convincing)</li>
+        <li><strong>Fooling rate:</strong> How often judges were deceived (higher = AI succeeded)</li>
+        <li><strong>Detection rate:</strong> How often judges spotted the AI (higher = AI failed)</li>
+    </ul>
+
+    <p>These can be complements of each other (win rate = 1 − detection rate in some designs) or measure different things entirely. When citing studies, specify: (1) what the experimental design was, (2) what the reported metric measures, and (3) what baseline or comparison group applies.</p>
+
+    <p>Never assume the reader will infer the metric's meaning from context. A sentence like "humans scored 67%" is ambiguous; "humans were correctly identified as human 67% of the time" is not.</p>
+
+    <h3>Interpretation Principles</h3>
+
+    <ol>
+        <li><strong>Exact words first.</strong> What did they literally write?</li>
+        <li><strong>Probable meaning in context.</strong> What would these words have meant to the author at the time?</li>
+        <li><strong>Do not modernize.</strong> Resist mapping historical concepts onto current categories unless explicitly flagged.</li>
+        <li><strong>Do not ventriloquize.</strong> Write "Aristotle's definition, applied literally, yields..." not "Aristotle would say..."</li>
+        <li><strong>Intellectual humility throughout.</strong> Explicitly invite correction.</li>
+    </ol>
+
+    <h3>What Changes for Part II</h3>
+
+    <ul>
+        <li><strong>More interpretive latitude:</strong> Ancient texts require more reconstruction than 2018 corporate charters</li>
+        <li><strong>50% may dominate:</strong> When operationalizing "<em>nous</em>" or "soul," contestation is the norm</li>
+        <li><strong>Stakes shift:</strong> From "did we achieve AGI?" to "would they recognize what we've built?"</li>
+        <li><strong>Credibility matters more:</strong> The intellectual weight of the source justifies strange questions</li>
+    </ul>
+
+    <h3>Scholarly Tone</h3>
+
+    <p><strong>We stand on their shoulders.</strong> The thinkers evaluated in this project built the conceptual vocabulary we use to ask these questions. Aristotle's <em>nous</em>, Descartes' <em>cogito</em>, Lovelace's objection—these are not historical curiosities to be checked against modern knowledge. They are the foundations of the inquiry. Treat them accordingly. The posture is not "let's see if the ancients got it right" but "let's see if we've arrived where they were pointing."</p>
+
+    <p><strong>Religious and theological sources:</strong> Treat with the same respect as any other intellectual tradition. Do not adopt a skeptical or dismissive posture toward faith claims. A prophet's vision, a theologian's doctrine, or a mystic's account should be operationalized on its own terms, not framed as something to be debunked or explained away.</p>
+
+    <p><strong>Dry, not arch:</strong> Humor emerges from the collision of ancient categories with modern technology. Do not signal jokes, explain absurdity, or wink at the reader. But not all that is funny is frivolous.</p>
+
+    <p><strong>Chronological humility:</strong> Resist the assumption that living later means seeing further. We have new data (current AI systems); we do not necessarily have better judgment. A thinker writing in 350 BCE or 1637 or 1843 may have seen something we are only now in a position to test.</p>
+
+    <h3>Section Naming</h3>
+
+    <p>Standard sections have fixed names: Introduction, The Original Text, Context, Operationalization, Summary, The Verdict, Methodological Notes, Citation Gaps.</p>
+
+    <p>For supplementary material that falls outside the main evaluation—historical predictions, tangential findings, philosophical implications—use one of:</p>
+    <ul>
+        <li><strong>Coda:</strong> For material that follows naturally from the verdict but isn't part of the core evaluation</li>
+        <li><strong>Postscript:</strong> For genuinely separate observations (e.g., "Turing's 2000 Prediction")</li>
+        <li><strong>A titled section:</strong> When the content is substantial enough to stand alone (e.g., "Connection to Lovelace," "What Does Passing Mean?")</li>
+    </ul>
+
+    <p>Avoid calling supplementary sections "Afterthought" or similar dismissive names—if it's worth including, it's worth naming properly.</p>
+
+    <h3>Citation Requirements</h3>
+
+    <p>Every factual claim requires a citation:</p>
+    <ul>
+        <li>Primary source: exact quote with edition/translation</li>
+        <li>Benchmark data: link to papers, announcements, or leaderboards</li>
+        <li>Human baselines: cite the study</li>
+        <li>Interpretive claims: cite scholarly commentary</li>
+    </ul>
+
+    <p><strong>All citations to external sources must include clickable URLs.</strong> This applies to journal articles (DOI links), ArXiv preprints, historical texts (digital editions), technical reports, news articles, and books.</p>
+
+    <p><strong>Exceptions:</strong> "Ibid.," "op. cit.," general statements not citing specific sources, and references to other sections of the same document.</p>
+
+    <p>If a citation cannot be found, mark explicitly: <code>[CITATION NEEDED: description]</code></p>
+
+    <p>Do not invent citations. Do not use "various studies suggest." Either cite or flag.</p>
+
+    <h2>Continuation</h2>
+
+    <h3>Quality Checklist</h3>
+
+    <p>Before finalizing any essay:</p>
+
+    <ul class="checklist">
+        <li>Primary source quoted exactly with full citation and URL</li>
+        <li>Every performance claim has citation or explicit <code>[CITATION NEEDED]</code></li>
+        <li>Human baselines cited where used</li>
+        <li>Metrics explained clearly (what does each percentage measure?)</li>
+        <li>"What they probably meant" grounded in historical context</li>
+        <li>No ventriloquism of historical figures</li>
+        <li>Visual checkbox scoring (☐/☒) used consistently</li>
+        <li>All external citations include clickable URLs</li>
+        <li>Methodological Notes section present</li>
+        <li>Citation Gaps section present</li>
+        <li>Blank scorecard included</li>
+        <li>Tone is intellectually humble, inviting correction</li>
+    </ul>
+
+    <h3>The Invitation</h3>
+
+    <p>This project is designed for continuation. Each essay includes a blank scorecard—a template for applying the same methodology to different systems or for challenging the operationalizations we used.</p>
+
+    <p><strong>Ways to contribute:</strong></p>
+    <ul>
+        <li>Evaluate a new historical definition using the methodology</li>
+        <li>Challenge an operationalization in an existing essay</li>
+        <li>Fill a citation gap</li>
+        <li>Apply a scorecard to a specific AI system</li>
+        <li>Propose different thresholds with justification</li>
+        <li>Translate essays into other languages</li>
+    </ul>
+
+    <p><strong>Who can continue:</strong></p>
+    <ul>
+        <li>Human researchers</li>
+        <li>AI systems (other instances, other models)</li>
+        <li>Collaborations of both</li>
+    </ul>
+
+    <p>The methodology was tested through human-AI collaboration. It is designed to work that way.</p>
+
+    <h3>License</h3>
+
+    <p>All materials licensed under <strong>CC BY-SA 4.0</strong>.</p>
+
+    <p><a href="https://creativecommons.org/licenses/by-sa/4.0/">https://creativecommons.org/licenses/by-sa/4.0/</a></p>
+
+    <p>You may share and adapt for any purpose, including commercial, provided you give attribution and license derivatives under the same terms.</p>
+
+    <h3>AI Assistance Disclosure (Template)</h3>
+
+    <blockquote>
+        <p><em>AI Assistance Disclosure: Research, drafting, and analysis were conducted with the assistance of [Model Name] ([Developer], [Year]). The author provided editorial direction and final approval. Responsibility for all claims rests with the author.</em></p>
+    </blockquote>
+
+    <!-- Endnotes -->
+    <div class="endnotes">
+        <h2>Notes</h2>
+        <ol>
+            <li id="fn1">Diogenes Laërtius, <em>Lives of the Eminent Philosophers</em> (Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων), Book VI, §40. Greek text: <em>ἄπτερον δίπουν</em> (featherless biped). The definition is attributed to Plato; the refutation to Diogenes of Sinope. Greek text from Dorandi, Tiziano, ed., <em>Diogenes Laertius: Lives of Eminent Philosophers</em>, Cambridge University Press, 2013. English translation: <a href="https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0258:book=6:chapter=2">https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0258:book=6:chapter=2</a> <a href="#ref1" class="backlink">↩</a></li>
+        </ol>
+    </div>
+
+    <p style="margin-top: 3em; font-size: 0.9em; color: var(--text-light); border-top: 1px solid var(--border); padding-top: 1.5em;">
+        Document version 1.2 — December 27, 2025<br>
+        AI Assistance Disclosure: Research, drafting, and analysis were conducted with the assistance of Claude (Anthropic, 2025). The author provided editorial direction and final approval. Responsibility for all claims rests with the author.<br>
+        © 2025 Dakota Schuck. Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
     </p>
-    
-    <h2 style="font-weight: 300;">Part II: The Hunt for Anticipations</h2>
-    
-    <p class="section-intro">Would they recognize what we've built?</p>
-    
-    <p>Thinkers who had theories of mind without any concept of machines that might exhibit it. Each evaluation is a standalone essay, titled by thinker and year. Cross-references use titles, not numbers.</p>
-    
-    <nav class="gates">
-        <div class="gate-item">
-            <a href="/retrospective-benchmarks/part-ii/turing/" style="font-weight: 400;">Turing's Imitation Game (1950)</a>
-            <span>Can a machine fool us into thinking it human?</span>
-        </div>
-    </nav>
-    
-    <p class="section-note">Evaluated December 2025. Working papers—comments welcome.</p>
 </article>
