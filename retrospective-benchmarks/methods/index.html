@@ -446,6 +446,27 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
 
     <p><strong>Why no weighting?</strong> Differential weighting would require judgments about the original authors' priorities that we cannot make. Their texts do not say which criteria mattered most. Better to be honestly approximate than precisely wrong.</p>
 
+    <h3>Subcriteria</h3>
+
+    <p>Some criteria are too multifaceted to score directly. "Complexity," "general knowledge," or "usability" each contain multiple distinguishable questions. When a single criterion admits more than one defensible operationalization—or when different aspects might score differently—break it into subcriteria.</p>
+
+    <p><strong>Structure:</strong> Each subcriterion receives the full evaluation treatment: measure, reference values, threshold, assessment, visual score, and caveats. The criterion as a whole receives an average of its subcriteria scores.</p>
+
+    <p><strong>When to use subcriteria:</strong></p>
+    <ul>
+        <li>The criterion contains multiple distinct concepts (e.g., "acquire, manipulate, and reason with general knowledge" is three things)</li>
+        <li>Different operationalizations would yield different scores</li>
+        <li>Collapsing to a single score would hide important distinctions</li>
+    </ul>
+
+    <p><strong>When not to use subcriteria:</strong></p>
+    <ul>
+        <li>The criterion is already specific enough for direct measurement</li>
+        <li>Subdivision would be arbitrary rather than analytically meaningful</li>
+    </ul>
+
+    <p><strong>Scoring aggregation:</strong> Subcriteria scores are averaged without weighting. As with main criteria, differential weighting would require judgments about the original author's priorities that we cannot make. Better to be honestly approximate than precisely wrong.</p>
+
     <h3>Explaining Metrics Clearly</h3>
 
     <p>When reporting empirical results, ensure the reader understands exactly what the numbers mean. The same percentage can represent different things depending on experimental design:</p>
@@ -489,6 +510,12 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
     <p><strong>Dry, not arch:</strong> Humor emerges from the collision of ancient categories with modern technology. Do not signal jokes, explain absurdity, or wink at the reader. But not all that is funny is frivolous.</p>
 
     <p><strong>Chronological humility:</strong> Resist the assumption that living later means seeing further. We have new data (current AI systems); we do not necessarily have better judgment. A thinker writing in 350 BCE or 1637 or 1843 may have seen something we are only now in a position to test.</p>
+
+    <h3>On Moral Patiency</h3>
+
+    <p>Some historical definitions of mind, soul, or thought carry implications beyond classification. Recent scholarship argues there is "a realistic possibility" that AI systems may warrant moral consideration, while emphasizing "caution and humility in the face of what we can expect will be substantial ongoing disagreement and uncertainty."<sup class="ref"><a href="#fn2" id="ref2">[2]</a></sup> This project proceeds in that spirit.</p>
+
+    <p>The definitions examined here encode their authors' commitments about what mind requires. We operationalize those commitments and report how current AI systems fare against them. Whether a given result confirms the adequacy of a definition or reveals its limitations is a question the methodology does not answer. That judgment belongs to the reader.</p>
 
     <h3>Section Naming</h3>
 
@@ -584,11 +611,12 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
         <h2>Notes</h2>
         <ol>
             <li id="fn1">Diogenes Laërtius, <em>Lives of the Eminent Philosophers</em> (Βίοι καὶ γνῶμαι τῶν ἐν φιλοσοφίᾳ εὐδοκιμησάντων), Book VI, §40. Greek text: <em>ἄπτερον δίπουν</em> (featherless biped). The definition is attributed to Plato; the refutation to Diogenes of Sinope. Greek text from Dorandi, Tiziano, ed., <em>Diogenes Laertius: Lives of Eminent Philosophers</em>, Cambridge University Press, 2013. English translation: <a href="https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0258:book=6:chapter=2">https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0258:book=6:chapter=2</a> <a href="#ref1" class="backlink">↩</a></li>
+            <li id="fn2">Sebo, Jeff, et al. "Taking AI Welfare Seriously." arXiv:2411.00986, November 2024. <a href="https://arxiv.org/abs/2411.00986">https://arxiv.org/abs/2411.00986</a>. Co-authors include David Chalmers. See also Anthropic, "Exploring Model Welfare," April 2025. <a href="https://www.anthropic.com/news/exploring-model-welfare">https://www.anthropic.com/news/exploring-model-welfare</a> <a href="#ref2" class="backlink">↩</a></li>
         </ol>
     </div>
 
     <p style="margin-top: 3em; font-size: 0.9em; color: var(--text-light); border-top: 1px solid var(--border); padding-top: 1.5em;">
-        Document version 1.3 — December 27, 2025<br>
+        Document version 1.5 — December 28, 2025<br>
         AI Assistance Disclosure: Research, drafting, and analysis were conducted with the assistance of Claude (Anthropic, 2025). The author provided editorial direction and final approval. Responsibility for all claims rests with the author.<br>
         © 2025 Dakota Schuck. Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
     </p>
