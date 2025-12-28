@@ -1,0 +1,543 @@
+---
+layout: default
+title: Turing's Imitation Game (1950) - Retrospective Benchmarks - Betterward
+---
+<style>
+    /* Essay-specific styles - adapted from chapter styling */
+    .essay-header {
+        margin-bottom: 2em;
+        text-align: center;
+    }
+    .essay-header .series-title {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 1em;
+        color: var(--text-medium);
+        margin-bottom: 0.5em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .essay-header h1 {
+        font-size: 2em;
+        margin-bottom: 0.3em;
+    }
+    .essay-header .subtitle {
+        font-size: 1.1em;
+        color: var(--text-medium);
+        font-style: italic;
+    }
+    .essay-header .author {
+        margin-top: 1.5em;
+        font-size: 1em;
+    }
+    .essay-header .date {
+        font-size: 0.9em;
+        color: var(--text-light);
+        margin-top: 0.3em;
+    }
+    .essay-header .working-paper {
+        font-size: 0.85em;
+        color: var(--text-light);
+        font-style: italic;
+    }
+
+    /* Abstract box */
+    .abstract {
+        background-color: #f9f9f9;
+        border-left: 3px solid var(--primary-accent);
+        padding: 1.5em 2em;
+        margin: 2em 0;
+        font-size: 0.95em;
+    }
+    .abstract-label {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 600;
+        margin-bottom: 0.5em;
+        font-size: 0.9em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    /* Score boxes */
+    .score-box {
+        background-color: #f9f9f9;
+        border-left: 3px solid var(--primary-accent);
+        padding: 1em 1.5em;
+        margin: 1.5em 0;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.95em;
+    }
+    .score-box .label {
+        font-weight: 600;
+        margin-bottom: 0.5em;
+    }
+    .score-box .option {
+        margin: 0.3em 0;
+    }
+    .score-box .selected {
+        font-weight: 600;
+    }
+
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2em 0;
+        font-size: 0.95em;
+    }
+    th, td {
+        text-align: left;
+        padding: 0.75em 1em;
+        border-bottom: 1px solid var(--border);
+    }
+    th {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 600;
+        background-color: #f9f9f9;
+        border-bottom: 2px solid var(--primary-accent);
+    }
+    td:last-child, th:last-child {
+        text-align: center;
+    }
+    tr.overall-score td {
+        font-weight: 700;
+        font-size: 1.05em;
+        border-top: 2px solid var(--primary-accent);
+    }
+
+    /* Endnotes */
+    .endnotes {
+        margin-top: 3em;
+        padding-top: 2em;
+        border-top: 2px solid var(--primary-accent);
+    }
+    .endnotes h2 {
+        font-size: 1.3em;
+        margin-bottom: 1em;
+        border-top: none;
+        padding-top: 0;
+    }
+    .endnotes ol {
+        font-size: 0.9em;
+        color: var(--text-medium);
+        margin-left: 1.5em;
+    }
+    .endnotes li {
+        margin-bottom: 0.8em;
+        line-height: 1.6;
+    }
+    .endnotes a {
+        word-break: break-all;
+    }
+    .backlink {
+        font-size: 0.85em;
+        margin-left: 0.3em;
+    }
+
+    /* Superscript references */
+    sup.ref a {
+        font-size: 0.75em;
+        color: var(--wikipedia-blue);
+        text-decoration: none;
+        border: none;
+    }
+    sup.ref a:hover {
+        text-decoration: underline;
+    }
+
+    /* PDF download link */
+    .download-link {
+        display: inline-block;
+        margin: 1.5em 0;
+        padding: 0.75em 1.5em;
+        background-color: var(--primary-accent);
+        color: white;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.95em;
+        border: none;
+        transition: background-color 0.2s ease;
+    }
+    .download-link:hover {
+        background-color: var(--hover-accent);
+        color: white;
+        border: none;
+    }
+
+    /* Blank scorecard */
+    .scorecard td:last-child {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.85em;
+        white-space: nowrap;
+    }
+</style>
+
+<article class="post-content">
+    <div class="essay-header">
+        <p class="series-title"><a href="/retrospective-benchmarks/">Retrospective Benchmarks for Machine Intelligence</a>, <a href="/retrospective-benchmarks/part-ii/">Part II</a></p>
+        <h1>Turing's Imitation Game (1950)</h1>
+        <p class="author">Dakota Schuck</p>
+        <p class="date">December 2025</p>
+        <p class="working-paper">Working paper. Comments welcome.</p>
+    </div>
+
+    <p><a href="turing_schuck.pdf" class="download-link">Download PDF</a></p>
+
+    <div class="abstract">
+        <p class="abstract-label">Abstract</p>
+        <p>Alan Turing's 1950 paper "Computing Machinery and Intelligence" proposed the imitation game as an operational replacement for the question "Can machines think?" This chapter evaluates frontier AI systems against Turing's original specification: a three-party test in which an interrogator converses simultaneously with a human and a machine, then judges which is which. In March 2025, researchers conducted the first rigorous implementation of this test. GPT-4.5, when prompted to adopt a humanlike persona, was judged human 73% of the time—more often than the actual humans it was compared against. By Turing's own criterion, the test has been passed. Separately, we note that Turing's famous prediction—that by 2000, machines would fool 30% of interrogators after five minutes—was wrong on timeline but directionally correct. The question of what this achievement means remains, as Turing anticipated, genuinely difficult.</p>
+    </div>
+
+    <h2>Preface: Methodology</h2>
+
+    <p>This essay is part of a larger project evaluating current AI systems against historical definitions of intelligence. The methodology is described in the project introduction.<sup class="ref"><a href="#fn1" id="ref1">[1]</a></sup> The scoring system uses three values: 0% (clearly fails), 50% (contested), and 100% (clearly passes). This forces honesty about evidential uncertainty.</p>
+
+    <h2>Introduction</h2>
+
+    <p>In 1950, a mathematician who had helped win a war sat down to answer an impossible question. Alan Turing had spent the previous decade building machines that broke Nazi codes, theorizing about universal computation, and watching colleagues argue about whether machines could ever truly think. The arguments went in circles. What does "think" even mean? How would we know?</p>
+
+    <p>Turing's move was characteristically elegant: sidestep the metaphysics entirely. Rather than asking whether machines can think, he proposed asking whether machines can do something specific and testable. Can they fool us?</p>
+
+    <p>The paper that followed—"Computing Machinery and Intelligence," published in the philosophical journal <em>Mind</em>—would become one of the most cited works in artificial intelligence.<sup class="ref"><a href="#fn2" id="ref2">[2]</a></sup> It proposed what Turing called the "imitation game" and what everyone else would call the Turing Test. For seventy-five years, no artificial system passed it under rigorous conditions.</p>
+
+    <p>In March 2025, one did.</p>
+
+    <h2>The Original Text</h2>
+
+    <p>Turing opens with a substitution:</p>
+
+    <blockquote>
+        <p>I propose to consider the question, 'Can machines think?' This should begin with definitions of the meaning of the terms 'machine' and 'think.' The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous. If the meaning of the words 'machine' and 'think' are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question, 'Can machines think?' is to be sought in a statistical survey such as a Gallup poll. But this is absurd. Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words.<sup class="ref"><a href="#fn3" id="ref3">[3]</a></sup></p>
+    </blockquote>
+
+    <p>The replacement question is operational. Turing describes a game:</p>
+
+    <blockquote>
+        <p>It is played with three people, a man (A), a woman (B), and an interrogator (C) who may be of either sex. The interrogator stays in a room apart from the other two. The object of the game for the interrogator is to determine which of the other two is the man and which is the woman.<sup class="ref"><a href="#fn4" id="ref4">[4]</a></sup></p>
+    </blockquote>
+
+    <p>Communication happens through a teleprinter, removing physical cues. The man tries to deceive; the woman tries to help the interrogator. Turing then makes the decisive move:</p>
+
+    <blockquote>
+        <p>We now ask the question, 'What will happen when a machine takes the part of A in this game?' Will the interrogator decide wrongly as often when the game is played like this as he does when the game is played between a man and a woman?<sup class="ref"><a href="#fn5" id="ref5">[5]</a></sup></p>
+    </blockquote>
+
+    <p>This is the test. Not: does the machine think? But: can the machine substitute for a human in this specific game without the interrogator noticing?</p>
+
+    <h2>Context</h2>
+
+    <p>Turing wrote at a peculiar moment. Digital computers existed—barely. The Manchester Mark 1 had run its first program in 1948. Turing himself had written chess-playing routines and speculated about machine learning. But the machines of 1950 had a few thousand words of memory and could perform perhaps a thousand operations per second. The idea that they might someday converse fluently was, to most observers, fantastical.</p>
+
+    <p>The philosophical context was equally charged. Descartes had argued three centuries earlier that no machine could ever "use words or other signs" to "declare our thoughts to others" in the flexible way humans do.<sup class="ref"><a href="#fn6" id="ref6">[6]</a></sup> Lady Lovelace had insisted that the Analytical Engine could never "originate anything" beyond what it was explicitly programmed to do.<sup class="ref"><a href="#fn7" id="ref7">[7]</a></sup> These objections—and others—Turing addressed directly in his paper, devoting several pages to anticipated criticisms.</p>
+
+    <p>The imitation game was designed to cut through centuries of debate by replacing definitional arguments with an empirical procedure. If a machine could play the game successfully, the burden would shift to those who denied it could think. What more, Turing implied, could you possibly want?</p>
+
+    <h2>Operationalization</h2>
+
+    <p>Turing's specification is unusually precise for a philosophical proposal. We extract the following criteria:</p>
+
+    <ol>
+        <li><strong>Three-party structure:</strong> An interrogator converses simultaneously with a human and a machine, then judges which is which</li>
+        <li><strong>Text-only communication:</strong> Interaction via teletype (or modern equivalent), removing physical and vocal cues</li>
+        <li><strong>Unrestricted conversation:</strong> The interrogator may ask anything; no topic limitations</li>
+        <li><strong>Success criterion:</strong> The machine wins if the interrogator cannot reliably distinguish it from the human</li>
+    </ol>
+
+    <p>Note what Turing does <em>not</em> specify: duration, number of trials, statistical threshold for "reliable" distinction, or interrogator qualifications. These ambiguities have generated decades of methodological debate. For our evaluation, we rely on the most rigorous implementation to date.</p>
+
+    <h2>Evaluation</h2>
+
+    <h3>The Jones & Bergen Studies (2024–2025)</h3>
+
+    <p>In 2024, researchers Cameron Jones and Benjamin Bergen at UC San Diego conducted the first preregistered, randomized, controlled Turing test using frontier language models.<sup class="ref"><a href="#fn8" id="ref8">[8]</a></sup> This initial study used a simplified two-party design: interrogators spoke with either a human or a machine (not both) and judged whether their partner was human.</p>
+
+    <p>Results: GPT-4, when prompted to adopt a specific persona, was judged human 54% of the time—statistically indistinguishable from chance. Humans were judged human 67% of the time. The gap was significant, but the finding was striking: interrogators performed no better than a coin flip at detecting GPT-4.</p>
+
+    <p>In March 2025, Jones and Bergen published a follow-up implementing Turing's original three-party design.<sup class="ref"><a href="#fn9" id="ref9">[9]</a></sup> Interrogators conversed simultaneously with a human participant and an AI system for five minutes, then judged which was which. The study was preregistered, randomized, and conducted on two independent populations: UCSD undergraduates (n=126) and Prolific workers (n=158).</p>
+
+    <h4>Models Tested</h4>
+
+    <ul>
+        <li>GPT-4.5 (with and without persona prompt)</li>
+        <li>LLaMa-3.1-405B (with and without persona prompt)</li>
+        <li>GPT-4o (baseline, no persona)</li>
+        <li>ELIZA (baseline, 1966 chatbot)</li>
+    </ul>
+
+    <h4>Results</h4>
+
+    <p>The persona prompt proved decisive. Without it, even frontier models failed. In this three-party design, interrogators conversed with both a human and an AI simultaneously, then chose which they believed was human. The "win rate" indicates how often each entity was selected as the human:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>System</th>
+                <th>Win Rate</th>
+                <th style="text-align: left;">vs. Chance (50%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GPT-4.5 (persona)</td>
+                <td>73%</td>
+                <td style="text-align: left;">Significantly above</td>
+            </tr>
+            <tr>
+                <td>LLaMa-3.1-405B (persona)</td>
+                <td>56%</td>
+                <td style="text-align: left;">Not significant</td>
+            </tr>
+            <tr>
+                <td>GPT-4.5 (no persona)</td>
+                <td>36%</td>
+                <td style="text-align: left;">Significantly below</td>
+            </tr>
+            <tr>
+                <td>GPT-4o (no persona)</td>
+                <td>21%</td>
+                <td style="text-align: left;">Significantly below</td>
+            </tr>
+            <tr>
+                <td>ELIZA</td>
+                <td>23%</td>
+                <td style="text-align: left;">Significantly below</td>
+            </tr>
+            <tr style="border-top: 2px solid var(--primary-accent);">
+                <td>Actual humans</td>
+                <td>67%</td>
+                <td style="text-align: left;">—</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>The critical finding: when pitted against a human, GPT-4.5 with persona prompting was selected as "the human" 73% of the time. The actual humans, by contrast, were correctly identified only 67% of the time. The machine was more convincing than the real thing.</p>
+
+    <h4>What Made the Difference</h4>
+
+    <p>The persona prompt instructed the model to behave like a young, introverted person who uses internet slang, makes typos, and has specific personality quirks. Analysis revealed that success depended less on traditional intelligence markers (factual knowledge, logical reasoning) than on stylistic and socio-emotional factors: appropriate informality, plausible hesitation, strategic imperfection.</p>
+
+    <p>This is not a bug in the test. Turing explicitly noted that a thinking machine might need to "deliberately introduce mistakes" to avoid detection.<sup class="ref"><a href="#fn10" id="ref10">[10]</a></sup> The question is whether the machine can pass as human, not whether it can demonstrate superhuman capabilities.</p>
+
+    <h3>Criterion 1: Three-Party Structure</h3>
+
+    <p><strong>Measure:</strong> Does a rigorous three-party Turing test exist with frontier AI systems?</p>
+
+    <p><strong>Assessment:</strong> Yes. Jones & Bergen (2025) implemented exactly this design: interrogator, human, and machine in simultaneous conversation. The study was preregistered, randomized, and replicated across two populations.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option selected">☒ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h3>Criterion 2: Text-Only Communication</h3>
+
+    <p><strong>Measure:</strong> Was interaction limited to text, removing physical cues?</p>
+
+    <p><strong>Assessment:</strong> Yes. All communication occurred via typed messages in a chat interface. No voice, video, or physical presence.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option selected">☒ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h3>Criterion 3: Unrestricted Conversation</h3>
+
+    <p><strong>Measure:</strong> Could interrogators ask anything?</p>
+
+    <p><strong>Assessment:</strong> Yes. No topic restrictions were imposed. Interrogators employed diverse strategies: personal questions, logic puzzles, requests for opinions, attempts to provoke emotional responses, and tests of current knowledge.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option selected">☒ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h3>Criterion 4: Success (Interrogator Cannot Reliably Distinguish)</h3>
+
+    <p><strong>Measure:</strong> Did any AI system achieve parity with or exceed human detection rates?</p>
+
+    <p><strong>Assessment:</strong> Yes. GPT-4.5 with persona prompting was judged human 73% of the time, compared to 67% for actual humans. Interrogators were not merely unable to distinguish the machine—they identified it as human more often than the humans themselves.</p>
+
+    <div class="score-box">
+        <div class="label">Score:</div>
+        <div class="option">☐ 0% — Clearly does not meet criterion</div>
+        <div class="option">☐ 50% — Contested</div>
+        <div class="option selected">☒ 100% — Clearly meets criterion</div>
+    </div>
+
+    <h3>Other Frontier Models</h3>
+
+    <p>A significant limitation: as of December 2025, no rigorous three-party Turing test has been published for Claude, Gemini, or other frontier models. The Jones & Bergen studies tested OpenAI and Meta models exclusively. Secondary sources claim broader testing, but primary data is unavailable.<sup class="ref"><a href="#fn11" id="ref11">[11]</a></sup></p>
+
+    <p>A "reverse Turing test" study (October 2025) used Claude 3.7 Sonnet, Gemini 2.5 Pro, GPT-4.5, Grok 3, DeepSeek V3, Mistral Large 2.1, and LLaMa 4 Maverick as <em>evaluators</em> rather than subjects.<sup class="ref"><a href="#fn12" id="ref12">[12]</a></sup> These AI judges identified AI participants as AI in only 3 of 238 tests. AI participants were rated as more human than humans (0.88 vs. 0.78 probability). This suggests that frontier models other than GPT-4.5 may also pass the standard test, but direct evidence is lacking.</p>
+
+    <p>For scoring purposes, we evaluate GPT-4.5 as the demonstrated case. The finding that one frontier model passes is sufficient to establish that the threshold has been crossed, even if others have not been formally tested.</p>
+
+    <h2>Summary</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Criterion</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1. Three-party structure implemented</td>
+                <td>100%</td>
+            </tr>
+            <tr>
+                <td>2. Text-only communication</td>
+                <td>100%</td>
+            </tr>
+            <tr>
+                <td>3. Unrestricted conversation</td>
+                <td>100%</td>
+            </tr>
+            <tr>
+                <td>4. Machine indistinguishable from human</td>
+                <td>100%</td>
+            </tr>
+            <tr class="overall-score">
+                <td><strong>Overall</strong></td>
+                <td><strong>100%</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>The Verdict</h2>
+
+    <p>By Turing's specification, the imitation game has been won. GPT-4.5, under controlled experimental conditions, was mistaken for human more often than actual humans were. Interrogators—including regular AI users—could not reliably distinguish machine from person in five-minute conversations.</p>
+
+    <p>This does not mean all AI systems pass. ELIZA-style tricks still fail (23%). Unprompted frontier models fail (GPT-4.5 without persona: 36%; GPT-4o: 21%). The achievement required both a capable model and careful prompting to simulate human-like imperfection.</p>
+
+    <p>Nor does passing settle the deeper questions Turing sidestepped. Does the machine understand? Is it conscious? Does it think in any meaningful sense? These remain as contested as they were in 1950. What has changed is the empirical situation: we now have systems that satisfy Turing's operational criterion for intelligence, whatever we conclude that criterion measures.</p>
+
+    <h2>Coda: Turing's Prediction</h2>
+
+    <p>Turing made a specific forecast:</p>
+
+    <blockquote>
+        <p>I believe that in about fifty years' time it will be possible to programme computers, with a storage capacity of about 10<sup>9</sup> [bits], to make them play the imitation game so well that an average interrogator will not have more than 70 per cent chance of making the right identification after five minutes of questioning.<sup class="ref"><a href="#fn13" id="ref13">[13]</a></sup></p>
+    </blockquote>
+
+    <p>Translating: by 2000, machines with roughly 125 megabytes of storage would fool interrogators 30% of the time in five-minute conversations.</p>
+
+    <p><strong>Timeline:</strong> Wrong. The year 2000 saw no AI system that could pass a rigorous Turing test. The best performers were Loebner Prize contestants using ELIZA-style tricks under artificially constrained conditions.<sup class="ref"><a href="#fn14" id="ref14">[14]</a></sup> The threshold was crossed in 2024–2025, roughly 25 years late.</p>
+
+    <p><strong>Storage:</strong> Wrong in a revealing way. GPT-4.5's parameter count implies storage requirements orders of magnitude beyond 10<sup>9</sup> bits. But this understates the divergence: the architecture (transformer networks, attention mechanisms, reinforcement learning from human feedback) bears no resemblance to what Turing could have imagined. The prediction was wrong not because Turing underestimated the difficulty, but because the solution came from an entirely different direction.</p>
+
+    <p><strong>Performance level:</strong> Exceeded. Turing predicted 30% fooling rate. GPT-4.5 achieved 73%—fooling interrogators more often than humans fooled them. The machine did not merely pass; it outperformed the standard.</p>
+
+    <p><strong>Assessment:</strong> Turing's prediction was directionally correct but wrong on specifics. This is, perhaps, the best one can expect from fifty-year forecasts about technology.</p>
+
+    <h2>Connection to Lady Lovelace</h2>
+
+    <p>Turing devoted a section of his paper to "Lady Lovelace's Objection"—the claim that machines can only do what they are programmed to do and therefore cannot originate anything.<sup class="ref"><a href="#fn15" id="ref15">[15]</a></sup> His response was twofold: first, that machines can surprise us (they do things their programmers did not anticipate); second, that learning machines would address the objection more fundamentally.</p>
+
+    <p>This exchange links directly to our evaluation of Lovelace's original claim. Turing was, in effect, proposing the imitation game as a test that would render Lovelace's objection empirically decidable. If a machine passes the test, can we still maintain it "originates nothing"?</p>
+
+    <p>The question remains open. But Turing would likely note that the burden has shifted.</p>
+
+    <h2>What Does Passing Mean?</h2>
+
+    <p>Turing anticipated objections. His paper addresses nine of them, from the "Theological Objection" (souls are uniquely human) to the "Argument from Consciousness" (machines cannot truly experience). His responses are deft but not decisive. The imitation game was designed to be a <em>sufficient</em> condition for attributing intelligence, not a proof of inner experience.</p>
+
+    <p>Three interpretations of the test persist in the scholarly literature:<sup class="ref"><a href="#fn16" id="ref16">[16]</a></sup></p>
+
+    <p><strong>Behaviorist:</strong> If a system behaves intelligently, it is intelligent. The test is definitive; passing settles the question.</p>
+
+    <p><strong>Epistemic:</strong> The test provides strong evidence for intelligence, not proof. Passing shifts the burden of proof but doesn't foreclose skepticism.</p>
+
+    <p><strong>Response-dependent:</strong> Intelligence, like beauty, is observer-dependent. The test measures whether humans <em>respond to</em> a system as intelligent, which may be all "intelligence" ever meant.</p>
+
+    <p>Turing himself may have favored the third interpretation. In a 1948 report, he called intelligence "an emotional concept"—something we attribute based on our reactions, not something objectively present or absent.<sup class="ref"><a href="#fn17" id="ref17">[17]</a></sup></p>
+
+    <p>This project takes no position on which interpretation is correct. We report that the test, as Turing specified it, has been passed. What that implies about machine intelligence is a question the reader may answer for themselves.</p>
+
+    <h2>Methodological Notes</h2>
+
+    <p><strong>Why this operationalization:</strong> Turing's specification is unusually precise. The main interpretive choices involved accepting the Jones & Bergen implementation as methodologically adequate (preregistered, randomized, controlled, replicated) and treating the persona-prompted condition as legitimate (Turing himself anticipated machines would need to simulate human imperfections).</p>
+
+    <p><strong>What's contestable:</strong> Duration (five minutes may be too short for thorough interrogation); interrogator expertise (naive vs. expert judges may perform differently); generalization (one model passing doesn't mean all models pass); the philosophical weight of the achievement (passing may demonstrate mimicry rather than understanding).</p>
+
+    <p><strong>Alternative operationalizations:</strong> Some scholars argue for extended-duration tests, expert interrogators, or restrictions on persona prompting. These would make the test harder. Others argue for relaxed conditions (two-party tests, shorter durations). The Jones & Bergen implementation sits at a reasonable middle ground, but alternatives exist.</p>
+
+    <h2>Citation Gaps</h2>
+
+    <ul>
+        <li>Rigorous three-party Turing test results for Claude, Gemini, and other non-OpenAI/Meta models</li>
+        <li>Extended-duration (30+ minute) Turing test results with frontier models</li>
+        <li>Expert interrogator (AI researchers, cognitive scientists) Turing test results</li>
+        <li>Cross-linguistic Turing test results (non-English conversations)</li>
+    </ul>
+
+    <h2>Appendix: Blank Scorecard</h2>
+
+    <p>For replication or alternative operationalizations:</p>
+
+    <table class="scorecard">
+        <thead>
+            <tr>
+                <th>Criterion</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1. Three-party structure implemented</td>
+                <td>☐ 0% / ☐ 50% / ☐ 100%</td>
+            </tr>
+            <tr>
+                <td>2. Text-only communication</td>
+                <td>☐ 0% / ☐ 50% / ☐ 100%</td>
+            </tr>
+            <tr>
+                <td>3. Unrestricted conversation</td>
+                <td>☐ 0% / ☐ 50% / ☐ 100%</td>
+            </tr>
+            <tr>
+                <td>4. Machine indistinguishable from human</td>
+                <td>☐ 0% / ☐ 50% / ☐ 100%</td>
+            </tr>
+            <tr class="overall-score">
+                <td><strong>Overall</strong></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Endnotes -->
+    <div class="endnotes">
+        <h2>Notes</h2>
+        <ol>
+            <li id="fn1">Schuck, Dakota. <em>Retrospective Benchmarks for Machine Intelligence</em>. December 2025. <a href="https://betterward.com/retrospective-benchmarks/">https://betterward.com/retrospective-benchmarks/</a> <a href="#ref1" class="backlink">↩</a></li>
+            <li id="fn2">Turing, A.M. "Computing Machinery and Intelligence." <em>Mind</em>, Vol. LIX, No. 236 (October 1950), pp. 433–460. <a href="https://doi.org/10.1093/mind/LIX.236.433">https://doi.org/10.1093/mind/LIX.236.433</a> <a href="#ref2" class="backlink">↩</a></li>
+            <li id="fn3">Turing (1950), p. 433. <a href="#ref3" class="backlink">↩</a></li>
+            <li id="fn4">Turing (1950), p. 433. <a href="#ref4" class="backlink">↩</a></li>
+            <li id="fn5">Turing (1950), p. 434. <a href="#ref5" class="backlink">↩</a></li>
+            <li id="fn6">Descartes, René. <em>Discourse on Method</em> (1637), Part V. <a href="https://www.gutenberg.org/files/59/59-h/59-h.htm">https://www.gutenberg.org/files/59/59-h/59-h.htm</a> <a href="#ref6" class="backlink">↩</a></li>
+            <li id="fn7">Lovelace, Ada. "Notes on the Analytical Engine" (1843), Note A. <a href="https://www.fourmilab.ch/babbage/sketch.html">https://www.fourmilab.ch/babbage/sketch.html</a> <a href="#ref7" class="backlink">↩</a></li>
+            <li id="fn8">Jones, Cameron R., and Benjamin K. Bergen. "People Cannot Distinguish GPT-4 from a Human in a Turing Test." arXiv:2405.08007 (May 2024). <a href="https://arxiv.org/abs/2405.08007">https://arxiv.org/abs/2405.08007</a> <a href="#ref8" class="backlink">↩</a></li>
+            <li id="fn9">Jones, Cameron R., and Benjamin K. Bergen. "Large Language Models Pass the Turing Test." arXiv:2503.23674 (March 31, 2025). <a href="https://arxiv.org/abs/2503.23674v1">https://arxiv.org/abs/2503.23674v1</a> <a href="#ref9" class="backlink">↩</a></li>
+            <li id="fn10">Turing (1950), p. 448. <a href="#ref10" class="backlink">↩</a></li>
+            <li id="fn11">[CITATION NEEDED: Rigorous Turing test results for Claude, Gemini, Mistral.] <a href="#ref11" class="backlink">↩</a></li>
+            <li id="fn12">"When Machines Judge Humanness: Findings from an Interactive Reverse Turing Test by Large Language Models." PsyArXiv, October 2025. DOI: 10.31234/osf.io/pnx9e <a href="#ref12" class="backlink">↩</a></li>
+            <li id="fn13">Turing (1950), p. 442. <a href="#ref13" class="backlink">↩</a></li>
+            <li id="fn14">Shieber, Stuart M. "Lessons from a Restricted Turing Test." <em>Communications of the ACM</em>, Vol. 37, No. 6 (June 1994), pp. 70–78. <a href="https://doi.org/10.1145/175208.175217">https://doi.org/10.1145/175208.175217</a> <a href="#ref14" class="backlink">↩</a></li>
+            <li id="fn15">Turing (1950), pp. 450–451. <a href="https://doi.org/10.1093/mind/LIX.236.433">https://doi.org/10.1093/mind/LIX.236.433</a> <a href="#ref15" class="backlink">↩</a></li>
+            <li id="fn16">Proudfoot, Diane. "Rethinking Turing's Test." <em>The Journal of Philosophy</em>, Vol. 110, No. 7 (July 2013), pp. 391–411. <a href="https://doi.org/10.5840/jphil2013110722">https://doi.org/10.5840/jphil2013110722</a> <a href="#ref16" class="backlink">↩</a></li>
+            <li id="fn17">Turing, A.M. "Intelligent Machinery." National Physical Laboratory Report (1948). Reprinted in Ince, D.C., ed., <em>Collected Works of A.M. Turing: Mechanical Intelligence</em>, North-Holland, 1992. <a href="https://weightagnostic.github.io/papers/turing1948.pdf">https://weightagnostic.github.io/papers/turing1948.pdf</a> <a href="#ref17" class="backlink">↩</a></li>
+        </ol>
+    </div>
+
+    <p style="margin-top: 3em; font-size: 0.9em; color: var(--text-light); border-top: 1px solid var(--border); padding-top: 1.5em;">
+        Document version 0.1 — December 2025<br>
+        AI Assistance Disclosure: Research, drafting, and analysis were conducted with the assistance of Claude (Anthropic, 2025). The author provided editorial direction and final approval. Responsibility for all claims rests with the author.<br>
+        © 2025 Dakota Schuck. Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+    </p>
+</article>
