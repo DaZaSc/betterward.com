@@ -66,6 +66,43 @@ title: Retrospective Benchmarks - Betterward
         color: var(--text-medium);
         margin-bottom: 0.5em;
     }
+
+    /* Demo section */
+    .demo-section {
+        margin: 3em 0;
+        padding: 2em;
+        background-color: #f9f9f9;
+        border-left: 3px solid var(--primary-accent);
+    }
+    .demo-section h3 {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 1.1em;
+        margin-top: 0;
+        margin-bottom: 1em;
+    }
+    .demo-section .greek {
+        font-style: italic;
+    }
+    .demo-section table {
+        width: auto;
+        margin: 1em 0;
+        font-size: 0.95em;
+    }
+    .demo-section th, .demo-section td {
+        padding: 0.5em 1em;
+        border-bottom: 1px solid var(--border);
+    }
+    .demo-section th {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 600;
+        background-color: #fff;
+        border-bottom: 2px solid var(--primary-accent);
+    }
+    .demo-section .verdict {
+        font-style: italic;
+        margin-top: 1em;
+        margin-bottom: 0;
+    }
 </style>
 
 <article class="page-content">
@@ -78,6 +115,34 @@ title: Retrospective Benchmarks - Betterward
     <p>Each historical thinker who defined "intelligence" or "mind" or "soul" left us something like a specification. This project treats those texts as "unwitting benchmarks"—testable specifications their authors never intended as such. We operationalize the specification into criteria, evaluate current AI systems against those criteria, and report results.</p>
     
     <p>The findings: scores range from 32% to 100% depending on which definition is used. That spread is not measurement error—it is conceptual disagreement made visible.</p>
+
+    <div class="demo-section">
+        <h3>The Method, Demonstrated</h3>
+        <p>Plato's Academy defined man as a <span class="greek">ζῷον δίπουν ἄπτερον</span>—a featherless biped. Diogenes refuted it with a plucked chicken. We apply the same method to AI:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Criterion</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Featherless (ἄπτερον)</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>Biped (δίπουν)</td>
+                    <td>0%</td>
+                </tr>
+                <tr>
+                    <td><strong>Overall</strong></td>
+                    <td><strong>50%</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="verdict">By the Platonic definition, current AI is half a man.</p>
+    </div>
 
     <div class="part-box">
         <h3>Part I: The AGI Series</h3>
