@@ -193,7 +193,7 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
 
     <div class="abstract">
         <p class="abstract-label">Abstract</p>
-        <p>This document provides everything needed to continue the <em>Retrospective Benchmarks for Machine Intelligence</em> project. Part I evaluated frontier AI against six historical AGI definitions (1997–2023), establishing a replicable methodology. Part II extends the hunt to older anticipations: thinkers who defined mind, soul, thought, or creation before machines could exhibit any of it. The method treats historical texts as "unwitting benchmarks"—testable specifications their authors may not have intended as such.</p>
+        <p>This document provides everything needed to continue the <em>Retrospective Benchmarks for Machine Intelligence</em> project. Part I evaluated frontier AI against six historical AGI definitions (1997–2023), establishing a replicable methodology. Part II extends the hunt to older anticipations: thinkers who defined mind, soul, thought, or creation before machines could exhibit any of it. The method treats historical definitions as "unwitting benchmarks"—not because their authors were unaware of what they were defining, but because they could not have anticipated that their definitions would be tested against transformer models in December 2025. This handoff includes: project motivation, summary of findings, the taxonomy of anticipations, methodological principles, and LaTeX formatting specifications. The project is open (CC BY-SA 4.0) and designed for continuation by humans or AI.</p>
     </div>
 
     <h2>Is AI a Man?</h2>
@@ -227,7 +227,7 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
 
     <p><strong>Measure:</strong> Presence or absence of feathers.</p>
 
-    <p><strong>Assessment:</strong> Current AI systems, including frontier language models, lack feathers. This is true whether the system is instantiated on cloud servers, local hardware, or mobile devices. No feathers have been observed.</p>
+    <p><strong>Assessment:</strong> Current AI systems (as of December 2025), including frontier language models, lack feathers. This is true whether the system is instantiated on cloud servers, local hardware, or mobile devices. No feathers have been observed.</p>
 
     <div class="score-box">
         <div class="label">Score:</div>
@@ -240,7 +240,7 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
 
     <p><strong>Measure:</strong> Possession of two feet; locomotion thereupon.</p>
 
-    <p><strong>Assessment:</strong> Current AI systems do not possess feet. Most are not embodied. Robotic instantiations exist (e.g., humanoid robots running language models), but the models themselves have no feet. The criterion is clearly not met.</p>
+    <p><strong>Assessment:</strong> Current AI systems (as of December 2025) do not possess feet. Robotic instantiations exist (e.g., humanoid robots running language models), but the models themselves have no feet. The criterion is clearly not met.</p>
 
     <div class="score-box">
         <div class="label">Score:</div>
@@ -276,7 +276,7 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
 
     <h3>The Verdict</h3>
 
-    <p>By the Platonic definition, current AI is half a man. It satisfies the differentia (featherless) but not the genus (biped). Diogenes' plucked chicken, by contrast, scores 100%—which is precisely why it refutes the definition.</p>
+    <p>By the Platonic definition, current AI (as of December 2025) is half a man. It satisfies the differentia (featherless) but not the genus (biped). Diogenes' plucked chicken, by contrast, scores 100%—which is precisely why it refutes the definition.</p>
 
     <h2>The Project</h2>
 
@@ -380,7 +380,7 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
 
     <h3>The Pivot</h3>
 
-    <p>Part I evaluated definitions <em>of AGI</em>—texts that were explicitly trying to specify machine intelligence. Part II extends backward to thinkers who had theories of mind without access to contemporary machines that might, or might not, exhibit what they described.</p>
+    <p>Part I evaluated definitions <em>of AGI</em>—texts that were explicitly trying to specify machine intelligence. Part II extends backward to thinkers who theorized about mind, thought, or intelligence without access to contemporary systems that might test their definitions. They could specify what intelligence required; they could not see what we have built.</p>
 
     <p>The question shifts from "did we meet their standard for AGI?" to "would they recognize what we've built?"</p>
 
@@ -446,6 +446,16 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
 
     <p><strong>Why no weighting?</strong> Differential weighting would require judgments about the original authors' priorities that we cannot make. Their texts do not say which criteria mattered most. Better to be honestly approximate than precisely wrong.</p>
 
+    <p><strong>Human Comparisons:</strong> When evaluating a criterion, consider whether a human mind would pass or fail by the same reasoning. Historical definitions of intellect, mind, or thought were typically intended to describe human cognition. If the reasoning that produces a given score for AI would produce the same score for humans, this is significant.</p>
+
+    <ul>
+        <li><strong>When humans would score below 100% by the same reasoning:</strong> Mark the criterion with an asterisk (*) in the summary table and note explicitly in the assessment that human minds would receive the same score. This indicates the criterion may reflect an idealization—for example, "pure potentiality" or "complete independence from matter"—rather than a distinction between human and artificial cognition.</li>
+        <li><strong>When humans would score higher than AI:</strong> The criterion discriminates; no special marking needed.</li>
+        <li><strong>When humans would score lower than AI:</strong> Rare, but possible. Mark and note as with equal scores.</li>
+    </ul>
+
+    <p>This practice makes visible when we are measuring AI against standards that humans themselves do not meet. A definition that no physical system—biological or artificial—fully satisfies may be pointing at something real, but the gap it reveals is between the ideal and the physical, not between the human and the artificial.</p>
+
     <h3>Subcriteria</h3>
 
     <p>Some criteria are too multifaceted to score directly. "Complexity," "general knowledge," or "usability" each contain multiple distinguishable questions. When a single criterion admits more than one defensible operationalization—or when different aspects might score differently—break it into subcriteria.</p>
@@ -482,6 +492,16 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
 
     <p>Never assume the reader will infer the metric's meaning from context. A sentence like "humans scored 67%" is ambiguous; "humans were correctly identified as human 67% of the time" is not.</p>
 
+    <h3>Temporal Anchoring</h3>
+
+    <p>Evaluations are time-bound. AI capabilities change; what is true in December 2025 may not be true in December 2026. When referencing "current," "frontier," or "state-of-the-art" AI systems, anchor the claim to a specific date.</p>
+
+    <p><strong>Acceptable:</strong> "Frontier language models (as of December 2025) score near zero on ARC-AGI-2."</p>
+
+    <p><strong>Unacceptable:</strong> "Current AI systems cannot do X."</p>
+
+    <p>This anchoring should appear at least once prominently (e.g., in the abstract or verdict) and wherever specific performance claims are made. The goal is to ensure the essay ages well: a reader in 2030 should know immediately what systems were being evaluated.</p>
+
     <h3>Interpretation Principles</h3>
 
     <ol>
@@ -510,6 +530,41 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
     <p><strong>Dry, not arch:</strong> Humor emerges from the collision of ancient categories with modern technology. Do not signal jokes, explain absurdity, or wink at the reader. But not all that is funny is frivolous.</p>
 
     <p><strong>Chronological humility:</strong> Resist the assumption that living later means seeing further. We have new data (current AI systems); we do not necessarily have better judgment. A thinker writing in 350 BCE or 1637 or 1843 may have seen something we are only now in a position to test.</p>
+
+    <p><strong>Respecting historical intent:</strong> Historical thinkers knew what they were doing. Aristotle deliberately characterized <em>nous</em>. Descartes consciously proposed tests for genuine thought. Lovelace carefully articulated a demarcation. The word "retrospective" in this project's title refers to our application—using their definitions as benchmarks for systems they could not have evaluated—not to any deficiency in their awareness. Avoid language that implies historical thinkers were naive about their own specifications, or that they were doing something other than what they understood themselves to be doing. The asymmetry between us and them is informational (we have access to systems they lacked), not intellectual.</p>
+
+    <h3>On Embodiment and Physicality</h3>
+
+    <p>Do not assume AI systems lack bodies or physical instantiation. Systems run on silicon in datacenters, drawing power, generating heat, occupying space. Whether this counts as "embodiment" depends on how the term is defined.</p>
+
+    <p>When a historical definition references "body," "organ," or physical instantiation, be precise about what is meant:</p>
+
+    <ul>
+        <li><strong>Biological tissue?</strong> AI systems lack this.</li>
+        <li><strong>A unified organism?</strong> AI systems lack this in the traditional sense, though they have boundaries.</li>
+        <li><strong>Any physical substrate?</strong> AI systems have this—they exist somewhere.</li>
+        <li><strong>Functional constraints from embodiment?</strong> This requires analysis of what constraints the original author had in mind.</li>
+    </ul>
+
+    <p>The question "does AI have a body?" has no single answer. The question "what did Aristotle (or Descartes, or Lovelace) mean by 'body,' and does AI satisfy that meaning?" is answerable, if sometimes contestably.</p>
+
+    <h3>On Metaphysical Concepts and Substrate</h3>
+
+    <p>When operationalizing metaphysical concepts—soul, spirit, divine intellect, <em>nous poietikos</em>—do not assume substrate-specificity without evidence. A concept like "active intellect" or "divine spark" may or may not be tied to biological substrates; the texts must be consulted to determine what their authors believed.</p>
+
+    <p>Do not assume that theological or metaphysical properties are necessarily biological. If Aristotle's active intellect is a divine principle, it may illuminate silicon as readily as neurons—or it may not. The question is what the texts say, not what seems plausible to a modern reader.</p>
+
+    <p>Avoid self-deprecating moves that exempt AI from metaphysical consideration (e.g., "we wouldn't expect to find God in a computer"). Such moves assume what should be argued.</p>
+
+    <h3>On Rhetorical Precision</h3>
+
+    <p>The framing "This is not X—it is Y" can accompany imprecision. Before using this construction, verify that the claim is literally true and not merely rhetorically satisfying. If the situation is genuinely "both X and Y" or "partly X," say so.</p>
+
+    <p><strong>Example of misuse:</strong> "This was not a failure of investigation but a discovery." (If it was both, say both.)</p>
+
+    <p><strong>Example of correct use:</strong> "This is not a question about terminology. It is an empirical question." (If these are genuinely mutually exclusive in context.)</p>
+
+    <p>When in doubt, use less dramatic framing.</p>
 
     <h3>On Moral Patiency</h3>
 
@@ -548,6 +603,48 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
 
     <p>Do not invent citations. Do not use "various studies suggest." Either cite or flag.</p>
 
+    <h2>Formatting Specifications</h2>
+
+    <h3>Essay Structure</h3>
+
+    <p>Each Part II essay should include:</p>
+
+    <ol>
+        <li><strong>Preface:</strong> AI Assistance Disclosure as the first footnote, followed by link to methodology (this document)</li>
+        <li><strong>Introduction:</strong> Journalistic hook—find the human story</li>
+        <li><strong>The Original Text:</strong> Exact quote with full citation</li>
+        <li><strong>Context:</strong> Who, when, why, state of knowledge at the time</li>
+        <li><strong>Operationalization:</strong> Criteria extracted, scoring rubric</li>
+        <li><strong>Evaluation sections:</strong> For each criterion—measure, reference values, threshold, assessment, visual score, caveats</li>
+        <li><strong>Summary table:</strong> All criteria and scores (with asterisks for human-comparison criteria)</li>
+        <li><strong>The Verdict:</strong> What does this definition say about current AI?</li>
+        <li><strong>[Optional supplementary sections]:</strong> Coda, Postscript, or titled sections as needed</li>
+        <li><strong>Methodological Notes:</strong> Why these operationalizations, what's contestable, invitation for alternatives</li>
+        <li><strong>Citation Gaps:</strong> Explicit list of claims needing better sources</li>
+        <li><strong>Appendix:</strong> Blank scorecard for replication</li>
+    </ol>
+
+    <h3>Title Format</h3>
+
+    <p>Part II essays use the format: <strong>[Possessive Name]'s [Concept/Test] ([Year])</strong></p>
+
+    <ul>
+        <li>Aristotle's <em>Nous</em> (c. 350 BCE)</li>
+        <li>Descartes' Two Tests (1637)</li>
+        <li>The Lovelace Objection (1843)</li>
+        <li>Turing's Imitation Game (1950)</li>
+    </ul>
+
+    <p>The subtitle is always: "Retrospective Benchmarks for Machine Intelligence, Part II"</p>
+
+    <h3>AI Assistance Disclosure</h3>
+
+    <p>For essays produced with AI assistance, the disclosure should appear as the <strong>first footnote</strong> in the Preface section:</p>
+
+    <blockquote>
+        <p><em>Research, drafting, and analysis were conducted with the assistance of [Model Name] ([Developer], [Year]). The author provided editorial direction and final approval. Responsibility for all claims rests with the author.</em></p>
+    </blockquote>
+
     <h2>Continuation</h2>
 
     <h3>Quality Checklist</h3>
@@ -561,12 +658,18 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
         <li>Metrics explained clearly (what does each percentage measure?)</li>
         <li>"What they probably meant" grounded in historical context</li>
         <li>No ventriloquism of historical figures</li>
+        <li>No unwarranted assumptions about substrate-specificity of metaphysical concepts</li>
+        <li>Claims about embodiment/physicality are precise about what is meant</li>
+        <li>Human comparisons noted where applicable (asterisks in summary table)</li>
+        <li>Temporal anchoring present ("as of [date]") for capability claims</li>
         <li>Visual checkbox scoring (☐/☒) used consistently</li>
         <li>All external citations include clickable URLs</li>
+        <li>AI Assistance Disclosure appears as first footnote</li>
         <li>Methodological Notes section present</li>
         <li>Citation Gaps section present</li>
         <li>Blank scorecard included</li>
         <li>Tone is intellectually humble, inviting correction</li>
+        <li>LaTeX compiles without errors</li>
     </ul>
 
     <h3>The Invitation</h3>
@@ -600,12 +703,6 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
 
     <p>You may share and adapt for any purpose, including commercial, provided you give attribution and license derivatives under the same terms.</p>
 
-    <h3>AI Assistance Disclosure (Template)</h3>
-
-    <blockquote>
-        <p><em>AI Assistance Disclosure: Research, drafting, and analysis were conducted with the assistance of [Model Name] ([Developer], [Year]). The author provided editorial direction and final approval. Responsibility for all claims rests with the author.</em></p>
-    </blockquote>
-
     <!-- Endnotes -->
     <div class="endnotes">
         <h2>Notes</h2>
@@ -616,7 +713,7 @@ title: Methods and Style Guide - Retrospective Benchmarks - Betterward
     </div>
 
     <p style="margin-top: 3em; font-size: 0.9em; color: var(--text-light); border-top: 1px solid var(--border); padding-top: 1.5em;">
-        Document version 1.5 — December 28, 2025<br>
+        Document version 1.6 — December 28, 2025<br>
         AI Assistance Disclosure: Research, drafting, and analysis were conducted with the assistance of Claude (Anthropic, 2025). The author provided editorial direction and final approval. Responsibility for all claims rests with the author.<br>
         © 2025 Dakota Schuck. Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
     </p>
