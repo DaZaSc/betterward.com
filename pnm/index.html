@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Pretty Number Machine V5</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent-r: 61; --accent-g: 219; --accent-b: 217;
+    --bg: #0c0c0f;
+    --panel-bg: rgba(12, 12, 15, 0.85);
+    --text: #e0ddd5;
+    --text-dim: rgba(224, 221, 213, 0.45);
+    --text-faint: rgba(224, 221, 213, 0.25);
+    --border: rgba(180, 200, 210, 0.08);
+    --border-lite: rgba(180, 200, 210, 0.12);
+    --border-ctrl: rgba(180, 200, 210, 0.15);
+    --field-bg: rgba(200, 220, 230, 0.04);
+    --track-bg: rgba(200, 220, 230, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Space Grotesk', system-ui, sans-serif; overflow: hidden; }
+
+  #panel {
+    position: absolute; top: 0; left: 0; width: 280px; height: 100vh;
+    background: var(--panel-bg); backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.12);
+    border-radius: 0 16px 16px 0;
+    padding: 20px 16px; overflow-y: auto; z-index: 10;
+  }
+  #panel h1 {
+    font-size: 13px; color: var(--text); font-weight: 300;
+    letter-spacing: 0.2em; margin-bottom: 14px; text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .section-header {
+    font-size: 0.8rem; color: rgba(224,221,213,0.5); text-transform: uppercase;
+    letter-spacing: 0.12em; font-weight: 700;
+    margin: 14px 0 0; border-top: 1px solid var(--border); padding-top: 10px;
+    cursor: pointer; user-select: none; display: flex; align-items: center; gap: 6px;
+    transition: color 0.2s;
+  }
+  .section-header:first-of-type { border-top: none; margin-top: 0; }
+  .section-header:hover { color: rgba(224,221,213,0.7); }
+  .section-header::before {
+    content: '\25B8'; font-size: 0.6rem; transition: transform 0.2s;
+    display: inline-block; width: 10px;
+  }
+  .section-header.open::before { transform: rotate(90deg); }
+  .section-content { display: none; padding: 6px 0 0 10px; border-left: 2px solid var(--border); margin-left: 4px; }
+  .section-header.open + .section-content { display: block; }
+
+  .prime-grid { display: flex; flex-wrap: wrap; gap: 4px; }
+  .prime-btn, .prime-grid .grid-btn {
+    width: 38px; height: 28px; border: 1px solid var(--border-ctrl); background: var(--field-bg);
+    color: var(--text-dim); font-size: 11px; font-family: inherit; cursor: pointer; border-radius: 5px;
+    transition: all 0.2s;
+  }
+  .prime-grid .grid-btn {
+    font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.03em;
+    color: rgba(224,221,213,0.35);
+  }
+  .prime-grid .grid-btn:hover { border-color: rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.3); color: rgba(224,221,213,0.7); }
+  .prime-btn:hover { border-color: rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.3); color: rgba(224,221,213,0.7); }
+  .prime-btn.active { border-color: var(--text); color: var(--text); }
+
+  label { display: block; font-size: 0.78rem; margin: 6px 0 3px; color: var(--text-dim); font-weight: 400; }
+  label span { color: var(--text); font-weight: 600; }
+  select, input[type=number] {
+    width: 100%; padding: 6px 8px; background: var(--field-bg);
+    border: 1px solid var(--border); color: var(--text);
+    border-radius: 6px; font-size: 12px; font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  select:focus, input[type=number]:focus { outline: none; border-color: rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.4); }
+
+  input[type=range] {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 24px; margin: 2px 0;
+    background: transparent; cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    height: 4px; background: var(--track-bg); border-radius: 2px; border: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 12px; height: 22px; margin-top: -9px;
+    background: linear-gradient(to bottom, #555, #333);
+    border: 1px solid rgba(180,200,210,0.2); border-radius: 3px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  input[type=range]::-webkit-slider-thumb:hover {
+    background: linear-gradient(to bottom, #666, #444);
+    border-color: rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.4);
+  }
+  input[type=range]::-moz-range-track {
+    height: 4px; background: var(--track-bg); border-radius: 2px; border: none;
+  }
+  input[type=range]::-moz-range-thumb {
+    width: 12px; height: 22px;
+    background: linear-gradient(to bottom, #555, #333);
+    border: 1px solid rgba(180,200,210,0.2); border-radius: 3px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+
+  .effect-row {
+    display: flex; align-items: center; gap: 8px; margin: 2px 0; padding: 2px 0;
+  }
+  .effect-row .toggle { flex-shrink: 0; }
+  .effect-row input[type=range] { flex: 1; margin: 0; }
+  .effect-row .value { min-width: 24px; text-align: right; font-size: 0.65rem; color: rgba(224,221,213,0.6); font-weight: 600; }
+
+  .control-row { margin: 6px 0; }
+  .control-label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 0.72rem; color: var(--text-dim); margin-bottom: 1px; font-weight: 400;
+  }
+  .control-label .value {
+    color: rgba(224,221,213,0.6); font-weight: 600; font-size: 0.65rem;
+    letter-spacing: 0.03em;
+  }
+  .control-line { display: flex; align-items: center; gap: 6px; }
+  .control-line input[type=range] { flex: 1; margin: 0; }
+
+  .toggle {
+    display: flex; align-items: center; gap: 10px;
+    cursor: pointer; padding: 5px 0; margin: 1px 0;
+    font-size: 0.75rem; color: var(--text-dim); font-weight: 400;
+    user-select: none; transition: color 0.2s;
+  }
+  .toggle:hover { color: rgba(224,221,213,0.65); }
+  .toggle input[type=checkbox] { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+  .toggle-track {
+    position: relative; flex-shrink: 0;
+    width: 34px; height: 17px;
+    background: var(--track-bg);
+    border: 1px solid var(--border-lite);
+    border-radius: 10px; transition: all 0.25s ease;
+  }
+  .toggle-track::after {
+    content: '';
+    position: absolute; top: 1px; left: 1px;
+    width: 13px; height: 13px; border-radius: 50%;
+    background: linear-gradient(to bottom, #555, #333);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+    transition: all 0.25s ease;
+  }
+  .toggle:hover .toggle-track { border-color: rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.25); }
+  .toggle input:checked + .toggle-track {
+    background: rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.15);
+    border-color: rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.4);
+    box-shadow: 0 0 8px rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.1);
+  }
+  .toggle input:checked + .toggle-track::after {
+    left: 18px;
+    background: linear-gradient(to bottom, rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.9), rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.7));
+    box-shadow: 0 0 6px rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+
+  .range-row { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+  .range-row .toggle { flex-shrink: 0; margin: 0; padding: 4px 0; }
+  .range-row input[type=number] { width: 80px; flex-shrink: 0; }
+  .range-row .n-info { flex: 1; font-size: 0.7rem; color: rgba(224,221,213,0.4); text-align: right; white-space: nowrap; }
+  #n-slider { cursor: pointer !important; }
+  .range-row .n-info span { color: var(--text); font-weight: 600; }
+
+  #reset-btn {
+    width: 100%; padding: 7px; margin-top: 14px; background: transparent;
+    border: 1px solid var(--border); color: var(--text-faint);
+    font-size: 10px; font-family: inherit; cursor: pointer;
+    border-radius: 6px; transition: all 0.2s; letter-spacing: 0.05em;
+  }
+  #reset-btn:hover { border-color: rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.3); color: rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.6); }
+
+  #status { font-size: 0.6rem; color: rgba(224,221,213,0.2); margin-top: 6px; letter-spacing: 0.03em; }
+  #viewport { position: absolute; top: 0; left: 280px; right: 0; bottom: 0; }
+
+  /* Fix dropdown colors for dark theme */
+  select option { background: #1a1a1f; color: var(--text); }
+
+  /* All button highlight when all primes selected */
+  .grid-btn.active {
+    border-color: rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.5);
+    color: rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.9);
+    background: rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.1);
+  }
+
+  /* Node row: toggle + slider on same line */
+  .node-row { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+  .node-row .toggle { flex-shrink: 0; margin: 0; padding: 4px 0; }
+  .node-row input[type=range] { flex: 1; }
+  .node-row .value { font-size: 0.65rem; color: rgba(224,221,213,0.6); font-weight: 600; min-width: 24px; text-align: right; }
+
+  #panel::-webkit-scrollbar { width: 3px; }
+  #panel::-webkit-scrollbar-track { background: transparent; }
+  #panel::-webkit-scrollbar-thumb { background: rgba(var(--accent-r),var(--accent-g),var(--accent-b),0.15); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<div id="panel">
+  <h1>Pretty Number Machine</h1>
+
+  <h2 class="section-header open">Primes</h2>
+  <div class="section-content">
+    <div class="prime-grid" id="prime-grid"></div>
+    <label class="toggle" for="filter-primes" style="margin-top:6px">
+      <input type="checkbox" id="filter-primes" checked>
+      <span class="toggle-track"></span>
+      Selected Primes
+    </label>
+    <label class="toggle" for="filter-powers">
+      <input type="checkbox" id="filter-powers" checked>
+      <span class="toggle-track"></span>
+      Powers of Selected Primes
+    </label>
+    <label class="toggle" for="filter-composites">
+      <input type="checkbox" id="filter-composites" checked>
+      <span class="toggle-track"></span>
+      Composites of Selected Primes
+    </label>
+    <label class="toggle" for="show-all-integers">
+      <input type="checkbox" id="show-all-integers">
+      <span class="toggle-track"></span>
+      All Integers in Range
+    </label>
+    <label class="toggle" for="show-labels">
+      <input type="checkbox" id="show-labels">
+      <span class="toggle-track"></span>
+      Labels
+    </label>
+    <label class="toggle" for="show-curves">
+      <input type="checkbox" id="show-curves" checked>
+      <span class="toggle-track"></span>
+      Parastichy Lines
+    </label>
+    <div class="control-row">
+      <div class="control-label">Thickness <span class="value" id="line-width-display">2</span></div>
+      <div class="control-line">
+        <input type="range" id="line-width" min="1" max="8" step="0.5" value="2">
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-header">Range</h2>
+  <div class="section-content">
+    <div class="range-row">
+      <label class="toggle" for="auto-n" style="margin:0">
+        <input type="checkbox" id="auto-n" checked>
+        <span class="toggle-track"></span>
+        Auto
+      </label>
+      <input type="number" id="n-input" value="30" min="1" max="10000" disabled>
+      <div class="n-info"><span id="n-display">30</span></div>
+    </div>
+    <input type="range" id="n-slider" min="1" max="2500" value="30">
+  </div>
+
+  <h2 class="section-header">Shape</h2>
+  <div class="section-content">
+    <div class="control-row">
+      <div class="control-label">Dimension <span class="value" id="dim-display">Disk</span></div>
+      <div class="control-line">
+        <input type="range" id="dimension" min="0" max="2.5" step="0.005" value="0.5">
+      </div>
+    </div>
+    <div class="effect-row">
+      <label class="toggle" for="shape-drift" style="margin:0">
+        <input type="checkbox" id="shape-drift">
+        <span class="toggle-track"></span>
+        Morph
+      </label>
+      <input type="range" id="shape-drift-speed" min="0.05" max="2.0" step="0.05" value="0.1">
+      <span class="value" id="shape-drift-speed-display">0.1</span>
+    </div>
+  </div>
+
+  <h2 class="section-header">Nodes</h2>
+  <div class="section-content">
+    <div class="node-row">
+      <label class="toggle" for="show-nodes" style="margin:0">
+        <input type="checkbox" id="show-nodes" checked>
+        <span class="toggle-track"></span>
+        All Nodes
+      </label>
+    </div>
+    <div class="control-row">
+      <div class="control-label">Size <span class="value" id="node-size-display">1.0</span></div>
+      <div class="control-line">
+        <input type="range" id="node-size" min="0.1" max="2" step="0.1" value="1.0">
+      </div>
+    </div>
+    <label class="toggle" for="show-zero">
+      <input type="checkbox" id="show-zero" checked>
+      <span class="toggle-track"></span>
+      Zero node
+    </label>
+    <label class="toggle" for="show-one">
+      <input type="checkbox" id="show-one" checked>
+      <span class="toggle-track"></span>
+      One node
+    </label>
+  </div>
+
+  <h2 class="section-header" id="section-appearance">Appearance</h2>
+  <div class="section-content">
+    <label>Color scheme</label>
+    <select id="color-scheme">
+      <option value="rgb">Additive RGB</option>
+      <option value="spectrum">Spectrum (red &rarr; blue)</option>
+      <option value="spectrum-rev">Spectrum (blue &rarr; red)</option>
+      <option value="none">Colorless</option>
+    </select>
+
+    <label>Background</label>
+    <select id="background-style">
+      <option value="black">Black</option>
+      <option value="white">White</option>
+    </select>
+  </div>
+
+  <h2 class="section-header">Effects</h2>
+  <div class="section-content">
+    <div class="effect-row">
+      <label class="toggle" for="prime-glow" style="margin:0">
+        <input type="checkbox" id="prime-glow" checked>
+        <span class="toggle-track"></span>
+        Prime glow
+      </label>
+      <input type="range" id="prime-glow-intensity" min="0.1" max="2" step="0.1" value="0.3">
+      <span class="value" id="prime-glow-display">0.3</span>
+    </div>
+
+    <div class="effect-row">
+      <label class="toggle" for="zero-glow" style="margin:0">
+        <input type="checkbox" id="zero-glow" checked>
+        <span class="toggle-track"></span>
+        Zero glow
+      </label>
+      <input type="range" id="zero-glow-intensity" min="0.1" max="3" step="0.1" value="1.5">
+      <span class="value" id="zero-glow-display">1.5</span>
+    </div>
+
+    <div class="effect-row">
+      <label class="toggle" for="pulse" style="margin:0">
+        <input type="checkbox" id="pulse">
+        <span class="toggle-track"></span>
+        Pulse
+      </label>
+      <input type="range" id="pulse-speed" min="0.2" max="3" step="0.1" value="1.0">
+      <span class="value" id="pulse-speed-display">1.0</span>
+    </div>
+
+    <div class="effect-row">
+      <label class="toggle" for="line-pulse" style="margin:0">
+        <input type="checkbox" id="line-pulse">
+        <span class="toggle-track"></span>
+        Line Pulse
+      </label>
+    </div>
+
+    <div class="effect-row">
+      <label class="toggle" for="color-drift" style="margin:0">
+        <input type="checkbox" id="color-drift">
+        <span class="toggle-track"></span>
+        Color Drift
+      </label>
+      <input type="range" id="color-drift-speed" min="0.1" max="3" step="0.1" value="1.0">
+      <span class="value" id="color-drift-speed-display">1.0</span>
+    </div>
+
+    <div class="effect-row">
+      <label class="toggle" for="auto-rotate" style="margin:0">
+        <input type="checkbox" id="auto-rotate" checked>
+        <span class="toggle-track"></span>
+        Drift
+      </label>
+      <input type="range" id="drift-speed" min="0.1" max="5" step="0.1" value="0.5">
+      <span class="value" id="drift-speed-display">0.5</span>
+    </div>
+  </div>
+
+  <button id="reset-btn">Reset to defaults</button>
+  <div id="status"></div>
+</div>
+
+<div id="viewport"></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+  import { init } from './core/renderer.js';
+  import { initPanel } from './core/panel.js';
+
+  // Dynamic module loading — each one is isolated
+  const featureModules = [
+    './modules/physics.js',
+    './modules/info.js',
+  ];
+
+  for (const path of featureModules) {
+    try {
+      const m = await import(path);
+      m.register();
+    } catch (err) {
+      console.error(`[PNM] Failed to load module ${path}:`, err);
+    }
+  }
+
+  // Build panel (reads registered modules + shapes)
+  initPanel();
+
+  // Start renderer
+  init(document.getElementById('viewport'));
+</script>
+</body>
+</html>
