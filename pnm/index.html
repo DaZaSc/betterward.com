@@ -401,7 +401,7 @@
   <div style="font-size:0.55rem; color:rgba(224,221,213,0.2); margin-top:10px; letter-spacing:0.03em;">v0.6.6 &middot; &copy; 2026 Dakota Schuck</div>
 </div>
 
-<button id="panel-toggle" onclick="document.getElementById('panel').classList.toggle('collapsed');setTimeout(()=>window.dispatchEvent(new Event('resize')),350)">&#9776;</button>
+<button id="panel-toggle" onclick="var p=document.getElementById('panel');p.classList.toggle('collapsed');this.textContent=p.classList.contains('collapsed')?'\u25B8':'\u25C2';setTimeout(()=>window.dispatchEvent(new Event('resize')),350)">&lsaquo;</button>
 <div id="viewport"></div>
 
 <script type="importmap">
